@@ -148,7 +148,7 @@ export function Gallery() {
         </div>
 
         {/* Gallery Grid Section */}
-        <div className="relative bg-black py-12 sm:py-20 lg:py-28">
+        <div className="relative bg-black py-12 sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[50px] pl-[0px]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-[87px] py-8 sm:py-16 lg:py-[100px]">
             {/* Gallery Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">

@@ -158,7 +158,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
         </div>
 
         {/* Artists Grid Section */}
-        <div className="relative bg-black py-12 sm:py-20 lg:py-28">
+        <div className="relative bg-black py-12 sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[0px] pl-[0px]">
           <div className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
               {artists.map((artist, index) => (

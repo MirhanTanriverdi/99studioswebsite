@@ -19,7 +19,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
 
   return (
-    <section ref={sectionRef} id="appointment" className="bg-black py-12 sm:py-16 lg:py-32">
+    <section ref={sectionRef} id="appointment" className="bg-black py-12 sm:py-16 lg:py-32 pt-[128px] pr-[0px] pb-[50px] pl-[0px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

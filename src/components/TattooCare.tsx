@@ -54,7 +54,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   How much does a tattoo cost?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   Pricing varies based on size, complexity, and artist. Our hourly rate ranges from 
                   €120-200. Small pieces start at €100. We provide detailed quotes during consultations.
                 </p>
@@ -64,7 +64,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   How do I book an appointment?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   Click the "Request Appointment" button to access our external booking platform. 
                   You'll need to provide details about your desired tattoo, preferred artist, and 
                   availability. We typically respond within 24-48 hours.
@@ -75,7 +75,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Do you require a deposit?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   Yes, we require a €50-100 deposit to secure your appointment. This is deducted from 
                   your final payment. Deposits are non-refundable but can be transferred to a 
                   rescheduled appointment with 48 hours notice.
@@ -89,7 +89,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Can I bring my own design?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   Absolutely! We welcome reference images and custom designs. Our artists will work 
                   with you to refine your idea and ensure it translates well as a tattoo. We also 
                   offer full custom design services.
@@ -100,7 +100,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   What is your cancellation policy?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   We require at least 48 hours notice for cancellations. Late cancellations or 
                   no-shows will forfeit the deposit. We understand emergencies happen - please 
                   contact us to discuss your situation.
@@ -111,7 +111,7 @@ export function TattooCare() {
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Do you do cover-ups or touch-ups?
                 </h3>
-                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed text-justify">
                   Yes, we specialize in cover-ups and offer free touch-ups within the first year for 
                   tattoos done at our studio. Bring photos of your existing tattoo for consultation.
                 </p>

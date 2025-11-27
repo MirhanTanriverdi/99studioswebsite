@@ -75,10 +75,10 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
               variant="ghost"
               className="text-gold hover:text-gold/80 hover:bg-gold/10"
             >
-              <ArrowLeft className="mr-2" size={20} />
-              Back to Home
+              <ArrowLeft className="sm:mr-2" size={20} />
+              <span className="hidden sm:inline">Back to Home</span>
             </Button>
-            <img src={logo} alt="99 Roots Studio" className="h-30 w-30" />
+
           </div>
         </div>
       </header>
@@ -98,11 +98,11 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
               Fill out the form below and we'll get back to you within 24-48 hours to confirm your consultation.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               {/* Personal Information */}
-              <div className="border border-gold/20 p-6 rounded-lg">
-                <h2 className="font-playfair text-2xl text-gold mb-6">Personal Information</h2>
-                <div className="grid md:grid-cols-2 gap-6">
+              <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
+                <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Personal Information</h2>
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <Label htmlFor="firstName" className="text-white/90">
                       First Name *
@@ -111,7 +111,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       id="firstName"
                       value={formData.firstName}
                       onChange={(e) => handleChange('firstName', e.target.value)}
-                      className="bg-black border-white text-white focus:border-gold rounded-[8px]"
+                      className="bg-black border-white text-white focus:border-gold rounded-none"
                       required
                     />
                   </div>
@@ -123,7 +123,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       id="lastName"
                       value={formData.lastName}
                       onChange={(e) => handleChange('lastName', e.target.value)}
-                      className="bg-black border-white text-white focus:border-gold"
+                      className="bg-black border-white text-white focus:border-gold rounded-none"
                       required
                     />
                   </div>
@@ -136,7 +136,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleChange('email', e.target.value)}
-                      className="bg-black border-white text-white focus:border-gold"
+                      className="bg-black border-white text-white focus:border-gold rounded-none"
                       required
                     />
                   </div>
@@ -149,7 +149,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleChange('phone', e.target.value)}
-                      className="bg-black border-white text-white focus:border-gold"
+                      className="bg-black border-white text-white focus:border-gold rounded-none"
                       required
                     />
                   </div>
@@ -157,9 +157,9 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
               </div>
 
               {/* Appointment Details */}
-              <div className="border border-gold/20 p-6 rounded-lg">
-                <h2 className="font-playfair text-2xl text-gold mb-6">Appointment Details</h2>
-                <div className="space-y-6">
+              <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
+                <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Appointment Details</h2>
+                <div className="space-y-4 sm:space-y-6">
                   <div>
                     <Label htmlFor="date" className="text-white/90">
                       Preferred Date *
@@ -168,13 +168,13 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       <PopoverTrigger asChild>
                         <Button
                           variant="outline"
-                          className="w-full justify-start text-left font-inter bg-black border-gold/30 text-white hover:bg-gold/10 hover:text-white"
+                          className="w-full justify-start text-left font-inter bg-black border-gold/30 text-white hover:bg-gold/10 hover:text-white rounded-none"
                         >
                           <CalendarIcon className="mr-2 h-4 w-4 text-gold" />
                           {date ? date.toLocaleDateString() : 'Select a date'}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0 bg-black border-gold/30 button-white">
+                      <PopoverContent className="w-auto p-0 bg-black border-gold/30 button-white rounded-none">
                         <Calendar
                           mode="single"
                           selected={date}
@@ -191,10 +191,10 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       Preferred Artist (Optional)
                     </Label>
                     <Select value={formData.artist} onValueChange={(value) => handleChange('artist', value)}>
-                      <SelectTrigger className="bg-black border-gold/30 text-white">
+                      <SelectTrigger className="bg-black border-gold/30 text-white rounded-none">
                         <SelectValue placeholder="Select an artist" />
                       </SelectTrigger>
-                      <SelectContent className="bg-black border-gold/30">
+                      <SelectContent className="bg-black border-gold/30 rounded-none">
                         <SelectItem value="no-preference" className="text-white hover:bg-gold/10">No Preference</SelectItem>
                         <SelectItem value="anna" className="text-white hover:bg-gold/10">Anna Schmidt - Fine Line</SelectItem>
                         <SelectItem value="marcus" className="text-white hover:bg-gold/10">Marcus Wolf - Realism</SelectItem>
@@ -206,19 +206,19 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
               </div>
 
               {/* Tattoo Details */}
-              <div className="border border-gold/20 p-6 rounded-lg">
-                <h2 className="font-playfair text-2xl text-gold mb-6">Tattoo Details</h2>
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+              <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
+                <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Tattoo Details</h2>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <Label htmlFor="tattooType" className="text-white/90">
                         Tattoo Style
                       </Label>
                       <Select value={formData.tattooType} onValueChange={(value) => handleChange('tattooType', value)}>
-                        <SelectTrigger className="bg-black border-gold/30 text-white">
+                        <SelectTrigger className="bg-black border-gold/30 text-white rounded-none">
                           <SelectValue placeholder="Select style" />
                         </SelectTrigger>
-                        <SelectContent className="bg-black border-gold/30">
+                        <SelectContent className="bg-black border-gold/30 rounded-none">
                           <SelectItem value="fine-line" className="text-white hover:bg-gold/10">Fine Line</SelectItem>
                           <SelectItem value="realism" className="text-white hover:bg-gold/10">Realism</SelectItem>
                           <SelectItem value="traditional" className="text-white hover:bg-gold/10">Traditional</SelectItem>
@@ -233,10 +233,10 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                         Approximate Size
                       </Label>
                       <Select value={formData.size} onValueChange={(value) => handleChange('size', value)}>
-                        <SelectTrigger className="bg-black border-gold/30 text-white">
+                        <SelectTrigger className="bg-black border-gold/30 text-white rounded-none">
                           <SelectValue placeholder="Select size" />
                         </SelectTrigger>
-                        <SelectContent className="bg-black border-gold/30">
+                        <SelectContent className="bg-black border-gold/30 rounded-none">
                           <SelectItem value="small" className="text-white hover:bg-gold/10">Small (2-4 inches)</SelectItem>
                           <SelectItem value="medium" className="text-white hover:bg-gold/10">Medium (4-6 inches)</SelectItem>
                           <SelectItem value="large" className="text-white hover:bg-gold/10">Large (6-10 inches)</SelectItem>
@@ -255,7 +255,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       value={formData.placement}
                       onChange={(e) => handleChange('placement', e.target.value)}
                       placeholder="e.g., forearm, shoulder, back"
-                      className="bg-black border-white text-white focus:border-gold"
+                      className="bg-black border-white text-white focus:border-gold rounded-none"
                     />
                   </div>
 
@@ -268,25 +268,25 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       value={formData.description}
                       onChange={(e) => handleChange('description', e.target.value)}
                       placeholder="Describe your tattoo idea, including any specific details, themes, or reference images you have..."
-                      className="bg-black border-white text-white focus:border-gold min-h-32"
+                      className="bg-black border-white text-white focus:border-gold min-h-32 rounded-none"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Health Information */}
-              <div className="border border-gold/20 p-6 rounded-lg">
-                <h2 className="font-playfair text-2xl text-gold mb-6">Health Information</h2>
-                <div className="space-y-6">
+              <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
+                <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Health Information</h2>
+                <div className="space-y-4 sm:space-y-6">
                   <div>
                     <Label htmlFor="hasAllergies" className="text-white/90">
                       Do you have any allergies or skin conditions?
                     </Label>
                     <Select value={formData.hasAllergies} onValueChange={(value) => handleChange('hasAllergies', value)}>
-                      <SelectTrigger className="bg-black border-gold/30 text-white">
+                      <SelectTrigger className="bg-black border-gold/30 text-white rounded-none">
                         <SelectValue placeholder="Select an option" />
                       </SelectTrigger>
-                      <SelectContent className="bg-black border-gold/30">
+                      <SelectContent className="bg-black border-gold/30 rounded-none">
                         <SelectItem value="no" className="text-white hover:bg-gold/10">No</SelectItem>
                         <SelectItem value="yes" className="text-white hover:bg-gold/10">Yes</SelectItem>
                       </SelectContent>
@@ -303,7 +303,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                         value={formData.allergiesDetails}
                         onChange={(e) => handleChange('allergiesDetails', e.target.value)}
                         placeholder="Describe any allergies or skin conditions..."
-                        className="bg-black border-white text-white focus:border-gold"
+                        className="bg-black border-white text-white focus:border-gold rounded-none"
                       />
                     </div>
                   )}
@@ -311,16 +311,17 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
               </div>
 
               {/* Submit Button */}
-              <div className="flex justify-center pt-6">
+              <div className="flex justify-center pt-4 sm:pt-6">
                 <Button
                   type="submit"
-                  className="bg-gold text-[rgb(255,255,255)] hover:bg-gold/90 px-12 py-6 transition-all duration-300 not-italic no-underline font-bold bg-[rgba(255,255,255,0)] rounded-[20px]"
+                  variant="outline"
+                  className="w-full sm:w-auto border-2 border-gold text-gold hover:bg-gold hover:text-black px-12 py-6 transition-all duration-300 rounded-none"
                 >
                   Submit Appointment Request
                 </Button>
               </div>
 
-              <p className="text-white/60 text-sm text-center">
+              <p className="text-white/60 text-xs sm:text-sm text-center px-4">
                 By submitting this form, you agree to our terms and conditions. 
                 We'll contact you within 24-48 hours to confirm your appointment.
               </p>

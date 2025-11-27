@@ -11,7 +11,7 @@ export function Location() {
   });
 
   return (
-    <section ref={sectionRef} id="location" className="bg-black py-12 sm:py-20 lg:py-28">
+    <section ref={sectionRef} id="location" className="bg-black py-12 sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[50px] pl-[0px]">
       <div className="container mx-auto px-4 sm:px-8 lg:px-[87px] max-w-7xl">
         {/* Location Header */}
         <motion.div

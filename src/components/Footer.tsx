@@ -16,7 +16,7 @@ export function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], ["20px", "-20px"]);
 
   return (
-    <footer ref={footerRef} className="bg-black border-t border-gold/20 py-12 sm:py-16 lg:py-20">
+    <footer ref={footerRef} className="bg-black border-t border-gold/20 sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[50px] pl-[0px]">
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         style={{ y }}
