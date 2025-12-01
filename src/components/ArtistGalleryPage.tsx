@@ -1,8 +1,8 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowLeft, Instagram, ChevronDown, X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 
 interface ArtistGalleryPageProps {
@@ -139,6 +139,40 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
+  // Refs for parallax
+  const headerRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  
+  // Scroll progress for header parallax
+  const { scrollYProgress: headerScrollProgress } = useScroll({
+    target: headerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  // Scroll progress for gallery parallax
+  const { scrollYProgress: galleryScrollProgress } = useScroll({
+    target: galleryRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Scroll progress for CTA parallax
+  const { scrollYProgress: ctaScrollProgress } = useScroll({
+    target: ctaRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Transform values for parallax effects
+  const headerY = useTransform(headerScrollProgress, [0, 1], [0, -100]);
+  const headerOpacity = useTransform(headerScrollProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
+  const photoScale = useTransform(headerScrollProgress, [0, 1], [1, 0.8]);
+  
+  const galleryY = useTransform(galleryScrollProgress, [0, 1], [50, -50]);
+  const galleryOpacity = useTransform(galleryScrollProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.5]);
+  
+  const ctaY = useTransform(ctaScrollProgress, [0, 1], [100, -50]);
+  const ctaOpacity = useTransform(ctaScrollProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.8]);
+  
   // Get all artists for dropdown
   const allArtists = Object.entries(artistGalleries).map(([id, data]) => ({
     id: Number(id),
@@ -197,7 +231,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
 
   if (!artist) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-[#151515] flex items-center justify-center">
         <div className="text-center">
           <h2 className="font-playfair text-gold text-4xl mb-4">Artist Not Found</h2>
           <Button onClick={onBack} variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black">
@@ -210,9 +244,9 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[#151515]">
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-black z-[100]">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[#151515] z-[100]">
         <motion.div
           className="h-full bg-gold shadow-[0_0_10px_rgba(200,157,83,0.5)]"
           style={{ width: `${scrollProgress}%` }}
@@ -221,7 +255,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gold/20 mt-1">
+      <header className="sticky top-0 z-50 bg-[#151515]/95 backdrop-blur-sm border-b border-gold/20 mt-1">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-center justify-between gap-4">
             {/* Left: Back Button */}
@@ -255,7 +289,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
               </button>
               
               {/* Dropdown Menu */}
-              <div className={`absolute right-0 top-full mt-2 w-48 sm:w-56 bg-black border border-gold/40 transition-all duration-300 z-50 shadow-2xl ${
+              <div className={`absolute right-0 top-full mt-2 w-48 sm:w-56 bg-[#151515] border border-gold/40 transition-all duration-300 z-50 shadow-2xl ${
                 isDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
               }`}>
                 {allArtists.map((a) => (
@@ -265,10 +299,10 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                       onArtistChange(a.id);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 text-sm sm:text-base transition-colors duration-200 ${
+                    className={`w-full text-left px-4 py-3 text-sm sm:text-base transition-all duration-300 transform hover:scale-[1.02] hover:pl-6 ${
                       a.id === artistId
-                        ? 'bg-gold/20 text-gold'
-                        : 'text-white/80 hover:bg-gold/10 hover:text-gold'
+                        ? 'bg-gold/20 text-gold border-l-2 border-gold'
+                        : 'text-white/80 hover:bg-gold/10 hover:text-gold hover:border-l-2 hover:border-gold/50'
                     }`}
                   >
                     {a.name}
@@ -281,18 +315,14 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </header>
 
       {/* Artist Header */}
-      <section className="py-12 sm:py-16 lg:py-24 border-b border-gold/20">
+      <section ref={headerRef} className="py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            style={{ y: headerY, opacity: headerOpacity }}
           >
             {/* Artist Photo */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{ scale: photoScale }}
               className="mb-8 sm:mb-10 flex justify-center"
             >
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56">
@@ -338,16 +368,20 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-12 sm:py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={galleryRef} className="py-12 sm:py-16 lg:py-24 overflow-hidden">
+        <motion.div 
+          style={{ y: galleryY, opacity: galleryOpacity }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {artist.images.map((image, index) => (
               <motion.div
                 key={image.id}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative aspect-square overflow-hidden border border-gold/20 hover:border-gold transition-all duration-300 cursor-pointer"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="group relative aspect-square overflow-hidden bg-[#151515] border border-gold/20 group"
                 onClick={() => setSelectedImageIndex(index)}
               >
                 <img
@@ -355,21 +389,21 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                   alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
                 />
-
+                {/* Zoom Icon Overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                  <ZoomIn className="text-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+                </div>
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-24 border-t border-gold/20">
+      <section ref={ctaRef} className="py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            style={{ y: ctaY, opacity: ctaOpacity }}
             className="max-w-2xl mx-auto"
           >
             <h2 className="font-playfair text-gold text-3xl sm:text-4xl md:text-5xl mb-6">

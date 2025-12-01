@@ -17,7 +17,7 @@ export function About() {
   const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
-    <section ref={sectionRef} id="about" className="bg-black py-20 lg:py-32">
+    <section ref={sectionRef} id="about" className="bg-[#151515] py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text Content */}

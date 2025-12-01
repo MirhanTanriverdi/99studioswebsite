@@ -15,6 +15,7 @@ import { ShopPage } from './components/ShopPage';
 import { ArtistGalleryPage } from './components/ArtistGalleryPage';
 import { Location } from './components/Location';
 import { ComingSoon } from './components/ComingSoon';
+import { CookieConsent } from './components/CookieConsent';
 import { Toaster } from './components/ui/sonner';
 
 type PageType = 'home' | 'appointment' | 'shop' | 'artist-gallery' | 'coming-soon';
@@ -106,6 +107,7 @@ export default function App() {
         {/* <RequestAppointment onBookingClick={navigateToAppointment} /> */}
       </main>
       <Footer />
+      <CookieConsent />
       <Toaster />
     </div>
   );

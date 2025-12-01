@@ -79,7 +79,7 @@ export function Gallery() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
 
   return (
-    <section ref={sectionRef} id="gallery" className="relative overflow-hidden bg-black">
+    <section ref={sectionRef} id="gallery" className="relative overflow-hidden bg-[#151515]">
       {/* Video Background with Parallax */}
       <div className="absolute inset-0 z-0">
         <motion.div 
@@ -95,7 +95,7 @@ export function Gallery() {
           >
             <source src="https://videos.pexels.com/video-files/6985001/6985001-uhd_2560_1440_25fps.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/70 z-10" />
+          <div className="absolute inset-0 bg-[#151515]/70 z-10" />
         </motion.div>
       </div>
 
@@ -114,7 +114,7 @@ export function Gallery() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-playfair text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+              <h2 className="font-roboto text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
                 Gallery
               </h2>
             </motion.div>
@@ -148,7 +148,7 @@ export function Gallery() {
         </div>
 
         {/* Gallery Grid Section */}
-        <div className="relative bg-black py-12 sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[50px] pl-[0px]">
+        <div className="relative bg-[#151515] sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[50px] pl-[0px] p-[0px]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-[87px] py-8 sm:py-16 lg:py-[100px]">
             {/* Gallery Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">

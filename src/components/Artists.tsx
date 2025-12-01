@@ -77,19 +77,30 @@ interface ArtistsProps {
 
 export function Artists({ onArtistGalleryClick }: ArtistsProps) {
   const sectionRef = useRef(null);
+  const gridRef = useRef(null);
   
-  // Parallax effect for entire section
+  // Parallax effect for video background
   const { scrollYProgress } = useScroll({
     target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax effect for artist grid
+  const { scrollYProgress: gridScrollProgress } = useScroll({
+    target: gridRef,
     offset: ["start end", "end start"]
   });
   
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
   const videoY = useTransform(scrollYProgress, [0, 1], ["0px", "-100px"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
+  
+  // Grid parallax transforms
+  const gridY = useTransform(gridScrollProgress, [0, 1], [100, -100]);
+  const gridOpacity = useTransform(gridScrollProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
 
   return (
-    <section ref={sectionRef} id="artists" className="relative overflow-hidden bg-black">
+    <section ref={sectionRef} id="artists" className="relative overflow-hidden bg-[#151515]">
       {/* Video Background with Parallax */}
       <div className="absolute inset-0 z-0">
         <motion.div 
@@ -105,7 +116,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
           >
             <source src="https://videos.pexels.com/video-files/4615158/4615158-uhd_2560_1440_30fps.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/70 z-10" />
+          <div className="absolute inset-0 bg-[#151515]/70 z-10" />
         </motion.div>
       </div>
 
@@ -158,8 +169,11 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
         </div>
 
         {/* Artists Grid Section */}
-        <div className="relative bg-black py-12 sm:py-20 lg:py-28 pt-[20px] pr-[0px] pb-[0px] pl-[0px]">
-          <div className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]">
+        <div ref={gridRef} className="relative bg-[#151515] sm:py-20 lg:py-28 pt-[0px] pr-[0px] pb-[20px] pl-[0px] overflow-hidden p-[0px]">
+          <motion.div 
+            style={{ y: gridY, opacity: gridOpacity }}
+            className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
               {artists.map((artist, index) => (
                 <ArtistCard 
@@ -170,7 +184,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -195,7 +209,7 @@ function ArtistCard({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group"
     >
-      <div className="relative overflow-hidden border border-gold/20 bg-black transition-all duration-300 hover:border-gold">
+      <div className="relative overflow-hidden border border-gold/20 bg-[#151515] transition-all duration-300 hover:border-gold">
         {/* Artist Image */}
         <div className="aspect-[3/4] overflow-hidden">
           <img
@@ -223,7 +237,7 @@ function ArtistCard({
           <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
             {artist.bio}
           </p>
-          <p className="font-inter text-gold/70 text-xs sm:text-sm">
+          <p className="font-inter text-[#C89D53] text-xs sm:text-sm">
             {artist.instagram}
           </p>
         </div>

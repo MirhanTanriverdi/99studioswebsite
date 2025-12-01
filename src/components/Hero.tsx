@@ -39,13 +39,13 @@ export function Hero({ onAppointmentClick }: HeroProps) {
         className="absolute inset-0 z-0"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-black/70 z-10" />
         <motion.img
-          src="https://images.unsplash.com/photo-1761276297550-27567ed50a1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjB3b3JraW5nfGVufDF8fHx8MTc2MTgzNTUzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-          alt="Tattoo artist at work"
+          src="https://images.unsplash.com/photo-1482328177731-274399da39f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjB3b3JraW5nfGVufDF8fHx8MTc2NDYyODg5MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          alt="Tattoo studio background"
           className="w-full h-full object-cover"
           style={{ scale }}
         />
+        <div className="absolute inset-0 bg-[#151515]/50 z-10" />
       </motion.div>
 
       {/* Content */}

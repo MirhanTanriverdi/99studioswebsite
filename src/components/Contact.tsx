@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-black py-20 lg:py-32">
+    <section id="contact" className="bg-[#151515] py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -175,7 +175,7 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="John Doe"
-                      className="bg-black/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
+                      className="bg-[#151515]/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
                     />
                   </div>
 
@@ -191,7 +191,7 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="john@example.com"
-                      className="bg-black/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
+                      className="bg-[#151515]/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
                     />
                   </div>
                 </div>
@@ -207,7 +207,7 @@ export function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+49 30 1234 5678"
-                    className="bg-black/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
+                    className="bg-[#151515]/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold h-12"
                   />
                 </div>
 
@@ -223,7 +223,7 @@ export function Contact() {
                     required
                     rows={6}
                     placeholder="Tell us about your tattoo idea..."
-                    className="bg-black/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold resize-none"
+                    className="bg-[#151515]/50 border-gold/30 text-white placeholder:text-white/30 focus:border-gold resize-none"
                   />
                 </div>
 

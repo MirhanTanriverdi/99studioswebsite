@@ -144,6 +144,7 @@
       font-size: var(--text-xl);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
+      font-family: 'Helvetica', 'Arial', sans-serif;
     }
 
     h3 {
@@ -195,21 +196,26 @@ body {
 }
 
 /* 99 Roots Studio Custom Styles */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --studio-black: #000000;
+  --studio-black: #151515;
   --studio-gold: #C89D53;
   --studio-white: #FFFFFF;
   --studio-gray: #D1D1D1;
 }
 
-.font-playfair {
-  font-family: 'Playfair Display', serif;
+body {
+  font-family: 'Space Mono', monospace;
 }
 
-.font-inter {
-  font-family: 'Inter', sans-serif;
+.font-space-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
 }
 
 .text-gold {

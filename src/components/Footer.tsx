@@ -16,7 +16,7 @@ export function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], ["20px", "-20px"]);
 
   return (
-    <footer ref={footerRef} className="bg-black border-t border-gold/20 sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[50px] pl-[0px]">
+    <footer ref={footerRef} className="bg-[#151515] border-t border-gold/20 sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[20px] pl-[0px]">
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         style={{ y }}
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         {/* Additional Links */}
-        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gold/20 flex flex-wrap justify-center gap-4 sm:gap-6">
+        <div className="sm:mt-8 pt-6 sm:pt-8 border-t border-gold/20 flex flex-wrap justify-center gap-4 sm:gap-6 m-[0px] p-[0px]">
           <a
             href="#"
             className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"

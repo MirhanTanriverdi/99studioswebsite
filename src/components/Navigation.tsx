@@ -87,7 +87,7 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-t border-gold/20"
+            className="md:hidden bg-[#151515] border-t border-gold/20"
           >
             <div className="container mx-auto px-4 py-4">
               {navItems.map((item) => (

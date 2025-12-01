@@ -19,8 +19,8 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
 
   return (
-    <section ref={sectionRef} id="appointment" className="bg-black py-12 sm:py-16 lg:py-32 pt-[128px] pr-[0px] pb-[50px] pl-[0px]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="appointment" className="bg-[rgb(21,21,21)] sm:py-16 lg:py-32 px-[0px] py-[90px] pt-[90px] pr-[0px] pb-[20px] pl-[0px]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[rgba(21,21,21,0)]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
           </div>
 
           {/* Studio Information Grid */}
-          <div className="mt-12 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-0 sm:gap-12 m-[0px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 sm:gap-12 mt-[20px] mr-[0px] mb-[0px] ml-[0px]">
             {/* Location */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

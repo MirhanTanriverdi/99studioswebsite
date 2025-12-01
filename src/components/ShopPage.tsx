@@ -160,14 +160,14 @@ export function ShopPage({ onBack }: ShopPageProps) {
             {filteredProducts.map((product, index) => (
               <motion.div
                 key={product.id}
-                className="group bg-black/40 border border-gold/20 hover:border-gold/60 transition-all duration-300 overflow-hidden"
+                className="group bg-[#151515]/40 border border-gold/20 hover:border-gold/60 transition-all duration-300 overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 whileHover={{ y: -8 }}
               >
                 {/* Product Image */}
-                <div className="relative h-64 overflow-hidden bg-black">
+                <div className="relative h-64 overflow-hidden bg-[#151515]">
                   <img
                     src={product.image}
                     alt={product.name}

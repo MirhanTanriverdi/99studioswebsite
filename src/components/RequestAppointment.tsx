@@ -19,7 +19,7 @@ export function RequestAppointment({ onBookingClick }: RequestAppointmentProps) 
   const y = useTransform(scrollYProgress, [0, 1], ["60px", "-60px"]);
 
   return (
-    <section ref={sectionRef} id="contact" className="bg-black py-12 sm:py-16 lg:py-32">
+    <section ref={sectionRef} id="contact" className="bg-[#151515] py-12 sm:py-16 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Section Header */}
         <motion.div

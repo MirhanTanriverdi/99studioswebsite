@@ -7,9 +7,9 @@ interface ComingSoonProps {
 
 export function ComingSoon({ onBack }: ComingSoonProps) {
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-[#151515] flex flex-col">
       {/* Header with Back Button */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gold/20">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#151515]/80 backdrop-blur-sm border-b border-gold/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <button
             onClick={onBack}

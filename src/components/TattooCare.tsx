@@ -19,7 +19,7 @@ export function TattooCare() {
   const y = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
 
   return (
-    <section ref={sectionRef} id="care" className="bg-black py-12 sm:py-20 lg:py-28">
+    <section ref={sectionRef} id="care" className="bg-[#151515] sm:py-20 lg:py-28 p-[0px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Section Header */}
         <motion.div

@@ -44,7 +44,7 @@ export function VideoSection({
         ) : (
           <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-gray-900 to-black z-0"></div>
         )}
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-[#151515]/40 z-10" />
       </motion.div>
 
       {/* Content */}

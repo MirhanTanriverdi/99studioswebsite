@@ -24,7 +24,7 @@ export function Shop({ onShopClick }: ShopProps) {
   return (
     <section 
       ref={sectionRef} 
-      className="relative h-[60vh] sm:h-[70vh] min-h-[500px] sm:min-h-[600px] flex items-center justify-center overflow-hidden bg-black"
+      className="relative h-[60vh] sm:h-[70vh] min-h-[500px] sm:min-h-[600px] flex items-center justify-center overflow-hidden bg-[#151515]"
     >
       {/* Layered Background Panels - Horizontal Sliced Video Frame Effect */}
       <div className="absolute inset-0 z-0">
@@ -128,7 +128,7 @@ export function Shop({ onShopClick }: ShopProps) {
         </motion.div>
 
         {/* Dark Overlay - 60% opacity for cinematic premium look */}
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-[#151515]/60 z-10" />
       </div>
 
       {/* Content - Centered with Parallax */}
@@ -157,7 +157,7 @@ export function Shop({ onShopClick }: ShopProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h2 className="font-playfair text-gold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
+            <h2 className="font-playfair text-[rgb(0,0,0)] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
               FOREVER CARE
             </h2>
           </motion.div>
@@ -169,7 +169,7 @@ export function Shop({ onShopClick }: ShopProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="font-inter text-white/80 uppercase tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm md:text-base mb-8 sm:mb-10">
+            <p className="font-inter text-white/80 uppercase tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm md:text-base mb-8 sm:mb-10 text-[rgb(0,0,0)]">
               Skincare gentle enough for a new tattoo.
             </p>
           </motion.div>
@@ -183,7 +183,7 @@ export function Shop({ onShopClick }: ShopProps) {
           >
             <button
               onClick={onShopClick}
-              className="inline-block px-10 sm:px-14 py-3 sm:py-4 bg-transparent text-gold border-2 border-gold uppercase tracking-[0.2em] text-xs sm:text-sm hover:bg-gold hover:text-black transition-all duration-300 font-inter"
+              className="inline-block px-10 sm:px-14 py-3 sm:py-4 bg-[rgba(0,0,0,0)] text-[rgb(0,0,0)] border-2 border-gold uppercase tracking-[0.2em] text-xs sm:text-sm hover:bg-gold hover:text-black transition-all duration-300 font-inter"
             >
               SHOP NOW
             </button>

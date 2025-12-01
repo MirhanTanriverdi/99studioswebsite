@@ -30,7 +30,7 @@ export function BehindTheScenes() {
         >
           <source src="https://videos.pexels.com/video-files/5435989/5435989-uhd_2560_1440_25fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-[#151515]/40 z-10" />
       </motion.div>
 
       {/* Content */}

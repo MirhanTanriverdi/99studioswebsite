@@ -12,7 +12,7 @@ A modern, minimalistic, and premium website for **99 Roots Studio**, a high-end 
 ## 🎨 Design Philosophy
 
 The website embodies a **premium, minimalistic aesthetic** with:
-- **Black background** (#000000) as the foundation
+- **Black background** (#151515) as the foundation
 - **Gold accents** (#C89D53) for typography and highlights
 - **Balanced white space** for breathing room and elegance
 - **Parallax scrolling** throughout for an immersive experience
@@ -109,7 +109,7 @@ The website embodies a **premium, minimalistic aesthetic** with:
 
 ### Color Palette
 ```css
---studio-black: #000000    /* Primary background */
+--studio-black: #151515    /* Primary background */
 --studio-gold: #C89D53     /* Accent color for typography */
 --studio-white: #FFFFFF    /* Text and contrast */
 --studio-gray: #D1D1D1     /* Secondary text */
@@ -266,7 +266,7 @@ const y = useTransform(scrollYProgress, [0, 1], ["0px", "-100px"]);
 Edit `/styles/globals.css`:
 ```css
 :root {
-  --studio-black: #000000;
+  --studio-black: #151515;
   --studio-gold: #C89D53;  /* Change this for accent color */
   --studio-white: #FFFFFF;
 }
