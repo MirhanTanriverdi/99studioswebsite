@@ -135,7 +135,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-playfair text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+              <h2 className="font-playfair text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[Bebas_Neue]">
                 Artists
               </h2>
             </motion.div>
@@ -221,23 +221,23 @@ function ArtistCard({
 
         {/* Artist Info */}
         <div className="p-4 sm:p-6 flex flex-col h-full">
-          <h3 className="font-playfair text-lg sm:text-xl text-white text-[20px] mb-2 min-h-[3rem] flex items-center">
+          <h3 className="font-playfair text-lg sm:text-xl text-white text-[24px] mb-2 min-h-[3rem] flex items-center font-[Bebas_Neue]">
             {artist.name}
           </h3>
           <Button
             onClick={() => onGalleryClick?.(artist.id)}
             variant="outline"
-            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 border-gold/30 text-gold hover:bg-gold hover:text-black hover:border-gold rounded-none"
+            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 border-gold/30 text-gold hover:bg-gold hover:text-black hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
           >
             View Gallery
           </Button>
-          <p className="text-gold text-sm sm:text-base mb-2">
+          <p className="text-gold text-sm sm:text-base mb-2 font-[Bebas_Neue] text-[20px]">
             {artist.style}
           </p>
           <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
             {artist.bio}
           </p>
-          <p className="font-inter text-[#C89D53] text-xs sm:text-sm">
+          <p className="font-inter text-[#C89D53] text-xs sm:text-sm font-[Bebas_Neue]">
             {artist.instagram}
           </p>
         </div>

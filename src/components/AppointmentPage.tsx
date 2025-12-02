@@ -68,8 +68,8 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
   return (
     <div className="min-h-screen bg-[#151515]">
       {/* Header */}
-      <header className="border-b border-gold/20 bg-[#151515] sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <header className="border-b border-gold/20 bg-transparent sticky top-0 z-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-transparent">
           <div className="flex items-center justify-between">
             <Button
               onClick={onBack}
@@ -92,7 +92,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-playfair text-4xl lg:text-5xl text-gold mb-4 text-center">
+            <h1 className="font-roboto text-4xl lg:text-5xl text-gold mb-4 text-center">
               Request an Appointment
             </h1>
             <p className="font-inter text-white/70 text-center mb-12">
@@ -101,7 +101,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
 
             {!showForm ? (
               /* Contact Options */
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
                 {/* Instagram */}
                 <motion.a
                   href="https://instagram.com/99rootsstudio"
@@ -110,14 +110,25 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="group border-2 border-gold/30 p-8 hover:border-gold hover:bg-gold/5 transition-all duration-300"
+                  className="group relative overflow-hidden border-2 border-gold/40 p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 transition-all duration-500 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl md:hover:-translate-y-1"
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <Instagram className="w-12 h-12 text-gold group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-playfair text-xl text-white">Instagram</h3>
-                    <p className="font-inter text-white/60 text-sm">
+                  {/* Decorative corner elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  
+                  <div className="flex flex-col items-center text-center space-y-5 relative z-10">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
+                      <Instagram className="w-16 h-16 text-gold md:group-hover:scale-110 md:group-hover:rotate-6 transition-all duration-300 relative" />
+                    </div>
+                    <h3 className="font-roboto text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Instagram</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">
                       DM us on Instagram for quick responses
                     </p>
+                    <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
+                      <span className="text-[rgb(200,157,83)]">Connect Now</span>
+                      <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </div>
                   </div>
                 </motion.a>
 
@@ -127,14 +138,25 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="group border-2 border-gold/30 p-8 hover:border-gold hover:bg-gold/5 transition-all duration-300"
+                  className="group relative overflow-hidden border-2 border-gold/40 p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 transition-all duration-500 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl md:hover:-translate-y-1"
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <Mail className="w-12 h-12 text-gold group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-playfair text-xl text-white">Email</h3>
-                    <p className="font-inter text-white/60 text-sm">
+                  {/* Decorative corner elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  
+                  <div className="flex flex-col items-center text-center space-y-5 relative z-10">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
+                      <Mail className="w-16 h-16 text-gold md:group-hover:scale-110 md:group-hover:rotate-6 transition-all duration-300 relative" />
+                    </div>
+                    <h3 className="font-roboto text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Email</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">
                       Send us a detailed email inquiry
                     </p>
+                    <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
+                      <span className="text-[rgb(200,157,83)]">Send Email</span>
+                      <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </div>
                   </div>
                 </motion.a>
 
@@ -146,14 +168,25 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="group border-2 border-gold/30 p-8 hover:border-gold hover:bg-gold/5 transition-all duration-300"
+                  className="group relative overflow-hidden border-2 border-gold/40 p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 transition-all duration-500 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl md:hover:-translate-y-1"
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <MessageCircle className="w-12 h-12 text-gold group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-playfair text-xl text-white">WhatsApp</h3>
-                    <p className="font-inter text-white/60 text-sm">
+                  {/* Decorative corner elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  
+                  <div className="flex flex-col items-center text-center space-y-5 relative z-10">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
+                      <MessageCircle className="w-16 h-16 text-gold md:group-hover:scale-110 md:group-hover:rotate-6 transition-all duration-300 relative" />
+                    </div>
+                    <h3 className="font-roboto text-2xl text-white md:group-hover:text-gold transition-colors duration-300">WhatsApp</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">
                       Chat with us directly on WhatsApp
                     </p>
+                    <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
+                      <span className="text-[#C89D53]">Start Chat</span>
+                      <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </div>
                   </div>
                 </motion.a>
 
@@ -163,14 +196,25 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="group border-2 border-gold/30 p-8 hover:border-gold hover:bg-gold/5 transition-all duration-300"
+                  className="group relative overflow-hidden border-2 border-gold/40 p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 transition-all duration-500 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl md:hover:-translate-y-1"
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <FileText className="w-12 h-12 text-gold group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-playfair text-xl text-white">Form</h3>
-                    <p className="font-inter text-white/60 text-sm">
+                  {/* Decorative corner elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
+                  
+                  <div className="flex flex-col items-center text-center space-y-5 relative z-10">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
+                      <FileText className="w-16 h-16 text-gold md:group-hover:scale-110 md:group-hover:rotate-6 transition-all duration-300 relative" />
+                    </div>
+                    <h3 className="font-roboto text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Form</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">
                       Fill out our detailed appointment form
                     </p>
+                    <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
+                      <span className="text-[#C89D53]">Open Form</span>
+                      <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </div>
                   </div>
                 </motion.button>
               </div>
@@ -189,7 +233,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                   {/* Personal Information */}
                   <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
-                    <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Personal Information</h2>
+                    <h2 className="font-roboto text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Personal Information</h2>
                     <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                       <div>
                         <Label htmlFor="firstName" className="text-white/90">
@@ -246,7 +290,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
 
                   {/* Appointment Details */}
                   <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
-                    <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Appointment Details</h2>
+                    <h2 className="font-roboto text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Appointment Details</h2>
                     <div className="space-y-4 sm:space-y-6">
                       <div>
                         <Label htmlFor="date" className="text-white/90">
@@ -295,7 +339,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
 
                   {/* Tattoo Details */}
                   <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
-                    <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Tattoo Details</h2>
+                    <h2 className="font-roboto text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Tattoo Details</h2>
                     <div className="space-y-4 sm:space-y-6">
                       <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                         <div>
@@ -364,7 +408,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
 
                   {/* Health Information */}
                   <div className="border border-gold/20 p-4 sm:p-6 rounded-none">
-                    <h2 className="font-playfair text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Health Information</h2>
+                    <h2 className="font-roboto text-xl sm:text-2xl text-gold mb-4 sm:mb-6">Health Information</h2>
                     <div className="space-y-4 sm:space-y-6">
                       <div>
                         <Label htmlFor="hasAllergies" className="text-white/90">

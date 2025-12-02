@@ -30,7 +30,7 @@ export function TattooCare() {
           className="text-center mb-12 sm:mb-16"
           style={{ y: useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]) }}
         >
-          <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-gold mb-4">
+          <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-gold mb-4 font-[Bebas_Neue]">
             FAQ
           </h2>
           <p className="font-inter text-white/70 text-sm sm:text-base lg:text-lg px-4">

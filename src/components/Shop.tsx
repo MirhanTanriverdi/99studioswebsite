@@ -157,7 +157,7 @@ export function Shop({ onShopClick }: ShopProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h2 className="font-playfair text-[rgb(0,0,0)] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
+            <h2 className="font-playfair text-[rgb(0,0,0)] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 font-[Bebas_Neue]">
               FOREVER CARE
             </h2>
           </motion.div>

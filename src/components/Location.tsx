@@ -50,7 +50,7 @@ export function Location() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-roboto text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+              <h2 className="font-[Bebas_Neue] text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
                 Location
               </h2>
             </motion.div>

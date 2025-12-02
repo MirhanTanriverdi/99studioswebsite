@@ -114,7 +114,7 @@ export function Gallery() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-roboto text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+              <h2 className="font-[Bebas_Neue] text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
                 Gallery
               </h2>
             </motion.div>
@@ -191,7 +191,7 @@ export function Gallery() {
                 href="https://instagram.com/99rootsstudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 sm:px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 font-inter text-sm sm:text-base"
+                className="inline-block px-6 sm:px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 font-inter text-sm sm:text-base font-[Bebas_Neue] text-[20px]"
               >
                 Follow @99rootsstudio
               </a>

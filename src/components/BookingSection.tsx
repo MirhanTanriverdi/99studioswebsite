@@ -30,12 +30,12 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
           style={{ y, scale, opacity }}
         >
           {/* Heading */}
-          <h2 className="font-playfair text-gold mb-6 sm:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
+          <h2 className="font-helvetica text-gold mb-6 sm:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4 font-[Bebas_Neue]">
             Book Your Appointment
           </h2>
 
           {/* Description */}
-          <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4 text-center">
             Ready to bring your vision to life? Our artists specialize in custom designs, fine-line work, and realism. 
             Schedule a consultation to discuss your next tattoo.
           </p>
