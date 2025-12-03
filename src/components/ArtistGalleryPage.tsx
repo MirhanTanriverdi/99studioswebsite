@@ -27,11 +27,11 @@ const artistGalleries: Record<number, {
   images: GalleryImage[];
 }> = {
   1: {
-    name: 'Elena Martinez',
-    style: 'Fine Line & Minimalist',
+    name: 'MIKE',
+    style: 'Fineline / Geometric / Ornamental / Black & Grey / Abstract',
     bio: 'Specializing in delicate fine-line work and minimalist designs with over 10 years of experience.',
     instagram: '@elena.ink',
-    photo: 'https://images.unsplash.com/photo-1761957381251-af434afd2922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmZW1hbGUlMjB0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjQyNTU1NTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/HPYSKTm.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Fine Line Floral' },
       { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Minimalist Design' },
@@ -42,11 +42,11 @@ const artistGalleries: Record<number, {
     ]
   },
   2: {
-    name: 'Marcus Weber',
-    style: 'Realism & Portraits',
+    name: 'PENELOPE',
+    style: 'Black & Grey / Surrealist',
     bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
     instagram: '@marcus.realism',
-    photo: 'https://images.unsplash.com/photo-1642791112868-60c92b7b9eef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwdGF0dG9vJTIwYXJ0aXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY0MjU1NTUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/Xp1GwCW.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Realistic Portrait' },
       { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Realism' },
@@ -57,11 +57,11 @@ const artistGalleries: Record<number, {
     ]
   },
   3: {
-    name: 'Yuki Tanaka',
-    style: 'Japanese Traditional',
+    name: 'ALF',
+    style: 'Realism / Old School',
     bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
     instagram: '@yuki.irezumi',
-    photo: 'https://images.unsplash.com/photo-1758796305225-edcd03933430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhc2lhbiUyMHRhdHRvbyUyMGFydGlzdCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDI1NTU1MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/tk2dwYn.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Irezumi' },
       { id: 2, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Japanese Dragon' },
@@ -72,11 +72,11 @@ const artistGalleries: Record<number, {
     ]
   },
   4: {
-    name: 'Sofia Andersson',
-    style: 'Geometric & Dotwork',
+    name: 'AMIA',
+    style: 'Neotribal / Cybersigilism / Ornamental / Blackwork / Abstract',
     bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
     instagram: '@sofia.geometric',
-    photo: 'https://images.unsplash.com/photo-1730573520193-6ae0b1070621?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2FuZGluYXZpYW4lMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDI0MzI5Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/9VidIS1.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Geometric Mandala' },
       { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Sacred Geometry' },
@@ -87,11 +87,11 @@ const artistGalleries: Record<number, {
     ]
   },
   5: {
-    name: 'Marcus Weber',
-    style: 'Realism & Portraits',
+    name: 'ARTUR',
+    style: 'Old School / Blackwork / Japanese',
     bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
     instagram: '@marcus.realism',
-    photo: 'https://images.unsplash.com/photo-1642791112868-60c92b7b9eef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwdGF0dG9vJTIwYXJ0aXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY0MjU1NTUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Realistic Portrait' },
       { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Realism' },
@@ -102,11 +102,11 @@ const artistGalleries: Record<number, {
     ]
   },
   6: {
-    name: 'Yuki Tanaka',
-    style: 'Japanese Traditional',
+    name: 'ALEXANDRA',
+    style: 'Surrealism / Black & Grey / Illustrative',
     bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
     instagram: '@yuki.irezumi',
-    photo: 'https://images.unsplash.com/photo-1758796305225-edcd03933430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhc2lhbiUyMHRhdHRvbyUyMGFydGlzdCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDI1NTU1MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/iRXiTpZ.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Irezumi' },
       { id: 2, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Japanese Dragon' },
@@ -117,11 +117,11 @@ const artistGalleries: Record<number, {
     ]
   },
   7: {
-    name: 'Sofia Andersson',
-    style: 'Geometric & Dotwork',
+    name: 'JELENA',
+    style: 'Fineline / Black & Grey / Surrealism',
     bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
     instagram: '@sofia.geometric',
-    photo: 'https://images.unsplash.com/photo-1730573520193-6ae0b1070621?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2FuZGluYXZpYW4lMjB3b21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDI0MzI5Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: 'https://i.imgur.com/65vqbxU.jpeg',
     images: [
       { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Geometric Mandala' },
       { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Sacred Geometry' },
@@ -129,6 +129,51 @@ const artistGalleries: Record<number, {
       { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Symmetrical Design' },
       { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornamental Dotwork' },
       { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Precision Geometry' },
+    ]
+  },
+  8: {
+    name: 'NICK',
+    style: 'Black & Grey / Neo-Traditional',
+    bio: 'Combining bold neo-traditional designs with stunning black and grey shading techniques.',
+    instagram: '@nick.neotrad',
+    photo: 'https://images.unsplash.com/photo-1642791112868-60c92b7b9eef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwdGF0dG9vJTIwYXJ0aXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY0Njg0MjUxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1759806919529-7db386dd4741?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZW8lMjB0cmFkaXRpb25hbCUyMHRhdHRvb3xlbnwxfHx8fDE3NjQ2ODQzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Neo-Traditional Rose' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Portrait' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Bold Traditional Eagle' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Neo-Trad Snake' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Shaded Skull' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Dagger' },
+    ]
+  },
+  9: {
+    name: 'KONSATIN',
+    style: 'Abstract & Watercolor',
+    bio: 'Pushing boundaries with abstract concepts and vibrant watercolor tattoo techniques.',
+    instagram: '@konsatin.abstract',
+    photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1738543587900-e6b8c3afbe2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlcmNvbG9yJTIwdGF0dG9vJTIwYXJ0fGVufDF8fHx8MTc2NDY4NDMwNXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Watercolor Splash' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Abstract Lines' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Contemporary Flow' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Artistic Expression' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Color Fusion' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Modern Abstract' },
+    ]
+  },
+  10: {
+    name: 'TESSA',
+    style: 'Ornamental & Floral',
+    bio: 'Specializing in delicate ornamental designs and botanical artwork with exquisite detail.',
+    instagram: '@tessa.botanical',
+    photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1764640848883-c2fdb399aaf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcm5hbWVudGFsJTIwZmxvcmFsJTIwdGF0dG9vfGVufDF8fHx8MTc2NDY4NDMwNXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornamental Floral' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Botanical Detail' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Delicate Mandala' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Floral Sleeve' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornate Pattern' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Botanical Masterpiece' },
     ]
   }
 };
@@ -299,10 +344,10 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                       onArtistChange(a.id);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 text-sm sm:text-base transition-all duration-300 transform hover:scale-[1.02] hover:pl-6 ${
+                    className={`w-full text-left px-4 py-3 text-sm sm:text-base transition-all duration-300 transform md:hover:scale-[1.02] md:hover:pl-6 ${
                       a.id === artistId
                         ? 'bg-gold/20 text-gold border-l-2 border-gold'
-                        : 'text-white/80 hover:bg-gold/10 hover:text-gold hover:border-l-2 hover:border-gold/50'
+                        : 'text-white/80 md:hover:bg-gold/10 md:hover:text-gold md:hover:border-l-2 md:hover:border-gold/50'
                     }`}
                   >
                     {a.name}
@@ -315,7 +360,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </header>
 
       {/* Artist Header */}
-      <section ref={headerRef} className="py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden">
+      <section ref={headerRef} className="py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden pt-[96px] pr-[0px] pb-[0px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             style={{ y: headerY, opacity: headerOpacity }}
@@ -330,13 +375,13 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                 <img
                   src={artist.photo}
                   alt={artist.name}
-                  className="w-full h-full object-cover rounded-full border-4 border-black shadow-2xl"
+                  className="w-full h-full object-cover object-center rounded-full border-4 border-black shadow-2xl"
                 />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-gold rounded-full border-4 border-black"></div>
+
               </div>
             </motion.div>
 
-            <h1 className="font-playfair text-gold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4">
+            <h1 className="font-playfair text-gold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 font-[Bebas_Neue]">
               {artist.name}
             </h1>
             <p className="text-white/80 text-xl sm:text-2xl md:text-3xl mb-6">
@@ -354,7 +399,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
               className="inline-flex items-center gap-2 text-gold hover:text-gold/80 transition-colors"
             >
               <Instagram size={20} />
-              <span className="font-inter">{artist.instagram}</span>
+              <span className="font-inter font-[Bebas_Neue] text-[20px]">{artist.instagram}</span>
             </a>
 
             {/* Decorative Elements */}
@@ -368,7 +413,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </section>
 
       {/* Gallery Grid */}
-      <section ref={galleryRef} className="py-12 sm:py-16 lg:py-24 overflow-hidden">
+      <section ref={galleryRef} className="py-12 sm:py-16 lg:py-24 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <motion.div 
           style={{ y: galleryY, opacity: galleryOpacity }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
@@ -390,8 +435,8 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
                 />
                 {/* Zoom Icon Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                  <ZoomIn className="text-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+                <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                  <ZoomIn className="text-gold opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" size={32} />
                 </div>
               </motion.div>
             ))}
@@ -400,7 +445,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaRef} className="py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden">
+      <section ref={ctaRef} className="py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             style={{ y: ctaY, opacity: ctaOpacity }}

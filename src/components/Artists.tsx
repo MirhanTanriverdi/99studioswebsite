@@ -15,59 +15,83 @@ interface Artist {
 const artists: Artist[] = [
   {
     id: 1,
-    name: 'Elena Martinez',
-    style: 'Fine Line & Minimalist',
+    name: 'MIKE',
+    style: 'Fineline / Geometric / Ornamental / Black & Grey / Abstract',
     bio: 'Specializing in delicate fine-line work and minimalist designs with over 10 years of experience.',
     instagram: '@elena.ink',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/HPYSKTm.jpeg',
   },
   {
     id: 2,
-    name: 'Marcus Weber',
-    style: 'Realism & Portraits',
+    name: 'PENELOPE',
+    style: 'Black & Grey / Surrealist',
     bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
     instagram: '@marcus.realism',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/Xp1GwCW.jpeg',
   },
   {
     id: 3,
-    name: 'Yuki Tanaka',
-    style: 'Japanese Traditional',
+    name: 'ALF',
+    style: 'Realism / Old School',
     bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
     instagram: '@yuki.irezumi',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/tk2dwYn.jpeg',
   },
   {
     id: 4,
-    name: 'Sofia Andersson',
-    style: 'Geometric & Dotwork',
+    name: 'AMIA',
+    style: 'Neotribal / Cybersigilism / Ornamental / Blackwork / Abstract',
     bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
     instagram: '@sofia.geometric',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/9VidIS1.jpeg',
   },
     {
     id: 5,
-    name: 'Marcus Weber',
-    style: 'Realism & Portraits',
+    name: 'ARTUR',
+    style: 'Old School / Blackwork / Japanese',
     bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
     instagram: '@marcus.realism',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/BJAoQXB.jpeg',
   },
   {
     id: 6,
-    name: 'Yuki Tanaka',
-    style: 'Japanese Traditional',
+    name: 'ALEXANDRA',
+    style: 'Surrealism / Black & Grey / Illustrative',
     bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
     instagram: '@yuki.irezumi',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/iRXiTpZ.jpeg',
   },
   {
     id: 7,
-    name: 'Sofia Andersson',
-    style: 'Geometric & Dotwork',
+    name: 'JELENA',
+    style: 'Fineline / Black & Grey / Surrealism',
     bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
     instagram: '@sofia.geometric',
-    image: 'https://images.unsplash.com/photo-1613627219991-c56672575129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjE4MzU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://i.imgur.com/65vqbxU.jpeg',
+  },
+  {
+    id: 8,
+    name: 'NICK',
+    style: 'Black & Grey / Neo-Traditional',
+    bio: 'Combining bold neo-traditional designs with stunning black and grey shading techniques.',
+    instagram: '@nick.neotrad',
+    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+  },
+  {
+    id: 9,
+    name: 'KONSATIN',
+    style: 'Abstract & Watercolor',
+    bio: 'Pushing boundaries with abstract concepts and vibrant watercolor tattoo techniques.',
+    instagram: '@konsatin.abstract',
+    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+  },
+  {
+    id: 10,
+    name: 'TESSA',
+    style: 'Ornamental & Floral',
+    bio: 'Specializing in delicate ornamental designs and botanical artwork with exquisite detail.',
+    instagram: '@tessa.botanical',
+    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
   },
 ];
 
@@ -79,7 +103,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   
-  // Parallax effect for video background
+  // Parallax effect for background
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -91,31 +115,28 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
     offset: ["start end", "end start"]
   });
   
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0px", "-100px"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
   
   // Grid parallax transforms
   const gridY = useTransform(gridScrollProgress, [0, 1], [100, -100]);
-  const gridOpacity = useTransform(gridScrollProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
+  const gridOpacity = useTransform(gridScrollProgress, [0, 0.1, 0.9, 1], [1, 1, 1, 1]);
 
   return (
     <section ref={sectionRef} id="artists" className="relative overflow-hidden bg-[#151515]">
-      {/* Video Background with Parallax */}
+      {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
         <motion.div 
           className="w-full h-full"
-          style={{ scale, y: videoY }}
+          style={{ y: backgroundY }}
         >
-          <video
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="https://videos.pexels.com/video-files/4615158/4615158-uhd_2560_1440_30fps.mp4" type="video/mp4" />
-          </video>
+          <motion.img
+            src="https://images.unsplash.com/photo-1753259789341-808371092e19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBzdHVkaW98ZW58MXx8fHwxNzY0NzU5MjUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Tattoo studio background"
+            className="w-full h-full object-cover"
+            style={{ scale }}
+          />
           <div className="absolute inset-0 bg-[#151515]/70 z-10" />
         </motion.div>
       </div>
@@ -174,7 +195,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
             style={{ y: gridY, opacity: gridOpacity }}
             className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 sm:px-8 md:px-12 lg:px-[110px] p-[0px]">
               {artists.map((artist, index) => (
                 <ArtistCard 
                   key={artist.id} 
@@ -215,13 +236,13 @@ function ArtistCard({
           <img
             src={artist.image}
             alt={artist.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 group-hover:scale-110"
           />
         </div>
 
         {/* Artist Info */}
         <div className="p-4 sm:p-6 flex flex-col h-full">
-          <h3 className="font-playfair text-lg sm:text-xl text-white text-[24px] mb-2 min-h-[3rem] flex items-center font-[Bebas_Neue]">
+          <h3 className="font-playfair text-lg sm:text-xl text-white text-[30px] mb-2 min-h-[3rem] flex items-center font-[Bebas_Neue]">
             {artist.name}
           </h3>
           <Button

@@ -57,9 +57,9 @@ export function RequestAppointment({ onBookingClick }: RequestAppointmentProps) 
                 <h3 className="font-playfair text-xl sm:text-2xl text-gold">Location</h3>
               </div>
               <p className="font-inter text-white/70 pl-8 sm:pl-9 text-sm sm:text-base">
-                Kreuzberg District<br />
-                Berlin, Germany<br />
-                10997
+                Prenzlauer Allee 216<br />
+                10405 Berlin<br />
+                Germany
               </p>
             </div>
 

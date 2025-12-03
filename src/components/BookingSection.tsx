@@ -75,9 +75,9 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               </div>
               <h3 className="font-playfair text-gold text-lg sm:text-xl mb-3">Location</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
-                Kreuzberg District<br />
-                Berlin, Germany<br />
-                10997
+                Prenzlauer Allee 216<br />
+                10405 Berlin<br />
+                Germany
               </p>
             </motion.div>
 

@@ -65,9 +65,9 @@ export function Contact() {
                 <div className="flex-1">
                   <h3 className="font-playfair text-lg text-white mb-2">Visit Us</h3>
                   <p className="font-inter text-white/70 text-sm leading-relaxed">
-                    Kreuzberg District<br />
-                    Oranienstraße 123<br />
-                    10999 Berlin, Germany
+                    Prenzlauer Allee 216<br />
+                    10405 Berlin<br />
+                    Germany
                   </p>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export function Contact() {
                     Google Maps Embed
                   </p>
                   <p className="font-inter text-white/40 text-sm mt-2">
-                    Kreuzberg District, Berlin
+                    Prenzlauer Berg, Berlin
                   </p>
                 </div>
               </div>

@@ -26,20 +26,21 @@ The website embodies a **premium, minimalistic aesthetic** with:
 ### 🏠 Main Features
 - **Full-screen Hero Section** with studio logo and call-to-action
 - **Artists Showcase** with individual gallery pages for each artist
-- **Instagram Gallery Feed** integration
+- **Automated Slideshow Gallery** with smooth fade transitions
 - **Interactive FAQ Section** for common questions
 - **Contact & Location** with embedded Google Maps
 - **Appointment Booking System** with external integration
-- **Shop Section** with "Coming Soon" page
+- **Shop Section** with premium "Coming Soon" page
 - **Mobile-Optimized** responsive design throughout
 
 ### 🎭 Advanced Features
 - **Comprehensive Parallax Scrolling** on all major sections
-- **Artist Gallery Pages** with individual portfolios
-- **Lightbox Image Viewer** (full-screen on mobile)
+- **Artist Gallery Pages** with individual portfolios and lightbox viewer
+- **Automated Image Slideshow** with 4-second intervals and dot navigation
 - **Smooth Page Transitions** with fade effects
 - **Video Background Sections** for dynamic content
 - **Toast Notifications** for user feedback
+- **Cookie Consent Banner** for GDPR compliance
 
 ---
 
@@ -116,8 +117,8 @@ The website embodies a **premium, minimalistic aesthetic** with:
 ```
 
 ### Typography
-- **Headings:** Playfair Display (Elegant serif)
-- **Body Text:** Inter (Clean sans-serif)
+- **Headings:** Roboto (Modern, professional sans-serif)
+- **Body Text:** Space Mono (Monospace for premium, technical aesthetic)
 
 ### Spacing & Layout
 - **Container Padding:**
@@ -184,6 +185,7 @@ xl: 1280px  /* Large screens */
 - Full-screen landing with studio logo
 - Parallax scrolling background
 - Call-to-action for appointments
+- Premium black (#151515) background with gold (#C89D53) accents
 
 #### **Artists Section** (`Artists.tsx`)
 - Grid layout showcasing studio artists
@@ -199,9 +201,11 @@ xl: 1280px  /* Large screens */
 - Artist navigation between galleries
 
 #### **Gallery** (`Gallery.tsx`)
-- Instagram feed integration
-- Masonry grid layout
-- Responsive image loading
+- Automated slideshow with fade transitions
+- One image at a time, full-screen display
+- 4-second auto-advance intervals
+- Interactive dot indicators for manual navigation
+- Artist and tattoo type labels
 
 #### **Location** (`Location.tsx`)
 - Embedded Google Maps
@@ -379,7 +383,7 @@ This project is proprietary and confidential for **99 Roots Studio**.
 ### Assets
 - **Images:** Unsplash (see Attributions.md)
 - **Videos:** Pexels
-- **Fonts:** Google Fonts (Playfair Display, Inter)
+- **Fonts:** Google Fonts (Roboto, Space Mono)
 
 ---
 

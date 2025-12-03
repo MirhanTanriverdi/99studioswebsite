@@ -74,7 +74,7 @@ export function Hero({ onAppointmentClick }: HeroProps) {
 
           {/* Location */}
           <p className="font-inter text-white/60 mb-8 sm:mb-12 text-sm sm:text-base px-4">
-            Landsberger Allee 108, Berlin, Germany
+            Prenzlauer Allee 216, 10405 Berlin
           </p>
 
           {/* CTA Buttons */}

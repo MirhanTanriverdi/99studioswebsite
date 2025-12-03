@@ -4,33 +4,30 @@ import { useRef } from 'react';
 export function Location() {
   const sectionRef = useRef(null);
   
-  // Parallax effect for entire section
+  // Parallax effect for background
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
   
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0px", "-100px"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
 
   return (
     <section ref={sectionRef} id="location" className="relative overflow-hidden bg-[#151515]">
-      {/* Video Background with Parallax */}
+      {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
         <motion.div 
           className="w-full h-full"
-          style={{ scale, y: videoY }}
+          style={{ y: backgroundY }}
         >
-          <video
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="https://videos.pexels.com/video-files/6985001/6985001-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          </video>
+          <motion.img
+            src="https://images.unsplash.com/photo-1646762101001-3d8d3ba2fbae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZXJsaW4lMjBhcmNoaXRlY3R1cmUlMjBzdHJlZXR8ZW58MXx8fHwxNzY0NzY1NTkzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Berlin location background"
+            className="w-full h-full object-cover"
+            style={{ scale }}
+          />
           <div className="absolute inset-0 bg-[#151515]/70 z-10" />
         </motion.div>
       </div>
@@ -62,9 +59,6 @@ export function Location() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl tracking-wide mt-4 sm:mt-6">
-                Find us in the heart of Berlin
-              </p>
             </motion.div>
 
             {/* Decorative Elements */}
@@ -95,7 +89,7 @@ export function Location() {
               className="border border-gold/20 overflow-hidden h-[350px] sm:h-[450px] lg:h-[550px] mb-12 flex items-center justify-center"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.8937168474744!2d13.388996!3d52.494968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84fb3c8d12345%3A0x1234567890abcdef!2sKreuzberg%2C%20Berlin!5e0!3m2!1sen!2sde!4v1234567890123!5m2!1sen!2sde"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.3461234567!2d13.4215789!3d52.5362234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851e1c8d09a47%3A0x3e1c1b2d3e4f5a6b!2sPrenzlauer%20Allee%20216%2C%2010405%20Berlin!5e0!3m2!1sen!2sde!4v1234567890123!5m2!1sen!2sde"
                 width="90%"
                 height="90%"
                 style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(90%)' }}
@@ -119,14 +113,14 @@ export function Location() {
                   99 Roots Studio
                 </p>
                 <p className="font-inter text-white/90 text-sm sm:text-base">
-                  Landsberger Allee 108
+                  Prenzlauer Allee 216
                 </p>
                 <p className="font-inter text-white/90 text-sm sm:text-base">
-                  10965 Berlin, Germany
+                  10405 Berlin, Germany
                 </p>
               </div>
               <p className="font-inter text-white/70 text-xs sm:text-sm">
-                Located in the heart of Kreuzberg, Berlin's creative district. Easily accessible by U-Bahn and bus.
+                Located in the vibrant Prenzlauer Berg district. Easily accessible by U-Bahn and tram.
               </p>
             </motion.div>
           </div>
