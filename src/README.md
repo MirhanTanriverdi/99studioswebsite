@@ -13,7 +13,7 @@ A modern, minimalistic, and premium website for **99 Roots Studio**, a high-end 
 
 The website embodies a **premium, minimalistic aesthetic** with:
 - **Black background** (#151515) as the foundation
-- **Gold accents** (#C89D53) for typography and highlights
+- **Gold accents** (#FF9D56) for typography and highlights
 - **Balanced white space** for breathing room and elegance
 - **Parallax scrolling** throughout for an immersive experience
 - **Smooth transitions and fade effects** for sophistication
@@ -32,6 +32,7 @@ The website embodies a **premium, minimalistic aesthetic** with:
 - **Appointment Booking System** with external integration
 - **Shop Section** with premium "Coming Soon" page
 - **Mobile-Optimized** responsive design throughout
+- **Smart Mobile Navigation** with one-time indicator tutorial
 
 ### 🎭 Advanced Features
 - **Comprehensive Parallax Scrolling** on all major sections
@@ -41,6 +42,7 @@ The website embodies a **premium, minimalistic aesthetic** with:
 - **Video Background Sections** for dynamic content
 - **Toast Notifications** for user feedback
 - **Cookie Consent Banner** for GDPR compliance
+- **One-Time Navigation Indicator** - Shows mobile users how to access the menu after cookie acceptance
 
 ---
 
@@ -111,7 +113,7 @@ The website embodies a **premium, minimalistic aesthetic** with:
 ### Color Palette
 ```css
 --studio-black: #151515    /* Primary background */
---studio-gold: #C89D53     /* Accent color for typography */
+--studio-gold: #FF9D56     /* Accent color for typography */
 --studio-white: #FFFFFF    /* Text and contrast */
 --studio-gray: #D1D1D1     /* Secondary text */
 ```
@@ -185,7 +187,7 @@ xl: 1280px  /* Large screens */
 - Full-screen landing with studio logo
 - Parallax scrolling background
 - Call-to-action for appointments
-- Premium black (#151515) background with gold (#C89D53) accents
+- Premium black (#151515) background with gold (#FF9D56) accents
 
 #### **Artists Section** (`Artists.tsx`)
 - Grid layout showcasing studio artists
@@ -271,7 +273,7 @@ Edit `/styles/globals.css`:
 ```css
 :root {
   --studio-black: #151515;
-  --studio-gold: #C89D53;  /* Change this for accent color */
+  --studio-gold: #FF9D56;  /* Change this for accent color */
   --studio-white: #FFFFFF;
 }
 ```

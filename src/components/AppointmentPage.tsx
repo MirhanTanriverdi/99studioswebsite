@@ -184,7 +184,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       Chat with us directly on WhatsApp
                     </p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#C89D53]">Start Chat</span>
+                      <span className="text-[#FF9D56]">Start Chat</span>
                       <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       Fill out our detailed appointment form
                     </p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#C89D53]">Open Form</span>
+                      <span className="text-[#FF9D56]">Open Form</span>
                       <span className="md:group-hover:translate-x-1 transition-transform duration-300">→</span>
                     </div>
                   </div>

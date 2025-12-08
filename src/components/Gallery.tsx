@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import videoPoster from 'figma:asset/e8cf849b09894e66bafb0d6913381c96d0c13047.png';
 
 interface GalleryItem {
   id: number;
@@ -125,9 +126,9 @@ export function Gallery() {
                   className="w-full h-full object-cover"
                   controls
                   playsInline
-                  poster="https://images.unsplash.com/photo-1659100057005-ed79c300f666?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBzdHVkaW8lMjBpbnRlcmlvcnxlbnwxfHx8fDE3NjQ2NDk5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  poster={videoPoster}
                 >
-                  <source src="https://videos.pexels.com/video-files/7644122/7644122-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                  <source src="https://i.imgur.com/ckvicKx.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -286,5 +287,3 @@ function InfiniteCarousel({ items }: { items: GalleryItem[] }) {
     </div>
   );
 }
-
-

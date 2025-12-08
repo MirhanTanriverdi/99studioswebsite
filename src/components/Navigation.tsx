@@ -6,6 +6,7 @@ import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showIndicator, setShowIndicator] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +16,64 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems: { label: string; href: string }[] = [];
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  // One-time indicator logic: Show after cookies accepted on mobile
+  useEffect(() => {
+    const hasSeenIndicator = localStorage.getItem('navLogoIndicatorShown');
+    const cookiesAccepted = localStorage.getItem('cookieConsent');
+    const isMobile = window.innerWidth < 768;
+
+    // Show indicator if: mobile user, cookies accepted, haven't seen it before, and scrolled past hero
+    if (isMobile && cookiesAccepted === 'true' && !hasSeenIndicator && isScrolled) {
+      // Small delay to make it feel natural
+      const timer = setTimeout(() => {
+        setShowIndicator(true);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [isScrolled]);
+
+  const navItems: { label: string; href: string }[] = [
+    { label: 'Home', href: '#home' },
+    { label: 'Artists', href: '#artists' },
+    { label: 'Gallery', href: '#gallery' },
+    { label: 'Shop', href: '#shop' },
+    { label: 'Location', href: '#location' },
+    { label: 'Contact', href: '#contact' },
+  ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleLogoClick = () => {
+    // Hide indicator immediately when logo is clicked
+    if (showIndicator) {
+      setShowIndicator(false);
+      localStorage.setItem('navLogoIndicatorShown', 'true');
+    }
+
+    // On mobile, open the menu; on desktop, scroll to home
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      setIsMobileMenuOpen(true);
+    } else {
+      scrollToSection('#home');
     }
   };
 
@@ -38,7 +90,7 @@ export function Navigation() {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-white hover:text-gold transition-colors duration-300"
+                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px] text-[20px]"
                 >
                   {item.label}
                 </button>
@@ -46,19 +98,110 @@ export function Navigation() {
             </div>
           )}
 
-          {/* Logo - Only visible when scrolled */}
-          {isScrolled && (
+          {/* Logo - Only visible when scrolled (Desktop) / Always visible with burger menu (Mobile) */}
+          <div className="flex items-center gap-3 md:gap-0">
+            {/* Logo with tooltip */}
+            <div className="relative group">
+              <button
+                onClick={handleLogoClick}
+                className={`transition-opacity hover:opacity-80 ${isScrolled ? '' : 'hidden'}`}
+              >
+                <img 
+                  src={logo} 
+                  alt="99 Roots Studio" 
+                  className={`h-50 w-50 transition-all duration-300 ${isScrolled ? 'px-[0px] py-[-6px] pt-[-3px] pr-[0px] pb-[0px] pl-[0px] mt-[43px] mr-[0px] mb-[0px] ml-[0px]' : ''}`}
+                />
+              </button>
+
+              {/* One-time indicator - shows after cookie acceptance on mobile */}
+              <AnimatePresence>
+                {showIndicator && isScrolled && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="md:hidden absolute inset-0 pointer-events-none"
+                  >
+                    {/* Pulsing glow effect behind logo */}
+                    <motion.div
+                      className="absolute inset-0 -m-3 bg-[#FF9D56]/20 blur-xl rounded-full"
+                      animate={{ 
+                        opacity: [0.3, 0.6, 0.3],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: 'easeInOut'
+                      }}
+                    />
+                    
+                    {/* Decorative diamonds and text below */}
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                      {/* Diamond */}
+                      <motion.div 
+                        className="w-1.5 h-1.5 rotate-45 bg-[#FF9D56]"
+                        animate={{ 
+                          opacity: [0.4, 1, 0.4]
+                        }}
+                        transition={{ 
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut'
+                        }}
+                      />
+                      
+                      {/* Text */}
+                      <motion.span 
+                        className="text-[10px] text-[#FF9D56] uppercase tracking-wider whitespace-nowrap"
+                        animate={{ 
+                          opacity: [0.6, 1, 0.6]
+                        }}
+                        transition={{ 
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut'
+                        }}
+                      >
+                        Tap for Menu
+                      </motion.span>
+                      
+                      {/* Diamond */}
+                      <motion.div 
+                        className="w-1.5 h-1.5 rotate-45 bg-[#FF9D56]"
+                        animate={{ 
+                          opacity: [0.4, 1, 0.4]
+                        }}
+                        transition={{ 
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                          delay: 0.2
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Tooltip - only shows on mobile when not scrolled */}
+              {!isScrolled && (
+                <span className="md:hidden absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-gold/60 whitespace-nowrap pointer-events-none">
+                  tap for menu
+                </span>
+              )}
+            </div>
+
+            {/* Mobile Menu Button - positioned next to logo */}
             <button
-              onClick={() => scrollToSection('#home')}
-              className="transition-opacity hover:opacity-80"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="hidden"
+              aria-label="Toggle menu"
             >
-              <img 
-                src={logo} 
-                alt="99 Roots Studio" 
-                className="h-50 w-50 transition-all duration-300 px-[0px] py-[-6px] pt-[-3px] pr-[0px] pb-[0px] pl-[0px] mt-[43px] mr-[0px] mb-[0px] ml-[0px]"
-              />
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
-          )}
+          </div>
 
           {/* Desktop Navigation - Right Side (only when not scrolled) */}
           {!isScrolled && (
@@ -67,40 +210,78 @@ export function Navigation() {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-white hover:text-gold transition-colors duration-300"
+                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px]"
                 >
                   {item.label}
                 </button>
               ))}
             </div>
           )}
-
-          {/* Mobile Menu Button */}
-
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#151515] border-t border-gold/20"
-          >
-            <div className="container mx-auto px-4 py-4">
-              {navItems.map((item) => (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Slide-in Menu */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-[#151515] border-l-2 border-gold/40 md:hidden shadow-2xl"
+            >
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gold/20">
+                <img 
+                  src={logo} 
+                  alt="99 Roots Studio" 
+                  className="h-16 w-auto"
+                />
                 <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-3 font-inter text-white/80 hover:text-gold transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gold hover:text-gold/80 transition-colors p-2"
+                  aria-label="Close menu"
                 >
-                  {item.label}
+                  <X size={28} />
                 </button>
-              ))}
-            </div>
-          </motion.div>
+              </div>
+
+              {/* Menu Items */}
+              <nav className="flex flex-col p-6 gap-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 + 0.1 }}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-left py-4 px-4 font-inter text-white/90 hover:text-gold hover:bg-gold/10 transition-all duration-300 border-b border-gold/10 touch-manipulation"
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </nav>
+
+              {/* Decorative Elements */}
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 px-6">
+                <div className="h-px flex-1 bg-gold/20"></div>
+                <div className="w-2 h-2 rotate-45 border border-gold/40"></div>
+                <div className="h-px flex-1 bg-gold/20"></div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

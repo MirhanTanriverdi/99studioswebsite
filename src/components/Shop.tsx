@@ -20,6 +20,7 @@ export function Shop({ onShopClick }: ShopProps) {
 
   return (
     <section 
+      id="shop"
       ref={sectionRef} 
       className="relative h-[60vh] sm:h-[70vh] min-h-[500px] sm:min-h-[600px] flex items-center justify-center overflow-hidden"
     >
@@ -29,8 +30,8 @@ export function Shop({ onShopClick }: ShopProps) {
         style={{ y: backgroundY }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1707395293453-26231b245d51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhZnRlcmNhcmUlMjBwcm9kdWN0c3xlbnwxfHx8fDE3NjQ3NTkxMjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-          alt="Shop background"
+          src="https://images.unsplash.com/photo-1758788390320-16e1f280cf49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxza2luY2FyZSUyMGNyZWFtJTIwamFyJTIwZGFya3xlbnwxfHx8fDE3NjUxOTUyODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          alt="99 Roots tattoo care cream"
           className="w-full h-full object-cover"
           style={{ scale }}
         />
@@ -62,7 +63,7 @@ export function Shop({ onShopClick }: ShopProps) {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h2 className="font-playfair uppercase tracking-[0.3em] sm:tracking-[0.4em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 font-[Bebas_Neue] px-4 py-2">
-              <span className="text-[rgb(200,157,83)]">99</span> <span className="text-[#151515]">SHOP</span>
+              <span className="text-gold">99</span> <span className="text-gold">SHOP</span>
             </h2>
           </motion.div>
 

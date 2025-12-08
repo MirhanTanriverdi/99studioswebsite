@@ -23,8 +23,8 @@ export function Location() {
           style={{ y: backgroundY }}
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1646762101001-3d8d3ba2fbae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZXJsaW4lMjBhcmNoaXRlY3R1cmUlMjBzdHJlZXR8ZW58MXx8fHwxNzY0NzY1NTkzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Berlin location background"
+            src="https://images.unsplash.com/photo-1635068247786-5de1ce4c0ff8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBzdHVkaW8lMjBpbnRlcmlvciUyMGRhcmt8ZW58MXx8fHwxNzY1MTk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Tattoo studio interior"
             className="w-full h-full object-cover"
             style={{ scale }}
           />

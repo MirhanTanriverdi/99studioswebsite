@@ -4,11 +4,8 @@ import { Hero } from './components/Hero';
 import { Artists } from './components/Artists';
 import { Gallery } from './components/Gallery';
 import { TattooCare } from './components/TattooCare';
-import { RequestAppointment } from './components/RequestAppointment';
 import { Footer } from './components/Footer';
-import { BehindTheScenes } from './components/BehindTheScenes';
 import { Shop } from './components/Shop';
-import { YourStoryOurCanvas } from './components/YourStoryOurCanvas';
 import { BookingSection } from './components/BookingSection';
 import { AppointmentPage } from './components/AppointmentPage';
 import { ShopPage } from './components/ShopPage';
@@ -76,6 +73,7 @@ export default function App() {
           artistId={selectedArtistId} 
           onBack={navigateToHome}
           onArtistChange={navigateToArtistGallery}
+          onBookingClick={navigateToAppointment}
         />
         <Toaster />
       </>
@@ -97,14 +95,11 @@ export default function App() {
       <main>
         <Hero onAppointmentClick={navigateToAppointment} />
         <BookingSection onBookingClick={navigateToAppointment} />
-        {/* <BehindTheScenes /> */}
         <Artists onArtistGalleryClick={navigateToArtistGallery} />
         <Shop onShopClick={navigateToComingSoon} />
         <Gallery />
         <Location />
         <TattooCare />
-        {/* <YourStoryOurCanvas /> */}
-        {/* <RequestAppointment onBookingClick={navigateToAppointment} /> */}
       </main>
       <Footer />
       <CookieConsent />

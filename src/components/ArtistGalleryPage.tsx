@@ -4,11 +4,13 @@ import { Button } from './ui/button';
 import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
 import { useState, useEffect, useRef } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
+import ComingSoon from '../imports/ComingSoon-208-55';
 
 interface ArtistGalleryPageProps {
   artistId: number;
   onBack: () => void;
   onArtistChange: (artistId: number) => void;
+  onBookingClick?: () => void;
 }
 
 interface GalleryImage {
@@ -33,12 +35,12 @@ const artistGalleries: Record<number, {
     instagram: '@elena.ink',
     photo: 'https://i.imgur.com/HPYSKTm.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Fine Line Floral' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Minimalist Design' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Delicate Line Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Fine Line Portrait' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Abstract Minimal' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Botanical Fine Line' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Fine Line Floral' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Minimalist Design' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Line Work' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Fine Line Portrait' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Minimal' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Fine Line' },
     ]
   },
   2: {
@@ -48,12 +50,12 @@ const artistGalleries: Record<number, {
     instagram: '@marcus.realism',
     photo: 'https://i.imgur.com/Xp1GwCW.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Realistic Portrait' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Realism' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Detailed Portrait Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Hyper Realism' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Portrait Detail' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Award Winning Piece' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Realistic Portrait' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Realism' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Detailed Portrait Work' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realism' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Detail' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Award Winning Piece' },
     ]
   },
   3: {
@@ -63,12 +65,12 @@ const artistGalleries: Record<number, {
     instagram: '@yuki.irezumi',
     photo: 'https://i.imgur.com/tk2dwYn.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Irezumi' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Japanese Dragon' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Koi Fish Sleeve' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Cherry Blossom' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Samurai Warrior' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Phoenix Rising' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Irezumi' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Dragon' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Fish Sleeve' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cherry Blossom' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Samurai Warrior' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Phoenix Rising' },
     ]
   },
   4: {
@@ -78,12 +80,12 @@ const artistGalleries: Record<number, {
     instagram: '@sofia.geometric',
     photo: 'https://i.imgur.com/9VidIS1.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Geometric Mandala' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Sacred Geometry' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Dotwork Pattern' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Symmetrical Design' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornamental Dotwork' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Precision Geometry' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Mandala' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Sacred Geometry' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dotwork Pattern' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Symmetrical Design' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Dotwork' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Precision Geometry' },
     ]
   },
   5: {
@@ -93,12 +95,12 @@ const artistGalleries: Record<number, {
     instagram: '@marcus.realism',
     photo: 'https://i.imgur.com/BJAoQXB.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Realistic Portrait' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Realism' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Detailed Portrait Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Hyper Realism' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Portrait Detail' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Award Winning Piece' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Realistic Portrait' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Realism' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Detailed Portrait Work' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realism' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Detail' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Award Winning Piece' },
     ]
   },
   6: {
@@ -108,12 +110,12 @@ const artistGalleries: Record<number, {
     instagram: '@yuki.irezumi',
     photo: 'https://i.imgur.com/iRXiTpZ.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Irezumi' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Japanese Dragon' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Koi Fish Sleeve' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Cherry Blossom' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Samurai Warrior' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Phoenix Rising' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Irezumi' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Dragon' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Fish Sleeve' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cherry Blossom' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Samurai Warrior' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Phoenix Rising' },
     ]
   },
   7: {
@@ -123,12 +125,12 @@ const artistGalleries: Record<number, {
     instagram: '@sofia.geometric',
     photo: 'https://i.imgur.com/65vqbxU.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Geometric Mandala' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Sacred Geometry' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Dotwork Pattern' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Symmetrical Design' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornamental Dotwork' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Precision Geometry' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Mandala' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Sacred Geometry' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dotwork Pattern' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Symmetrical Design' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Dotwork' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Precision Geometry' },
     ]
   },
   8: {
@@ -138,12 +140,12 @@ const artistGalleries: Record<number, {
     instagram: '@nick.neotrad',
     photo: 'https://images.unsplash.com/photo-1642791112868-60c92b7b9eef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwdGF0dG9vJTIwYXJ0aXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY0Njg0MjUxfDA&ixlib=rb-4.1.0&q=80&w=1080',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1759806919529-7db386dd4741?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZW8lMjB0cmFkaXRpb25hbCUyMHRhdHRvb3xlbnwxfHx8fDE3NjQ2ODQzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Neo-Traditional Rose' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Black & Grey Portrait' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Bold Traditional Eagle' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Neo-Trad Snake' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Shaded Skull' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Traditional Dagger' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Traditional Rose' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Portrait' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Traditional Eagle' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Trad Snake' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Shaded Skull' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Dagger' },
     ]
   },
   9: {
@@ -153,12 +155,12 @@ const artistGalleries: Record<number, {
     instagram: '@konsatin.abstract',
     photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1738543587900-e6b8c3afbe2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlcmNvbG9yJTIwdGF0dG9vJTIwYXJ0fGVufDF8fHx8MTc2NDY4NDMwNXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Watercolor Splash' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Abstract Lines' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Contemporary Flow' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Artistic Expression' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Color Fusion' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Modern Abstract' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Watercolor Splash' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Lines' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Contemporary Flow' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Artistic Expression' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Color Fusion' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Modern Abstract' },
     ]
   },
   10: {
@@ -168,17 +170,17 @@ const artistGalleries: Record<number, {
     instagram: '@tessa.botanical',
     photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1764640848883-c2fdb399aaf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcm5hbWVudGFsJTIwZmxvcmFsJTIwdGF0dG9vfGVufDF8fHx8MTc2NDY4NDMwNXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornamental Floral' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Botanical Detail' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Delicate Mandala' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1651650564658-560547484ad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGluZSUyMHRhdHRvbyUyMGFydHxlbnwxfHx8fDE3NjE4MzU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'Floral Sleeve' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1700855788555-637481643fe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwdGF0dG9vfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Ornate Pattern' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1614199621267-5812fe71d122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsaXNtJTIwdGF0dG9vJTIwZGV0YWlsfGVufDF8fHx8MTc2MTgzNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'Botanical Masterpiece' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Floral' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Detail' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Mandala' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Floral Sleeve' },
+      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornate Pattern' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Masterpiece' },
     ]
   }
 };
 
-export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGalleryPageProps) {
+export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingClick }: ArtistGalleryPageProps) {
   const artist = artistGalleries[artistId];
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -426,13 +428,13 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="group relative aspect-square overflow-hidden bg-[#151515] border border-gold/20 group"
+                className="group relative aspect-square overflow-hidden bg-[#151515] border border-gold/20 flex items-center justify-center"
                 onClick={() => setSelectedImageIndex(index)}
               >
                 <img
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
+                  src="https://i.imgur.com/fAS07Xw.jpeg"
+                  alt="Coming Soon"
+                  className="w-full h-full object-cover"
                 />
                 {/* Zoom Icon Overlay */}
                 <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
@@ -457,14 +459,12 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
             <p className="font-inter text-white/70 text-base sm:text-lg mb-8">
               Ready to get your own custom piece? Schedule a consultation to discuss your vision.
             </p>
-            <a
-              href="https://calendly.com/99rootsstudio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 sm:px-12 py-3 sm:py-4 border-2 border-gold text-gold font-inter uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-gold hover:text-black touch-manipulation"
+            <button
+              onClick={onBookingClick}
+              className="inline-block px-8 sm:px-12 py-3 sm:py-4 border-2 border-gold text-gold font-inter uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-gold hover:text-black touch-manipulation cursor-pointer"
             >
               Book Consultation
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
@@ -503,9 +503,9 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange }: ArtistGa
               {/* Full Size Image */}
               <div className="relative w-screen h-screen sm:max-h-[90vh] sm:max-w-[90vw] sm:w-auto sm:h-auto flex items-center justify-center">
                 <img
-                  src={selectedImage.url}
-                  alt={selectedImage.title}
-                  className="w-full h-full object-contain sm:max-h-[90vh] sm:w-auto sm:h-auto"
+                  src="https://i.imgur.com/fAS07Xw.jpeg"
+                  alt="Coming Soon"
+                  className="w-full h-full object-contain"
                 />
               </div>
 

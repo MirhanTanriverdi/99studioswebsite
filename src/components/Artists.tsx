@@ -144,7 +144,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
       {/* Content Container */}
       <div className="relative z-20">
         {/* Title Section */}
-        <div className="relative h-[50vh] md:h-[60vh] flex items-center justify-center px-4">
+        <div className="relative h-[50vh] md:h-[60vh] flex items-center justify-center px-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'linear-gradient(rgba(21, 21, 21, 0.4), rgba(21, 21, 21, 0.4)), url(https://images.unsplash.com/photo-1616879564267-a336232e3a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBtYWNoaW5lJTIwZGFya3xlbnwxfHx8fDE3NjQ3Njc0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)' }}>
           <motion.div 
             className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
             style={{ y: contentY }}
@@ -258,7 +258,7 @@ function ArtistCard({
           <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
             {artist.bio}
           </p>
-          <p className="font-inter text-[#C89D53] text-xs sm:text-sm font-[Bebas_Neue]">
+          <p className="font-inter text-[#FF9D56] text-xs sm:text-sm font-[Bebas_Neue]">
             {artist.instagram}
           </p>
         </div>
