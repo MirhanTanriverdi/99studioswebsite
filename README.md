@@ -1,7 +1,7 @@
 
-  # Modern Tattoo Studio Website
+  #  99 Roots Tattoo Studio Website
 
-  This is a code bundle for Modern Tattoo Studio Website. The original project is available at https://www.figma.com/design/dchl0BBffoSQ66qNs8kQWN/Modern-Tattoo-Studio-Website.
+  This is a code bundle for99 Roots Tattoo Studio Website. The original project is available at https://www.figma.com/design/dchl0BBffoSQ66qNs8kQWN/Modern-Tattoo-Studio-Website.
 
   ## Running the code
 
