@@ -50,7 +50,7 @@ export function TattooCare() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column */}
             <div className="space-y-4 sm:space-y-6">
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   How much does a tattoo cost?
                 </h3>
@@ -60,7 +60,7 @@ export function TattooCare() {
                 </p>
               </div>
 
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   How do I book an appointment?
                 </h3>
@@ -71,7 +71,7 @@ export function TattooCare() {
                 </p>
               </div>
 
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Do you require a deposit?
                 </h3>
@@ -85,7 +85,7 @@ export function TattooCare() {
 
             {/* Right Column */}
             <div className="space-y-4 sm:space-y-6">
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Can I bring my own design?
                 </h3>
@@ -96,7 +96,7 @@ export function TattooCare() {
                 </p>
               </div>
 
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   What is your cancellation policy?
                 </h3>
@@ -107,7 +107,7 @@ export function TattooCare() {
                 </p>
               </div>
 
-              <div className="border border-gold/20 p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-inter text-white mb-2 sm:mb-3 text-sm sm:text-base">
                   Do you do cover-ups or touch-ups?
                 </h3>

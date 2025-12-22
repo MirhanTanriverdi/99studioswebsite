@@ -3,7 +3,13 @@ import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
-export function Footer() {
+interface FooterProps {
+  onPrivacyClick?: () => void;
+  onTermsClick?: () => void;
+  onBookingPolicyClick?: () => void;
+}
+
+export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef(null);
   
@@ -16,7 +22,7 @@ export function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], ["20px", "-20px"]);
 
   return (
-    <footer id="contact" ref={footerRef} className="bg-[#151515] border-t border-gold/20 sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[20px] pl-[0px]">
+    <footer id="contact" ref={footerRef} className="bg-[#151515] border-t border-[#151515] sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[20px] pl-[0px]">
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         style={{ y }}
@@ -40,7 +46,7 @@ export function Footer() {
               href="https://instagram.com/99rootsstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 border border-gold/30 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300 group touch-manipulation"
+              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
               aria-label="Instagram"
             >
               <Instagram className="text-gold group-hover:text-black" size={18} />
@@ -49,14 +55,14 @@ export function Footer() {
               href="https://facebook.com/99rootsstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 border border-gold/30 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300 group touch-manipulation"
+              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
               aria-label="Facebook"
             >
               <Facebook className="text-gold group-hover:text-black" size={18} />
             </a>
             <a
               href="mailto:info@99rootsstudio.com"
-              className="w-10 h-10 sm:w-12 sm:h-12 border border-gold/30 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300 group touch-manipulation"
+              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
               aria-label="Email"
             >
               <Mail className="text-gold group-hover:text-black" size={18} />
@@ -79,18 +85,21 @@ export function Footer() {
           <a
             href="#"
             className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
+            onClick={onPrivacyClick}
           >
             Privacy Policy
           </a>
           <a
             href="#"
             className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
+            onClick={onTermsClick}
           >
             Terms of Service
           </a>
           <a
             href="#"
             className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
+            onClick={onBookingPolicyClick}
           >
             Booking Policy
           </a>

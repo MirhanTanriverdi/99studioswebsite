@@ -14,8 +14,11 @@ import { Location } from './components/Location';
 import { ComingSoon } from './components/ComingSoon';
 import { CookieConsent } from './components/CookieConsent';
 import { Toaster } from './components/ui/sonner';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfService } from './components/TermsOfService';
+import { BookingPolicy } from './components/BookingPolicy';
 
-type PageType = 'home' | 'appointment' | 'shop' | 'artist-gallery' | 'coming-soon';
+type PageType = 'home' | 'appointment' | 'shop' | 'artist-gallery' | 'coming-soon' | 'privacy-policy' | 'terms-of-service' | 'booking-policy';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -45,6 +48,21 @@ export default function App() {
   const navigateToArtistGallery = (artistId: number) => {
     setSelectedArtistId(artistId);
     setCurrentPage('artist-gallery');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToPrivacyPolicy = () => {
+    setCurrentPage('privacy-policy');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToTermsOfService = () => {
+    setCurrentPage('terms-of-service');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToBookingPolicy = () => {
+    setCurrentPage('booking-policy');
     window.scrollTo(0, 0);
   };
 
@@ -88,6 +106,33 @@ export default function App() {
       </>
     );
   }
+
+  if (currentPage === 'privacy-policy') {
+    return (
+      <>
+        <PrivacyPolicy onBack={navigateToHome} />
+        <Toaster />
+      </>
+    );
+  }
+
+  if (currentPage === 'terms-of-service') {
+    return (
+      <>
+        <TermsOfService onBack={navigateToHome} />
+        <Toaster />
+      </>
+    );
+  }
+
+  if (currentPage === 'booking-policy') {
+    return (
+      <>
+        <BookingPolicy onBack={navigateToHome} />
+        <Toaster />
+      </>
+    );
+  }
   
   return (
     <div className="bg-studio-black min-h-screen font-inter">
@@ -101,7 +146,11 @@ export default function App() {
         <Location />
         <TattooCare />
       </main>
-      <Footer />
+      <Footer 
+        onPrivacyClick={navigateToPrivacyPolicy}
+        onTermsClick={navigateToTermsOfService}
+        onBookingPolicyClick={navigateToBookingPolicy}
+      />
       <CookieConsent />
       <Toaster />
     </div>

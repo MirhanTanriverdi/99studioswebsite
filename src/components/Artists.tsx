@@ -230,13 +230,13 @@ function ArtistCard({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group"
     >
-      <div className="relative overflow-hidden border border-gold/20 bg-[#151515] transition-all duration-300 hover:border-gold">
+      <div className="relative overflow-hidden border border-[#151515] bg-[#151515] transition-all duration-300">
         {/* Artist Image */}
         <div className="aspect-[3/4] overflow-hidden">
           <img
             src={artist.image}
             alt={artist.name}
-            className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 md:group-hover:scale-110"
           />
         </div>
 
@@ -248,7 +248,7 @@ function ArtistCard({
           <Button
             onClick={() => onGalleryClick?.(artist.id)}
             variant="outline"
-            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 border-gold/30 text-gold hover:bg-gold hover:text-black hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
+            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 border-gold/30 text-gold md:hover:bg-gold md:hover:text-black md:hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
           >
             View Gallery
           </Button>

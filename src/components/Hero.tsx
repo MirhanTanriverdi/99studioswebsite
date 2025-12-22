@@ -63,7 +63,7 @@ export function Hero({ onAppointmentClick }: HeroProps) {
             <img
               src={logo}
               alt="99 Roots Studio"
-              className="w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[500px] max-w-full h-auto"
+              className="w-[300px] sm:w-64 md:w-80 lg:w-96 xl:w-[500px] max-w-full h-auto"
             />
           </div>
 

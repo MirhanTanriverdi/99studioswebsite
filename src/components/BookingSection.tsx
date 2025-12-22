@@ -43,7 +43,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
           {/* CTA Button */}
           <button
             onClick={onBookingClick}
-            className="inline-block px-8 sm:px-12 py-3 sm:py-4 border-2 border-gold text-gold font-inter uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-gold hover:text-black touch-manipulation cursor-pointer"
+            className="inline-block px-8 sm:px-12 py-3 sm:py-4 border-2 border-gold text-gold font-inter uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-gold hover:text-black touch-manipulation cursor-pointer font-[Bebas_Neue] text-[24px]"
           >
             Book Now
           </button>
@@ -66,14 +66,14 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               className="text-center"
             >
               <div className="mb-4">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 mx-auto border border-gold/40 flex items-center justify-center">
-                  <svg className="w-5 sm:w-6 h-5 sm:h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 mx-auto border border-[#151515] flex items-center justify-center">
+                  <svg className="w-8 sm:w-10 h-8 sm:h-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
               </div>
-              <h3 className="font-playfair text-gold text-lg sm:text-xl mb-3">Location</h3>
+              <h3 className="font-[Bebas_Neue] text-gold text-lg sm:text-xl mb-3">Location</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
                 Prenzlauer Allee 216<br />
                 10405 Berlin<br />
@@ -90,13 +90,13 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               className="text-center"
             >
               <div className="mb-4">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 mx-auto border border-gold/40 flex items-center justify-center">
-                  <svg className="w-5 sm:w-6 h-5 sm:h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 mx-auto border border-[#151515] flex items-center justify-center">
+                  <svg className="w-8 sm:w-10 h-8 sm:h-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
               </div>
-              <h3 className="font-playfair text-gold text-lg sm:text-xl mb-3">Open Hours</h3>
+              <h3 className="font-[Bebas_Neue] text-gold text-lg sm:text-xl mb-3">Open Hours</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
                 Mon - Fri: 11:00 - 20:00<br />
                 Saturday: 12:00 - 18:00<br />
@@ -113,13 +113,13 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               className="text-center"
             >
               <div className="mb-4">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 mx-auto border border-gold/40 flex items-center justify-center">
-                  <svg className="w-5 sm:w-6 h-5 sm:h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 mx-auto border border-[#151515] flex items-center justify-center">
+                  <svg className="w-8 sm:w-10 h-8 sm:h-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
               </div>
-              <h3 className="font-playfair text-gold text-lg sm:text-xl mb-3">Contact Us</h3>
+              <h3 className="font-[Bebas_Neue] text-gold text-lg sm:text-xl mb-3">Contact Us</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
                 <a href="mailto:info@99rootsstudio.com" className="hover:text-gold transition-colors">
                   info@99rootsstudio.com

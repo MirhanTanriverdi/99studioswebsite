@@ -68,26 +68,9 @@ export function Gallery() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
 
   return (
-    <section ref={sectionRef} id="gallery" className="relative overflow-hidden bg-[#151515]">
-      {/* Background Image with Parallax */}
-      <div className="absolute inset-0 z-0">
-        <motion.div 
-          className="w-full h-full"
-          style={{ y: backgroundY }}
-        >
-          <motion.img
-            src="https://images.unsplash.com/photo-1758404255679-9afd847ede1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnR3b3JrJTIwZGV0YWlsfGVufDF8fHx8MTc2NDc1OTQ5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Gallery background"
-            className="w-full h-full object-cover"
-            style={{ scale }}
-          />
-          <div className="absolute inset-0 bg-[#151515]/70 z-10" />
-        </motion.div>
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-20">
-        {/* Our Space Section */}
+    <>
+      {/* Our Space Section */}
+      <section id="ourspace" className="relative overflow-hidden bg-[#151515]">
         <div className="relative bg-[#151515] py-12 sm:py-16 lg:py-24">
           <div className="container mx-auto px-4 sm:px-8 lg:px-[87px]">
             {/* Section Title */}
@@ -146,86 +129,108 @@ export function Gallery() {
             </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Title Section */}
-        <div className="relative h-[30vh] md:h-[60vh] flex items-center justify-center px-4">
+      {/* Gallery Section */}
+      <section ref={sectionRef} id="gallery" className="relative overflow-hidden bg-[#151515]">
+        {/* Background Image with Parallax */}
+        <div className="absolute inset-0 z-0">
           <motion.div 
-            className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-            style={{ y: contentY }}
+            className="w-full h-full"
+            style={{ y: backgroundY }}
           >
-            {/* Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="font-[Bebas_Neue] text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-                Gallery
-              </h2>
-            </motion.div>
-
-            {/* Subtitle */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl tracking-wide mt-4 sm:mt-6">
-                A showcase of our finest work
-              </p>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <div className="mt-6 sm:mt-8 flex justify-center items-center gap-3 sm:gap-4">
-                <div className="h-px w-8 sm:w-12 bg-gold/40"></div>
-                <div className="w-2 h-2 rotate-45 border border-gold/60"></div>
-                <div className="h-px w-8 sm:w-12 bg-gold/40"></div>
-              </div>
-            </motion.div>
+            <motion.img
+              src="https://images.unsplash.com/photo-1758404255679-9afd847ede1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnR3b3JrJTIwZGV0YWlsfGVufDF8fHx8MTc2NDc1OTQ5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Gallery background"
+              className="w-full h-full object-cover"
+              style={{ scale }}
+            />
+            <div className="absolute inset-0 bg-[#151515]/70 z-10" />
           </motion.div>
         </div>
 
-        {/* Gallery Grid Section */}
-        <div className="relative bg-[#151515]">
-          <div className="py-8 sm:py-16 lg:py-[100px]">
-            {/* Gallery Carousel */}
-            <InfiniteCarousel items={galleryItems} />
-
-          </div>
-          
-          {/* Instagram CTA */}
-          <div className="container mx-auto px-4 sm:px-8 lg:px-[87px]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center mt-8 sm:mt-12 pb-8 sm:pb-16 lg:pb-[100px]"
+        {/* Content Container */}
+        <div className="relative z-20">
+          {/* Title Section */}
+          <div className="relative h-[30vh] md:h-[60vh] flex items-center justify-center px-4">
+            <motion.div 
+              className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+              style={{ y: contentY }}
             >
-              <p className="font-inter text-white/70 mb-4 text-sm sm:text-base">
-                See more of our work on Instagram
-              </p>
-              <a
-                href="https://www.instagram.com/99.roots?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 sm:px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 font-inter text-sm sm:text-base font-[Bebas_Neue] text-[20px]"
+              {/* Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
               >
-                Follow @99rootsstudio
-              </a>
+                <h2 className="font-[Bebas_Neue] text-gold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                  Gallery
+                </h2>
+              </motion.div>
+
+              {/* Subtitle */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl tracking-wide mt-4 sm:mt-6">
+                  A showcase of our finest work
+                </p>
+              </motion.div>
+
+              {/* Decorative Elements */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="mt-6 sm:mt-8 flex justify-center items-center gap-3 sm:gap-4">
+                  <div className="h-px w-8 sm:w-12 bg-gold/40"></div>
+                  <div className="w-2 h-2 rotate-45 border border-gold/60"></div>
+                  <div className="h-px w-8 sm:w-12 bg-gold/40"></div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
+
+          {/* Gallery Grid Section */}
+          <div className="relative bg-[#151515]">
+            <div className="py-8 sm:py-16 lg:py-[100px]">
+              {/* Gallery Carousel */}
+              <InfiniteCarousel items={galleryItems} />
+
+            </div>
+            
+            {/* Instagram CTA */}
+            <div className="container mx-auto px-4 sm:px-8 lg:px-[87px]">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-center mt-8 sm:mt-12 pb-8 sm:pb-16 lg:pb-[100px]"
+              >
+                <p className="font-inter text-white/70 mb-4 text-sm sm:text-base">
+                  See more of our work on Instagram
+                </p>
+                <a
+                  href="https://www.instagram.com/99.roots?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 sm:px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 font-inter text-sm sm:text-base font-[Bebas_Neue] text-[20px]"
+                >
+                  Follow @99rootsstudio
+                </a>
+              </motion.div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

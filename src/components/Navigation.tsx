@@ -47,6 +47,7 @@ export function Navigation() {
   const navItems: { label: string; href: string }[] = [
     { label: 'Home', href: '#home' },
     { label: 'Artists', href: '#artists' },
+    { label: 'Our Space', href: '#ourspace' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'Shop', href: '#shop' },
     { label: 'Location', href: '#location' },
@@ -125,20 +126,35 @@ export function Navigation() {
                   >
                     {/* Pulsing glow effect behind logo */}
                     <motion.div
-                      className="absolute inset-0 -m-3 bg-[#FF9D56]/20 blur-xl rounded-full"
+                      className="absolute inset-0 -m-6 bg-[#FF9D56]/40 blur-2xl rounded-full"
                       animate={{ 
-                        opacity: [0.3, 0.6, 0.3],
-                        scale: [1, 1.1, 1]
+                        opacity: [0.5, 1, 0.5],
+                        scale: [1, 1.3, 1]
                       }}
                       transition={{ 
-                        duration: 1.5,
+                        duration: 1.2,
                         repeat: Infinity,
                         ease: 'easeInOut'
                       }}
                     />
                     
+                    {/* Second layer for even more glow */}
+                    <motion.div
+                      className="absolute inset-0 -m-4 bg-[#FF9D56]/30 blur-xl rounded-full"
+                      animate={{ 
+                        opacity: [0.4, 0.8, 0.4],
+                        scale: [1.1, 1.4, 1.1]
+                      }}
+                      transition={{ 
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                        delay: 0.15
+                      }}
+                    />
+                    
                     {/* Decorative diamonds and text below */}
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-2">
                       {/* Diamond */}
                       <motion.div 
                         className="w-1.5 h-1.5 rotate-45 bg-[#FF9D56]"
@@ -154,7 +170,7 @@ export function Navigation() {
                       
                       {/* Text */}
                       <motion.span 
-                        className="text-[10px] text-[#FF9D56] uppercase tracking-wider whitespace-nowrap"
+                        className="text-[13px] text-[#FF9D56] uppercase tracking-wider whitespace-nowrap font-medium"
                         animate={{ 
                           opacity: [0.6, 1, 0.6]
                         }}
@@ -188,7 +204,6 @@ export function Navigation() {
               {/* Tooltip - only shows on mobile when not scrolled */}
               {!isScrolled && (
                 <span className="md:hidden absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-gold/60 whitespace-nowrap pointer-events-none">
-                  tap for menu
                 </span>
               )}
             </div>
@@ -240,10 +255,10 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-[#151515] border-l-2 border-gold/40 md:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[80vw] max-w-sm bg-[#151515] border-l-2 border-gold/40 md:hidden shadow-2xl flex flex-col"
             >
               {/* Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gold/20">
+              <div className="flex items-center justify-between p-6 border-b border-gold/20 flex-shrink-0">
                 <img 
                   src={logo} 
                   alt="99 Roots Studio" 
@@ -259,7 +274,7 @@ export function Navigation() {
               </div>
 
               {/* Menu Items */}
-              <nav className="flex flex-col p-6 gap-2">
+              <nav className="flex flex-col p-6 gap-2 overflow-y-auto flex-1">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.label}
@@ -267,7 +282,7 @@ export function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 + 0.1 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-left py-4 px-4 font-inter text-white/90 hover:text-gold hover:bg-gold/10 transition-all duration-300 border-b border-gold/10 touch-manipulation"
+                    className="text-left py-4 px-4 font-inter text-white/90 transition-all duration-300 border-b border-gold/10 touch-manipulation"
                   >
                     {item.label}
                   </motion.button>
@@ -275,7 +290,7 @@ export function Navigation() {
               </nav>
 
               {/* Decorative Elements */}
-              <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 px-6">
+              <div className="flex justify-center items-center gap-4 px-6 py-8 flex-shrink-0">
                 <div className="h-px flex-1 bg-gold/20"></div>
                 <div className="w-2 h-2 rotate-45 border border-gold/40"></div>
                 <div className="h-px flex-1 bg-gold/20"></div>

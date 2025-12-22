@@ -117,6 +117,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: #FF9D56;
+  --color-studio-black: #151515;
 }
 
 @layer base {
@@ -196,8 +198,9 @@ body {
 }
 
 /* 99 Roots Studio Custom Styles */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import '/public/fonts/space-mono.css';
+@import '/public/fonts/roboto.css';
+@import '/public/fonts/bebas-neue.css';
 
 :root {
   --studio-black: #151515;
@@ -218,14 +221,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.text-gold {
-  color: var(--studio-gold);
-}
-
-.bg-studio-black {
-  background-color: var(--studio-black);
-}
-
-.border-gold {
-  border-color: var(--studio-gold);
+.font-bebas-neue {
+  font-family: 'Bebas Neue', cursive;
 }
