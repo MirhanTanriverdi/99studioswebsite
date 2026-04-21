@@ -16,7 +16,7 @@ export function SEO({
   keywords = 'tattoo studio Berlin, custom tattoos, fine line tattoos, realism tattoos, Berlin tattoo artists, premium tattoo studio, 99 Roots Studio, tattoo Berlin, professional tattoo artist, custom tattoo designs, tattoo parlor Berlin, best tattoo studio Berlin',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1590246814883-57c511ad64ad?auto=format&fit=crop&w=1200&h=630&q=80',
-  canonicalUrl = 'https://99rootsstudio.com', // TODO: Add the correct canonical URL
+  canonicalUrl = 'https://99rootsstudio.com',
   structuredData
 }: SEOProps) {
   useEffect(() => {
@@ -55,9 +55,6 @@ export function SEO({
     setMetaTag('og:image', ogImage, true);
     setMetaTag('og:image:width', '1200', true);
     setMetaTag('og:image:height', '630', true);
-    setMetaTag('og:image:alt', description, true); // Alt text for image accessibility
-    setMetaTag('og:image:type', 'image/jpeg', true); // Image MIME type
-    setMetaTag('og:image:secure_url', ogImage, true); // HTTPS version for secure sharing
     setMetaTag('og:site_name', '99 Roots Studio', true);
     setMetaTag('og:locale', 'en_US', true);
     setMetaTag('og:locale:alternate', 'de_DE', true);
@@ -66,7 +63,7 @@ export function SEO({
     setMetaTag('twitter:card', 'summary_large_image');
     setMetaTag('twitter:title', title);
     setMetaTag('twitter:description', description);
-    setMetaTag('twitter:image', ogImage);  
+    setMetaTag('twitter:image', ogImage);
     
     // Additional SEO tags
     setMetaTag('theme-color', '#151515');

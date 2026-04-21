@@ -291,7 +291,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
   }
 
   return (
-    <div className="min-h-screen bg-[#151515]">
+    <div className="relative min-h-screen bg-[#151515]">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-[#151515] z-[100]">
         <motion.div
@@ -362,7 +362,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       </header>
 
       {/* Artist Header */}
-      <section ref={headerRef} className="py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden pt-[96px] pr-[0px] pb-[0px] pl-[0px]">
+      <section ref={headerRef} className="relative py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden pt-[96px] pr-[0px] pb-[0px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             style={{ y: headerY, opacity: headerOpacity }}
@@ -415,7 +415,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       </section>
 
       {/* Gallery Grid */}
-      <section ref={galleryRef} className="py-12 sm:py-16 lg:py-24 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
+      <section ref={galleryRef} className="relative py-12 sm:py-16 lg:py-24 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <motion.div 
           style={{ y: galleryY, opacity: galleryOpacity }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
@@ -447,7 +447,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaRef} className="py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
+      <section ref={ctaRef} className="relative py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             style={{ y: ctaY, opacity: ctaOpacity }}

@@ -1,12 +1,11 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from './ui/accordion';
-import { getFAQStructuredData } from './SEO';
 
 export function TattooCare() {
   const sectionRef = useRef(null);
@@ -19,49 +18,8 @@ export function TattooCare() {
   
   const y = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
 
-  // FAQ data for structured data
-  const faqs = [
-    {
-      question: "How much does a tattoo cost?",
-      answer: "Pricing varies based on size, complexity, and artist. Our hourly rate ranges from €120-200. Small pieces start at €100. We provide detailed quotes during consultations."
-    },
-    {
-      question: "How do I book an appointment?",
-      answer: "Click the \"Request Appointment\" button to access our external booking platform. You'll need to provide details about your desired tattoo, preferred artist, and availability. We typically respond within 24-48 hours."
-    },
-    {
-      question: "Do you require a deposit?",
-      answer: "Yes, we require a €50-100 deposit to secure your appointment. This is deducted from your final payment. Deposits are non-refundable but can be transferred to a rescheduled appointment with 48 hours notice."
-    },
-    {
-      question: "Can I bring my own design?",
-      answer: "Absolutely! We welcome reference images and custom designs. Our artists will work with you to refine your idea and ensure it translates well as a tattoo. We also offer full custom design services."
-    },
-    {
-      question: "What is your cancellation policy?",
-      answer: "We require at least 48 hours notice for cancellations. Late cancellations or no-shows will forfeit the deposit. We understand emergencies happen - please contact us to discuss your situation."
-    },
-    {
-      question: "Do you do cover-ups or touch-ups?",
-      answer: "Yes, we specialize in cover-ups and offer free touch-ups within the first year for tattoos done at our studio. Bring photos of your existing tattoo for consultation."
-    }
-  ];
-
-  // Add FAQ structured data
-  useEffect(() => {
-    const faqStructuredData = getFAQStructuredData(faqs);
-    let script = document.querySelector('script[type="application/ld+json"][data-faq="true"]');
-    if (!script) {
-      script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.setAttribute('data-faq', 'true');
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(faqStructuredData);
-  }, []);
-
   return (
-    <section ref={sectionRef} id="care" className="bg-[#151515] sm:py-20 lg:py-28 p-[0px]">
+    <section ref={sectionRef} id="care" className="relative bg-[#151515] sm:py-20 lg:py-28 p-[0px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Section Header */}
         <motion.div
