@@ -96,37 +96,157 @@ export function Gallery() {
               </div>
             </motion.div>
 
-            {/* Video Container */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full max-w-5xl mx-auto"
-            >
-              <div className="relative aspect-video rounded-sm overflow-hidden border border-gold/30">
-                <video
-                  className="w-full h-full object-cover"
-                  controls
-                  playsInline
-                  poster={videoPoster}
-                >
-                  <source src="https://i.imgur.com/ckvicKx.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              
-              {/* Video Description */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+            {/* Space Photo Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+
+              {/* Photo 1 — full width horizontal on both mobile & desktop */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-inter text-white/60 text-sm sm:text-base text-center mt-6"
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="col-span-2 md:col-span-2 overflow-hidden border border-gold/20 group"
               >
-                Experience the creative atmosphere and premium environment where art comes to life
-              </motion.p>
-            </motion.div>
+                <div className="aspect-[4/3] md:aspect-[16/9] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+                    alt="99 Roots Studio space"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Photo 2 — vertical, pairs with photo 3 on mobile / right column on desktop */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="col-span-1 overflow-hidden border border-gold/20 group"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
+                    alt="Studio detail"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Photo 3 — vertical, beside photo 2 on mobile; new row col 1 on desktop */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="col-span-1 overflow-hidden border border-gold/20 group"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1567721913486-6585f069b3ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
+                    alt="Studio atmosphere"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Photo 4 — vertical */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="col-span-1 overflow-hidden border border-gold/20 group"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1562259952-6dba12c2a15a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
+                    alt="Tattoo equipment"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Photo 5 — vertical */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="col-span-1 overflow-hidden border border-gold/20 group"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1621784564114-6eea05b89863?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
+                    alt="Studio workspace"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Photo 6 — full-width horizontal banner, sensible aspect on mobile */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.35 }}
+                className="col-span-2 md:col-span-3 overflow-hidden border border-gold/20 group"
+              >
+                <div className="aspect-[4/3] sm:aspect-[16/7] md:aspect-[21/9] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1616879564267-a336232e3a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400"
+                    alt="99 Roots Studio full view"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Video Section — full width */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="col-span-2 md:col-span-3 border border-gold/20 overflow-hidden"
+              >
+                <div className="relative aspect-[16/9] bg-black group">
+                  {/* Replace src with your video URL */}
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    playsInline
+                    poster="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400"
+                  >
+                    {/* <source src="YOUR_VIDEO_URL.mp4" type="video/mp4" /> */}
+                  </video>
+                  {/* Play overlay — shown when no src is set */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#151515]/60 pointer-events-none">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-gold flex items-center justify-center mb-3">
+                      <svg className="w-6 h-6 text-gold ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <p className="font-[Bebas_Neue] text-gold tracking-widest text-sm sm:text-base uppercase">
+                      Behind the Ink
+                    </p>
+                    <p className="font-inter text-white/40 text-xs tracking-widest uppercase mt-1">
+                      Studio sessions &amp; process videos
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-inter text-white/40 text-xs sm:text-sm text-center mt-6 tracking-widest uppercase"
+            >
+              Experience the creative atmosphere and premium environment where art comes to life
+            </motion.p>
           </div>
         </div>
       </section>

@@ -10,6 +10,7 @@ interface Artist {
   bio: string;
   instagram: string;
   image: string;
+  isGuest?: boolean;
 }
 
 const artists: Artist[] = [
@@ -18,80 +19,98 @@ const artists: Artist[] = [
     name: 'MIKE',
     style: 'Fineline / Geometric / Ornamental / Black & Grey / Abstract',
     bio: 'Specializing in delicate fine-line work and minimalist designs with over 10 years of experience.',
-    instagram: '@elena.ink',
+    instagram: '@mike.tattoo',
     image: 'https://i.imgur.com/HPYSKTm.jpeg',
-  },
-  {
-    id: 2,
-    name: 'PENELOPE',
-    style: 'Black & Grey / Surrealist',
-    bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
-    instagram: '@marcus.realism',
-    image: 'https://i.imgur.com/Xp1GwCW.jpeg',
-  },
-  {
-    id: 3,
-    name: 'ALF',
-    style: 'Realism / Old School',
-    bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
-    instagram: '@yuki.irezumi',
-    image: 'https://i.imgur.com/tk2dwYn.jpeg',
-  },
-  {
-    id: 4,
-    name: 'AMIA',
-    style: 'Neotribal / Cybersigilism / Ornamental / Blackwork / Abstract',
-    bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
-    instagram: '@sofia.geometric',
-    image: 'https://i.imgur.com/9VidIS1.jpeg',
-  },
-    {
-    id: 5,
-    name: 'ARTUR',
-    style: 'Old School / Blackwork / Japanese',
-    bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
-    instagram: '@marcus.realism',
-    image: 'https://i.imgur.com/BJAoQXB.jpeg',
-  },
-  {
-    id: 6,
-    name: 'ALEXANDRA',
-    style: 'Surrealism / Black & Grey / Illustrative',
-    bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
-    instagram: '@yuki.irezumi',
-    image: 'https://i.imgur.com/iRXiTpZ.jpeg',
   },
   {
     id: 7,
     name: 'JELENA',
     style: 'Fineline / Black & Grey / Surrealism',
     bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
-    instagram: '@sofia.geometric',
+    instagram: '@jelena.tattoo',
     image: 'https://i.imgur.com/65vqbxU.jpeg',
   },
   {
     id: 8,
-    name: 'NICK',
-    style: 'Black & Grey / Neo-Traditional',
-    bio: 'Combining bold neo-traditional designs with stunning black and grey shading techniques.',
-    instagram: '@nick.neotrad',
-    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    name: 'OSVI',
+    style: 'Blackwork / Illustrative / Abstract',
+    bio: 'Bringing bold blackwork and illustrative storytelling to every piece. A core voice at 99 Roots.',
+    instagram: '@osvi.tattoo',
+    image: 'https://i.imgur.com/BJAoQXB.jpeg',
   },
   {
     id: 9,
-    name: 'KONSATIN',
-    style: 'Abstract & Watercolor',
-    bio: 'Pushing boundaries with abstract concepts and vibrant watercolor tattoo techniques.',
-    instagram: '@konsatin.abstract',
-    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    name: 'JAVIERA',
+    style: 'Fineline / Botanical / Ornamental',
+    bio: 'Delicate botanical compositions and ornamental linework crafted with a distinctly feminine touch.',
+    instagram: '@javiera.tattoo',
+    image: 'https://i.imgur.com/9VidIS1.jpeg',
+  },
+];
+
+const guestArtists: Artist[] = [
+  {
+    id: 20,
+    name: 'ARTURO',
+    style: 'Realism / Black & Grey / Portrait',
+    bio: 'Master of hyper-realistic portraits and cinematic black & grey compositions.',
+    instagram: '@arturo.tattoo',
+    image: 'https://i.imgur.com/iRXiTpZ.jpeg',
+    isGuest: true,
   },
   {
-    id: 10,
-    name: 'TESSA',
-    style: 'Ornamental & Floral',
-    bio: 'Specializing in delicate ornamental designs and botanical artwork with exquisite detail.',
-    instagram: '@tessa.botanical',
-    image: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    id: 21,
+    name: 'STEVEN',
+    style: 'Neo-Traditional / Color / Bold',
+    bio: 'Bold neo-traditional designs with vibrant color palettes. Guest from Amsterdam.',
+    instagram: '@steven.tattoo',
+    image: 'https://i.imgur.com/Xp1GwCW.jpeg',
+    isGuest: true,
+  },
+  {
+    id: 22,
+    name: 'RICARDO',
+    style: 'Japanese / Old School / Sleeve',
+    bio: 'Traditional Japanese tattooing rooted in irezumi with a contemporary European edge.',
+    instagram: '@ricardo.tattoo',
+    image: 'https://i.imgur.com/tk2dwYn.jpeg',
+    isGuest: true,
+  },
+  {
+    id: 23,
+    name: 'NICK',
+    style: 'Abstract / Blackwork / Geometric',
+    bio: 'Experimental blackwork and abstract geometric forms. Residency guest from Copenhagen.',
+    instagram: '@nick.tattoo',
+    image: 'https://i.imgur.com/BJAoQXB.jpeg',
+    isGuest: true,
+  },
+  {
+    id: 24,
+    name: 'ARTUR',
+    style: 'Old School / Blackwork / Illustrative',
+    bio: 'Old school boldness fused with blackwork precision. Guest from Warsaw.',
+    instagram: '@artur.tattoo',
+    image: 'https://i.imgur.com/HPYSKTm.jpeg',
+    isGuest: true,
+  },
+  {
+    id: 25,
+    name: 'KIM',
+    style: 'Fineline / Minimalist / Micro',
+    bio: 'Ultra-fine micro tattoos and minimalist compositions with an architectural sensibility.',
+    instagram: '@kim.tattoo',
+    image: 'https://i.imgur.com/65vqbxU.jpeg',
+    isGuest: true,
+  },
+  {
+    id: 26,
+    name: 'MARIA',
+    style: 'Surrealism / Illustrative / Black & Grey',
+    bio: 'Dreamlike surrealist imagery and illustrative black & grey work. Guest from Madrid.',
+    instagram: '@maria.tattoo',
+    image: 'https://i.imgur.com/9VidIS1.jpeg',
+    isGuest: true,
   },
 ];
 
@@ -195,15 +214,57 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
             style={{ y: gridY, opacity: gridOpacity }}
             className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 sm:px-8 md:px-12 lg:px-[110px] p-[0px]">
+            {/* Resident Artists */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 sm:px-8 md:px-12 lg:px-[110px] p-[0px]">
               {artists.map((artist, index) => (
-                <ArtistCard 
-                  key={artist.id} 
-                  artist={artist} 
+                <ArtistCard
+                  key={artist.id}
+                  artist={artist}
                   index={index}
                   onGalleryClick={onArtistGalleryClick}
                 />
               ))}
+            </div>
+
+            {/* Guest Artists Sub-section */}
+            <div className="sm:px-8 md:px-12 lg:px-[110px] mt-16 sm:mt-20 lg:mt-24">
+              {/* Sub-header */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="mb-10 sm:mb-14"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="h-px flex-1 bg-gold/20" />
+                  <div className="w-1.5 h-1.5 rotate-45 bg-gold/50" />
+                  <div className="h-px flex-1 bg-gold/20" />
+                </div>
+                <h3 className="font-[Bebas_Neue] text-white/90 text-3xl sm:text-4xl md:text-5xl tracking-widest text-center">
+                  Guest Artists
+                </h3>
+                <p className="text-center text-white/40 text-xs sm:text-sm tracking-widest uppercase font-[Space_Mono] mt-2">
+                  Rotating residencies — follow us for announcements
+                </p>
+                <div className="flex items-center gap-4 mt-3">
+                  <div className="h-px flex-1 bg-gold/20" />
+                  <div className="w-1.5 h-1.5 rotate-45 bg-gold/50" />
+                  <div className="h-px flex-1 bg-gold/20" />
+                </div>
+              </motion.div>
+
+              {/* Guest Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                {guestArtists.map((artist, index) => (
+                  <ArtistCard
+                    key={artist.id}
+                    artist={artist}
+                    index={index}
+                    onGalleryClick={onArtistGalleryClick}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -232,12 +293,17 @@ function ArtistCard({
     >
       <div className="relative overflow-hidden border border-[#151515] bg-[#151515] transition-all duration-300">
         {/* Artist Image */}
-        <div className="aspect-[3/4] overflow-hidden">
+        <div className="aspect-[3/4] overflow-hidden relative">
           <img
             src={artist.image}
             alt={artist.name}
             className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 md:group-hover:scale-110"
           />
+          {artist.isGuest && (
+            <div className="absolute top-3 left-3 px-3 py-1 border border-gold/70 text-gold font-[Bebas_Neue] text-[13px] tracking-widest uppercase bg-[#151515]/80 backdrop-blur-sm">
+              Guest Artist
+            </div>
+          )}
         </div>
 
         {/* Artist Info */}

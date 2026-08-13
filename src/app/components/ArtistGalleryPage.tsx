@@ -43,81 +43,6 @@ const artistGalleries: Record<number, {
       { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Fine Line' },
     ]
   },
-  2: {
-    name: 'PENELOPE',
-    style: 'Black & Grey / Surrealist',
-    bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
-    instagram: '@marcus.realism',
-    photo: 'https://i.imgur.com/Xp1GwCW.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Realistic Portrait' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Realism' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Detailed Portrait Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realism' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Detail' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Award Winning Piece' },
-    ]
-  },
-  3: {
-    name: 'ALF',
-    style: 'Realism / Old School',
-    bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
-    instagram: '@yuki.irezumi',
-    photo: 'https://i.imgur.com/tk2dwYn.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Irezumi' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Dragon' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Fish Sleeve' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cherry Blossom' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Samurai Warrior' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Phoenix Rising' },
-    ]
-  },
-  4: {
-    name: 'AMIA',
-    style: 'Neotribal / Cybersigilism / Ornamental / Blackwork / Abstract',
-    bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
-    instagram: '@sofia.geometric',
-    photo: 'https://i.imgur.com/9VidIS1.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Mandala' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Sacred Geometry' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dotwork Pattern' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Symmetrical Design' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Dotwork' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Precision Geometry' },
-    ]
-  },
-  5: {
-    name: 'ARTUR',
-    style: 'Old School / Blackwork / Japanese',
-    bio: 'Master of hyper-realistic portraits and detailed black & grey work. Award-winning artist.',
-    instagram: '@marcus.realism',
-    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Realistic Portrait' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Realism' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Detailed Portrait Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realism' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Detail' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Award Winning Piece' },
-    ]
-  },
-  6: {
-    name: 'ALEXANDRA',
-    style: 'Surrealism / Black & Grey / Illustrative',
-    bio: 'Traditional Japanese tattooing with contemporary flair. Trained in Tokyo and Berlin.',
-    instagram: '@yuki.irezumi',
-    photo: 'https://i.imgur.com/iRXiTpZ.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Irezumi' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Dragon' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Fish Sleeve' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cherry Blossom' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Samurai Warrior' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Phoenix Rising' },
-    ]
-  },
   7: {
     name: 'JELENA',
     style: 'Fineline / Black & Grey / Surrealism',
@@ -134,48 +59,120 @@ const artistGalleries: Record<number, {
     ]
   },
   8: {
-    name: 'NICK',
-    style: 'Black & Grey / Neo-Traditional',
-    bio: 'Combining bold neo-traditional designs with stunning black and grey shading techniques.',
-    instagram: '@nick.neotrad',
-    photo: 'https://images.unsplash.com/photo-1642791112868-60c92b7b9eef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwdGF0dG9vJTIwYXJ0aXN0JTIwcG9ydHJhaXR8ZW58MXx8fHwxNzY0Njg0MjUxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    name: 'OSVI',
+    style: 'Blackwork / Illustrative / Abstract',
+    bio: 'Bringing bold blackwork and illustrative storytelling to every piece. A core voice at 99 Roots.',
+    instagram: '@osvi.tattoo',
+    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Traditional Rose' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Portrait' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Traditional Eagle' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Trad Snake' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Shaded Skull' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Dagger' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Composition' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Sleeve' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Form' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Back Piece' },
     ]
   },
   9: {
-    name: 'KONSATIN',
-    style: 'Abstract & Watercolor',
-    bio: 'Pushing boundaries with abstract concepts and vibrant watercolor tattoo techniques.',
-    instagram: '@konsatin.abstract',
-    photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    name: 'JAVIERA',
+    style: 'Fineline / Botanical / Ornamental',
+    bio: 'Delicate botanical compositions and ornamental linework crafted with a distinctly feminine touch.',
+    instagram: '@javiera.tattoo',
+    photo: 'https://i.imgur.com/9VidIS1.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Watercolor Splash' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Lines' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Contemporary Flow' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Artistic Expression' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Color Fusion' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Modern Abstract' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Fineline' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Wrist' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Floral Composition' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Linework' },
     ]
   },
-  10: {
-    name: 'TESSA',
-    style: 'Ornamental & Floral',
-    bio: 'Specializing in delicate ornamental designs and botanical artwork with exquisite detail.',
-    instagram: '@tessa.botanical',
-    photo: 'https://images.unsplash.com/photo-1754490792184-b654a6fb360e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHNpbGhvdWV0dGUlMjBteXN0ZXJ5fGVufDF8fHx8MTc2NDc2MTU4OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+  20: {
+    name: 'ARTURO',
+    style: 'Realism / Black & Grey / Portrait',
+    bio: 'Master of hyper-realistic portraits and cinematic black & grey compositions.',
+    instagram: '@arturo.tattoo',
+    photo: 'https://i.imgur.com/iRXiTpZ.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Floral' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Detail' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Mandala' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Floral Sleeve' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornate Pattern' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Masterpiece' },
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realistic Portrait' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Study' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cinematic Piece' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Sleeve' },
+    ]
+  },
+  21: {
+    name: 'STEVEN',
+    style: 'Neo-Traditional / Color / Bold',
+    bio: 'Bold neo-traditional designs with vibrant color palettes. Guest from Amsterdam.',
+    instagram: '@steven.tattoo',
+    photo: 'https://i.imgur.com/Xp1GwCW.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Trad Color' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Floral' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Rose' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Color Sleeve' },
+    ]
+  },
+  22: {
+    name: 'RICARDO',
+    style: 'Japanese / Old School / Sleeve',
+    bio: 'Traditional Japanese tattooing rooted in irezumi with a contemporary European edge.',
+    instagram: '@ricardo.tattoo',
+    photo: 'https://i.imgur.com/tk2dwYn.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Sleeve' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Irezumi Dragon' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Old School Eagle' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Back Piece' },
+    ]
+  },
+  23: {
+    name: 'NICK',
+    style: 'Abstract / Blackwork / Geometric',
+    bio: 'Experimental blackwork and abstract geometric forms. Residency guest from Copenhagen.',
+    instagram: '@nick.tattoo',
+    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Fill' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Sleeve' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Shoulder' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Experimental Form' },
+    ]
+  },
+  24: {
+    name: 'ARTUR',
+    style: 'Old School / Blackwork / Illustrative',
+    bio: 'Old school boldness fused with blackwork precision. Guest from Warsaw.',
+    instagram: '@artur.tattoo',
+    photo: 'https://i.imgur.com/HPYSKTm.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Old School Dagger' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Chest' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Arm' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Blackwork' },
+    ]
+  },
+  25: {
+    name: 'KIM',
+    style: 'Fineline / Minimalist / Micro',
+    bio: 'Ultra-fine micro tattoos and minimalist compositions with an architectural sensibility.',
+    instagram: '@kim.tattoo',
+    photo: 'https://i.imgur.com/65vqbxU.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Micro Fineline' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Minimalist Study' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Architectural Line' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Micro Detail' },
+    ]
+  },
+  26: {
+    name: 'MARIA',
+    style: 'Surrealism / Illustrative / Black & Grey',
+    bio: 'Dreamlike surrealist imagery and illustrative black & grey work. Guest from Madrid.',
+    instagram: '@maria.tattoo',
+    photo: 'https://i.imgur.com/9VidIS1.jpeg',
+    images: [
+      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Surreal Dream' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Black' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dream Portrait' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Grey Wash Scene' },
     ]
   }
 };

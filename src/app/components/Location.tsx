@@ -90,8 +90,7 @@ export function Location() {
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.3461234567!2d13.4215789!3d52.5362234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851e1c8d09a47%3A0x3e1c1b2d3e4f5a6b!2sPrenzlauer%20Allee%20216%2C%2010405%20Berlin!5e0!3m2!1sen!2sde!4v1234567890123!5m2!1sen!2sde"
-                width="90%"
-                height="90%"
+                className="w-full h-[200px] sm:h-[450px] lg:h-[550px]"
                 style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(90%)' }}
                 allowFullScreen
                 loading="lazy"

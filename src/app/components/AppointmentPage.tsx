@@ -112,6 +112,21 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
       errorBody: 'Unfortunately, we encountered an error while submitting your appointment request. Please try again or contact us directly through Instagram, WhatsApp, or Email.',
       tryAgain: 'Try Again',
       contactUs: 'Contact Us Directly',
+      // Contact options page
+      pageTitle: 'Request an Appointment',
+      pageSubtitle: "Choose how you'd like to get in touch with us",
+      formCardTitle: 'Form',
+      formCardDesc: 'Fill out our detailed appointment form',
+      formCardCta: 'Open Form',
+      emailCardTitle: 'Email',
+      emailCardDesc: 'Send us a detailed email inquiry',
+      emailCardCta: 'Send Email',
+      whatsappCardTitle: 'WhatsApp',
+      whatsappCardDesc: 'Chat with us directly on WhatsApp',
+      whatsappCardCta: 'Start Chat',
+      instagramCardTitle: 'Instagram',
+      instagramCardDesc: 'DM us on Instagram for quick responses',
+      instagramCardCta: 'Connect Now',
     },
     de: {
       // Language selection
@@ -187,6 +202,21 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
       errorBody: 'Leider ist ein Fehler beim Absenden Ihrer Terminanfrage aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt über Instagram, WhatsApp oder E-Mail.',
       tryAgain: 'Erneut versuchen',
       contactUs: 'Direkt kontaktieren',
+      // Contact options page
+      pageTitle: 'Termin anfragen',
+      pageSubtitle: 'Wählen Sie, wie Sie uns kontaktieren möchten',
+      formCardTitle: 'Formular',
+      formCardDesc: 'Füllen Sie unser detailliertes Terminformular aus',
+      formCardCta: 'Formular öffnen',
+      emailCardTitle: 'E-Mail',
+      emailCardDesc: 'Senden Sie uns eine detaillierte E-Mail-Anfrage',
+      emailCardCta: 'E-Mail senden',
+      whatsappCardTitle: 'WhatsApp',
+      whatsappCardDesc: 'Chatten Sie direkt mit uns auf WhatsApp',
+      whatsappCardCta: 'Chat starten',
+      instagramCardTitle: 'Instagram',
+      instagramCardDesc: 'Schreiben Sie uns auf Instagram für schnelle Antworten',
+      instagramCardCta: 'Jetzt verbinden',
     },
   };
 
@@ -330,12 +360,12 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <Button
-              onClick={onBack}
+              onClick={showForm && currentStep === 0 ? () => setShowForm(false) : onBack}
               variant="ghost"
               className="text-gold hover:text-gold/80 hover:bg-gold/10"
             >
               <ArrowLeft className="sm:mr-2" size={20} />
-              <span className="hidden sm:inline">{t.backToHome}</span>
+              <span className="hidden sm:inline">{showForm && currentStep === 0 ? t.back || 'Back' : t.backToHome}</span>
             </Button>
             
             {/* Language Switcher */}
@@ -376,10 +406,10 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
             {(!showForm || currentStep === 0) && (
               <>
                 <h1 className="font-[Bebas_Neue] text-4xl lg:text-5xl text-gold mb-4 text-center">
-                  Request an Appointment
+                  {t.pageTitle}
                 </h1>
                 <p className="font-inter text-white/70 text-center mb-12">
-                  Choose how you'd like to get in touch with us
+                  {t.pageSubtitle}
                 </p>
               </>
             )}
@@ -425,7 +455,6 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                       setSubmissionStatus('idle');
                       setShowForm(false);
                       setCurrentStep(0);
-                      setLanguage('en');
                     }}
                     className="bg-gold text-black hover:bg-gold/90 px-8 py-6 transition-all duration-300"
                   >
@@ -491,11 +520,12 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
             ) : !showForm ? (
               /* Contact Options */
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-                {/* Instagram */}
-                <motion.a
-                  href="https://instagram.com/99rootsstudio"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {/* Form */}
+                <motion.button
+                  onClick={() => {
+                    setShowForm(true);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.02, y: -4 }}
@@ -503,32 +533,21 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   transition={{ duration: 0.3 }}
                   className="group relative overflow-hidden border-2 border-[#151515] p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl cursor-pointer"
                 >
-                  {/* Decorative corner elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
                   <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
-                    <motion.div 
-                      className="relative"
-                      whileHover={{ rotate: 6 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.div className="relative" whileHover={{ rotate: 6 }} transition={{ duration: 0.3 }}>
                       <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
-                      <Instagram className="w-16 h-16 text-gold relative" />
+                      <FileText className="w-16 h-16 text-gold relative" />
                     </motion.div>
-                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Instagram</h3>
-                    <p className="font-inter text-white/70 text-sm leading-relaxed">
-                      DM us on Instagram for quick responses
-                    </p>
+                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">{t.formCardTitle}</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">{t.formCardDesc}</p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#FF9D56]">Connect Now</span>
-                      <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >→</motion.span>
+                      <span className="text-[#FF9D56]">{t.formCardCta}</span>
+                      <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
                     </div>
                   </div>
-                </motion.a>
+                </motion.button>
 
                 {/* Email */}
                 <motion.a
@@ -540,29 +559,18 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   transition={{ duration: 0.3, delay: 0.1 }}
                   className="group relative overflow-hidden border-2 border-[#151515] p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl cursor-pointer"
                 >
-                  {/* Decorative corner elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
                   <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
-                    <motion.div 
-                      className="relative"
-                      whileHover={{ rotate: 6 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.div className="relative" whileHover={{ rotate: 6 }} transition={{ duration: 0.3 }}>
                       <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
                       <Mail className="w-16 h-16 text-gold relative" />
                     </motion.div>
-                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Email</h3>
-                    <p className="font-inter text-white/70 text-sm leading-relaxed">
-                      Send us a detailed email inquiry
-                    </p>
+                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">{t.emailCardTitle}</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">{t.emailCardDesc}</p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#FF9D56]">Send Email</span>
-                      <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >→</motion.span>
+                      <span className="text-[#FF9D56]">{t.emailCardCta}</span>
+                      <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
                     </div>
                   </div>
                 </motion.a>
@@ -579,39 +587,27 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   transition={{ duration: 0.3, delay: 0.2 }}
                   className="group relative overflow-hidden border-2 border-[#151515] p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl cursor-pointer"
                 >
-                  {/* Decorative corner elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
                   <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
-                    <motion.div 
-                      className="relative"
-                      whileHover={{ rotate: 6 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.div className="relative" whileHover={{ rotate: 6 }} transition={{ duration: 0.3 }}>
                       <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
                       <MessageCircle className="w-16 h-16 text-gold relative" />
                     </motion.div>
-                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">WhatsApp</h3>
-                    <p className="font-inter text-white/70 text-sm leading-relaxed">
-                      Chat with us directly on WhatsApp
-                    </p>
+                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">{t.whatsappCardTitle}</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">{t.whatsappCardDesc}</p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#FF9D56]">Start Chat</span>
-                      <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >→</motion.span>
+                      <span className="text-[#FF9D56]">{t.whatsappCardCta}</span>
+                      <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
                     </div>
                   </div>
                 </motion.a>
 
-                {/* Form */}
-                <motion.button
-                  onClick={() => {
-                    setShowForm(true);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
+                {/* Instagram */}
+                <motion.a
+                  href="https://www.instagram.com/99.roots?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.02, y: -4 }}
@@ -619,32 +615,21 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   transition={{ duration: 0.3, delay: 0.3 }}
                   className="group relative overflow-hidden border-2 border-[#151515] p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl cursor-pointer"
                 >
-                  {/* Decorative corner elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
                   <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
-                    <motion.div 
-                      className="relative"
-                      whileHover={{ rotate: 6 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.div className="relative" whileHover={{ rotate: 6 }} transition={{ duration: 0.3 }}>
                       <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
-                      <FileText className="w-16 h-16 text-gold relative" />
+                      <Instagram className="w-16 h-16 text-gold relative" />
                     </motion.div>
-                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">Form</h3>
-                    <p className="font-inter text-white/70 text-sm leading-relaxed">
-                      Fill out our detailed appointment form
-                    </p>
+                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">{t.instagramCardTitle}</h3>
+                    <p className="font-inter text-white/70 text-sm leading-relaxed">{t.instagramCardDesc}</p>
                     <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#FF9D56]">Open Form</span>
-                      <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >→</motion.span>
+                      <span className="text-[#FF9D56]">{t.instagramCardCta}</span>
+                      <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
                     </div>
                   </div>
-                </motion.button>
+                </motion.a>
               </div>
             ) : (
               /* Multi-Step Appointment Form */
