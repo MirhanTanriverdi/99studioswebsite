@@ -287,7 +287,7 @@ function ArtistCard({
           <Button
             onClick={() => onGalleryClick?.(artist.id)}
             variant="outline"
-            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 border-gold/30 text-gold md:hover:bg-gold md:hover:text-black md:hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
+            className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 bg-white/10 border-gold/30 text-gold active:bg-white/20 md:hover:bg-gold md:hover:text-black md:hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
           >
             View Gallery
           </Button>

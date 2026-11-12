@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { Artists } from './components/Artists';
@@ -26,56 +26,59 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [selectedArtistId, setSelectedArtistId] = useState<number | null>(null);
 
+  // Every page switch starts at the top. Runs after the new page is in the DOM
+  // and uses an instant jump: the site sets scroll-behavior: smooth, and a
+  // smooth scroll started before the swap got cut off on phones, leaving the
+  // new page (e.g. an artist's gallery) scrolled to the bottom.
+  const firstRender = useRef(true);
+  useLayoutEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [currentPage, selectedArtistId]);
+
   const navigateToAppointment = () => {
     setCurrentPage('appointment');
-    window.scrollTo(0, 0);
   };
 
   const navigateToShop = () => {
     setCurrentPage('shop');
-    window.scrollTo(0, 0);
   };
 
   const navigateToComingSoon = () => {
     setCurrentPage('coming-soon');
-    window.scrollTo(0, 0);
   };
 
   const navigateToHome = () => {
     setCurrentPage('home');
     setSelectedArtistId(null);
-    window.scrollTo(0, 0);
   };
 
   const navigateToArtistGallery = (artistId: number) => {
     setSelectedArtistId(artistId);
     setCurrentPage('artist-gallery');
-    window.scrollTo(0, 0);
   };
 
   const navigateToPrivacyPolicy = () => {
     setCurrentPage('privacy-policy');
-    window.scrollTo(0, 0);
   };
 
   const navigateToTermsOfService = () => {
     setCurrentPage('terms-of-service');
-    window.scrollTo(0, 0);
   };
 
   const navigateToBookingPolicy = () => {
     setCurrentPage('booking-policy');
-    window.scrollTo(0, 0);
   };
 
   const navigateToOurSpace = () => {
     setCurrentPage('our-space');
-    window.scrollTo(0, 0);
   };
 
   const navigateToImpressum = () => {
     setCurrentPage('impressum');
-    window.scrollTo(0, 0);
   };
 
   if (currentPage === 'impressum') {

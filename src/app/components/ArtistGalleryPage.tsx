@@ -274,6 +274,21 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Phone back button / back swipe closes the lightbox. The site has no
+  // routes, so without this "back" left the site instead of closing the photo.
+  const lightboxOpen = selectedImageIndex !== null;
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    window.history.pushState({ lightbox: true }, '');
+    const onPop = () => setSelectedImageIndex(null);
+    window.addEventListener('popstate', onPop);
+    return () => {
+      window.removeEventListener('popstate', onPop);
+      // Closed with the X / Escape: drop the history entry we added.
+      if (window.history.state?.lightbox) window.history.back();
+    };
+  }, [lightboxOpen]);
+
   // Navigation functions
   const handlePrevious = () => {
     if (selectedImageIndex !== null && artist) {
@@ -524,7 +539,11 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
 
       {/* Image Lightbox */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImageIndex(null)}>
-        <DialogContent className="w-screen h-screen max-w-none max-h-none sm:max-w-[95vw] sm:max-h-[95vh] sm:w-auto sm:h-auto p-0 bg-black border-0 sm:border-2 border-gold/40">
+        {/* 100dvh, not 100vh: on iPhone 100vh is taller than the visible area
+            while the address bar shows, which pushed the close button off
+            the top of the screen. The built-in dialog close button is hidden;
+            ours below is the one to tap. */}
+        <DialogContent className="w-screen h-[100dvh] max-w-none max-h-none sm:max-w-[95vw] sm:max-h-[95vh] sm:w-auto sm:h-auto p-0 bg-black border-0 sm:border-2 border-gold/40 [&>button:last-child]:hidden">
           <DialogTitle className="sr-only">
             {selectedImage?.title || 'Tattoo Image'}
           </DialogTitle>
@@ -539,20 +558,22 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImageIndex(null)}
-                className="absolute top-4 right-4 sm:-top-12 sm:right-0 sm:-right-12 text-gold hover:text-gold/80 transition-colors z-50 bg-black/80 p-2 border border-gold/40"
+                aria-label="Close"
+                className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 text-gold hover:text-gold/80 transition-colors z-50 bg-black/80 p-3 border border-gold/40 touch-manipulation"
               >
                 <X size={24} />
               </button>
 
-              {/* Invisible Navigation Zones */}
+              {/* Invisible Navigation Zones — kept clear of the top bar so they
+                  never sit over the close button. */}
               <button
                 onClick={handlePrevious}
-                className="absolute left-0 top-0 bottom-0 w-1/3 z-40 cursor-w-resize"
+                className="absolute left-0 top-20 bottom-20 w-1/3 z-40 cursor-w-resize"
                 aria-label="Previous image"
               />
               <button
                 onClick={handleNext}
-                className="absolute right-0 top-0 bottom-0 w-1/3 z-40 cursor-e-resize"
+                className="absolute right-0 top-20 bottom-20 w-1/3 z-40 cursor-e-resize"
                 aria-label="Next image"
               />
 
@@ -563,7 +584,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
                 <img
                   src={selectedImage.url}
                   alt={selectedImage.title || `${artist.name} tattoo work`}
-                  className="block w-auto h-auto max-w-[100vw] max-h-[100vh] sm:max-w-[88vw] sm:max-h-[86vh] object-contain"
+                  className="block w-auto h-auto max-w-[100vw] max-h-[100dvh] sm:max-w-[88vw] sm:max-h-[86vh] object-contain"
                 />
               </div>
 
