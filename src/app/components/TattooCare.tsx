@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { useLiteMotion } from './useLiteMotion';
 import {
   Accordion,
   AccordionContent,
@@ -17,6 +18,8 @@ export function TattooCare() {
   });
   
   const y = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
+  const headerY = useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]);
+  const lite = useLiteMotion();
 
   return (
     <section ref={sectionRef} id="care" className="relative bg-[#151515] sm:py-20 lg:py-28 p-[0px]">
@@ -28,7 +31,7 @@ export function TattooCare() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
-          style={{ y: useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]) }}
+          style={lite ? undefined : { y: headerY }}
         >
           <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-gold mb-4 font-[Bebas_Neue]">
             FAQ
@@ -45,7 +48,7 @@ export function TattooCare() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 sm:mt-16"
-          style={{ y }}
+          style={lite ? undefined : { y }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column */}

@@ -5,6 +5,7 @@ import { ArtistPortraitPlaceholder } from './ArtistPortraitPlaceholder';
 import { artistWork } from '../data/artistWork';
 import logo from '../../assets/logo.webp';
 import { useState, useEffect, useRef } from 'react';
+import { useLiteMotion } from './useLiteMotion';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 import ComingSoon from '../imports/ComingSoon-208-55';
 
@@ -225,6 +226,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
   const ctaRef = useRef<HTMLDivElement>(null);
   
   // Scroll progress for header parallax
+  const lite = useLiteMotion();
   const { scrollYProgress: headerScrollProgress } = useScroll({
     target: headerRef,
     offset: ["start start", "end start"]
@@ -401,11 +403,11 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       <section ref={headerRef} className="relative py-12 sm:py-16 lg:py-24 border-b border-gold/20 overflow-hidden pt-[96px] pr-[0px] pb-[0px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
-            style={{ y: headerY, opacity: headerOpacity }}
+            style={lite ? undefined : { y: headerY, opacity: headerOpacity }}
           >
             {/* Artist Photo */}
             <motion.div
-              style={{ scale: photoScale }}
+              style={lite ? undefined : { scale: photoScale }}
               className="mb-8 sm:mb-10 flex justify-center"
             >
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56">
@@ -459,7 +461,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       {/* Gallery Grid */}
       <section ref={galleryRef} className="relative py-12 sm:py-16 lg:py-24 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <motion.div 
-          style={{ y: galleryY, opacity: galleryOpacity }}
+          style={lite ? undefined : { y: galleryY, opacity: galleryOpacity }}
           className="container mx-auto px-4 sm:px-6 lg:px-8"
         >
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -501,7 +503,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
       <section ref={ctaRef} className="relative py-12 sm:py-16 lg:py-24 border-t border-gold/20 overflow-hidden pt-[20px] pr-[0px] pb-[96px] pl-[0px]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            style={{ y: ctaY, opacity: ctaOpacity }}
+            style={lite ? undefined : { y: ctaY, opacity: ctaOpacity }}
             className="max-w-2xl mx-auto"
           >
             <h2 className="font-playfair text-gold text-3xl sm:text-4xl md:text-5xl mb-6">

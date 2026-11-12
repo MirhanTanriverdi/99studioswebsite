@@ -1,3 +1,4 @@
+import { useLiteMotion } from './useLiteMotion';
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
@@ -10,19 +11,19 @@ interface GalleryItem {
 
 // One piece per resident/guest artist, taken from their portfolio in /public/work.
 const galleryItems: GalleryItem[] = [
-  { id: 1, image: '/work/mike/02.webp', artist: 'Mike', type: 'Fineline' },
-  { id: 2, image: '/work/jelena/05.webp', artist: 'Jelena', type: 'Black & Grey Realism' },
-  { id: 3, image: '/work/arturo/05.webp', artist: 'Arturo', type: 'Ornamental' },
-  { id: 4, image: '/work/osvi/02.webp', artist: 'Osvi', type: 'Botanical' },
-  { id: 5, image: '/work/ricardo/03.webp', artist: 'Ricardo', type: 'Dark Illustrative' },
-  { id: 6, image: '/work/kim/04.webp', artist: 'Kim', type: 'Neo-Traditional' },
-  { id: 7, image: '/work/duda/05.webp', artist: 'Duda', type: 'Micro Realism' },
-  { id: 8, image: '/work/barbara/01.webp', artist: 'Barbara', type: 'Ornamental' },
-  { id: 9, image: '/work/james/01.webp', artist: 'James', type: 'Neo-Tribal' },
-  { id: 10, image: '/work/javiera/02.webp', artist: 'Javiera', type: 'Micro Realism' },
-  { id: 11, image: '/work/artur/02.webp', artist: 'Artur', type: 'Traditional' },
-  { id: 12, image: '/work/daryna/06.webp', artist: 'Daryna', type: 'Abstract' },
-  { id: 13, image: '/work/nina/02.webp', artist: 'Nina', type: 'Fineline' },
+  { id: 1, image: '/work/mike/02-md.webp', artist: 'Mike', type: 'Fineline' },
+  { id: 2, image: '/work/jelena/05-md.webp', artist: 'Jelena', type: 'Black & Grey Realism' },
+  { id: 3, image: '/work/arturo/05-md.webp', artist: 'Arturo', type: 'Ornamental' },
+  { id: 4, image: '/work/osvi/02-md.webp', artist: 'Osvi', type: 'Botanical' },
+  { id: 5, image: '/work/ricardo/03-md.webp', artist: 'Ricardo', type: 'Dark Illustrative' },
+  { id: 6, image: '/work/kim/04-md.webp', artist: 'Kim', type: 'Neo-Traditional' },
+  { id: 7, image: '/work/duda/05-md.webp', artist: 'Duda', type: 'Micro Realism' },
+  { id: 8, image: '/work/barbara/01-md.webp', artist: 'Barbara', type: 'Ornamental' },
+  { id: 9, image: '/work/james/01-md.webp', artist: 'James', type: 'Neo-Tribal' },
+  { id: 10, image: '/work/javiera/02-md.webp', artist: 'Javiera', type: 'Micro Realism' },
+  { id: 11, image: '/work/artur/02-md.webp', artist: 'Artur', type: 'Traditional' },
+  { id: 12, image: '/work/daryna/06-md.webp', artist: 'Daryna', type: 'Abstract' },
+  { id: 13, image: '/work/nina/02-md.webp', artist: 'Nina', type: 'Fineline' },
 ];
 
 interface GalleryProps {
@@ -33,6 +34,7 @@ export function Gallery({ onViewAllSpace }: GalleryProps = {}) {
   const sectionRef = useRef(null);
   
   // Parallax effect for background
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -220,13 +222,13 @@ export function Gallery({ onViewAllSpace }: GalleryProps = {}) {
         <div className="absolute inset-0 z-0">
           <motion.div 
             className="w-full h-full"
-            style={{ y: backgroundY }}
+            style={lite ? undefined : { y: backgroundY }}
           >
             <motion.img
               src="https://images.unsplash.com/photo-1758404255679-9afd847ede1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnR3b3JrJTIwZGV0YWlsfGVufDF8fHx8MTc2NDc1OTQ5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               alt="Gallery background"
               className="w-full h-full object-cover"
-              style={{ scale }}
+              style={lite ? undefined : { scale }}
             />
             <div className="absolute inset-0 bg-[#151515]/70 z-10" />
           </motion.div>
@@ -238,7 +240,7 @@ export function Gallery({ onViewAllSpace }: GalleryProps = {}) {
           <div className="relative h-[30vh] md:h-[60vh] flex items-center justify-center px-4">
             <motion.div 
               className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-              style={{ y: contentY }}
+              style={lite ? undefined : { y: contentY }}
             >
               {/* Title */}
               <motion.div
@@ -319,19 +321,39 @@ export function Gallery({ onViewAllSpace }: GalleryProps = {}) {
 
 function InfiniteCarousel({ items }: { items: GalleryItem[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Only advance while the carousel is on screen.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin: '200px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   // Auto-advance every 4 seconds
   useEffect(() => {
+    if (!inView) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % items.length);
     }, 4000);
-    
+
     return () => clearInterval(interval);
-  }, [items.length]);
+  }, [items.length, inView]);
+
+  // Keep only the current slide and its neighbours in the DOM: every mounted
+  // slide is a decoded full-size photo, which is what made phones stutter.
+  const n = items.length;
+  const isNear = (index: number) => {
+    const d = Math.abs(index - currentIndex);
+    return d <= 1 || d === n - 1;
+  };
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px]">
-      {items.map((item, index) => (
+    <div ref={rootRef} className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px]">
+      {items.map((item, index) => isNear(index) && (
         <motion.div
           key={item.id}
           className="absolute inset-0 flex items-center justify-center"
@@ -349,6 +371,8 @@ function InfiniteCarousel({ items }: { items: GalleryItem[] }) {
             <img
               src={item.image}
               alt={`${item.type} tattoo by ${item.artist}`}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-contain"
             />
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">

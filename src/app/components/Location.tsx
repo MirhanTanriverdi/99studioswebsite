@@ -1,10 +1,12 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { useLiteMotion } from './useLiteMotion';
 
 export function Location() {
   const sectionRef = useRef(null);
   
   // Parallax effect for background
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -20,13 +22,13 @@ export function Location() {
       <div className="absolute inset-0 z-0">
         <motion.div 
           className="w-full h-full"
-          style={{ y: backgroundY }}
+          style={lite ? undefined : { y: backgroundY }}
         >
           <motion.img
             src="https://images.unsplash.com/photo-1635068247786-5de1ce4c0ff8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBzdHVkaW8lMjBpbnRlcmlvciUyMGRhcmt8ZW58MXx8fHwxNzY1MTk0OTgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
             alt="Tattoo studio interior"
             className="w-full h-full object-cover"
-            style={{ scale }}
+            style={lite ? undefined : { scale }}
           />
           <div className="absolute inset-0 bg-[#151515]/70 z-10" />
         </motion.div>
@@ -38,7 +40,7 @@ export function Location() {
         <div className="relative h-[30vh] md:h-[60vh] flex items-center justify-center px-4">
           <motion.div 
             className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-            style={{ y: contentY }}
+            style={lite ? undefined : { y: contentY }}
           >
             {/* Title */}
             <motion.div

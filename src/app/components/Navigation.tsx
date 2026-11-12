@@ -133,7 +133,7 @@ export function Navigation() {
                       }}
                       transition={{ 
                         duration: 1.2,
-                        repeat: Infinity,
+                        repeat: 5,
                         ease: 'easeInOut'
                       }}
                     />
@@ -147,7 +147,7 @@ export function Navigation() {
                       }}
                       transition={{ 
                         duration: 1.2,
-                        repeat: Infinity,
+                        repeat: 5,
                         ease: 'easeInOut',
                         delay: 0.15
                       }}
@@ -163,7 +163,7 @@ export function Navigation() {
                         }}
                         transition={{ 
                           duration: 1.5,
-                          repeat: Infinity,
+                          repeat: 5,
                           ease: 'easeInOut'
                         }}
                       />
@@ -176,7 +176,7 @@ export function Navigation() {
                         }}
                         transition={{ 
                           duration: 1.5,
-                          repeat: Infinity,
+                          repeat: 5,
                           ease: 'easeInOut'
                         }}
                       >
@@ -191,7 +191,7 @@ export function Navigation() {
                         }}
                         transition={{ 
                           duration: 1.5,
-                          repeat: Infinity,
+                          repeat: 5,
                           ease: 'easeInOut',
                           delay: 0.2
                         }}

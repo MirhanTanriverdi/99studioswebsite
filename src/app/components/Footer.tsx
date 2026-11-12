@@ -2,6 +2,7 @@ import { Instagram, Facebook, Mail } from 'lucide-react';
 import logo from '../../assets/logo.webp';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { useLiteMotion } from './useLiteMotion';
 
 interface FooterProps {
   onPrivacyClick?: () => void;
@@ -15,6 +16,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onI
   const footerRef = useRef(null);
   
   // Subtle parallax effect
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: footerRef,
     offset: ["start end", "end start"]
@@ -26,7 +28,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onI
     <footer id="contact" ref={footerRef} className="relative bg-[#151515] border-t border-[#151515] sm:py-16 lg:py-20 pt-[0px] pr-[0px] pb-[20px] pl-[0px]">
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8"
-        style={{ y }}
+        style={lite ? undefined : { y }}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
           {/* Logo */}

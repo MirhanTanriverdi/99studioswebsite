@@ -3,6 +3,7 @@ import { Instagram, Image } from 'lucide-react';
 import { Button } from './ui/button';
 import { ArtistPortraitPlaceholder } from './ArtistPortraitPlaceholder';
 import { useRef } from 'react';
+import { useLiteMotion } from './useLiteMotion';
 
 interface Artist {
   id: number;
@@ -38,7 +39,7 @@ const artists: Artist[] = [
     style: 'Fineline / Botanical / Illustrative',
     bio: 'Airy botanical pieces with soft shading that flow along the back and arms, alongside illustrative work with a graphic edge.',
     instagram: '@osvi.ink',
-    image: '/artists/osvi.webp',
+    image: '/artists/osvi-card.webp',
   },
   {
     id: 20,
@@ -46,7 +47,7 @@ const artists: Artist[] = [
     style: 'Blackwork / Ornamental / Neo-Tribal',
     bio: 'Bold blackwork and ornamental patterns made for large areas, from mandala sleeves to sweeping neo-tribal body pieces.',
     instagram: '@arturoalbuerne.ttt',
-    image: '/artists/arturo.webp',
+    image: '/artists/arturo-card.webp',
     isGuest: true,
   },
   {
@@ -55,7 +56,7 @@ const artists: Artist[] = [
     style: 'Fineline / Micro Realism / Minimalist',
     bio: 'Small, delicate tattoos, from soft micro-realistic animals to minimalist flowers and playful single-line motifs.',
     instagram: '@nomeolvides.ttt',
-    image: '/artists/javiera.webp',
+    image: '/artists/javiera-card.webp',
   },
   {
     id: 22,
@@ -63,7 +64,7 @@ const artists: Artist[] = [
     style: 'Blackwork / Dark Illustrative / Etching',
     bio: 'Heavy blackwork and dark illustrative pieces built on creatures, skulls and sci-fi horror, with etching-style shading.',
     instagram: '@rick.dark.ink',
-    image: '/artists/ricardo.webp',
+    image: '/artists/ricardo-card.webp',
     isGuest: true,
   },
   {
@@ -72,7 +73,7 @@ const artists: Artist[] = [
     style: 'Traditional / Blackwork / Minimalist',
     bio: 'Black traditional flash with bold lines, alongside clean minimalist linework. Guest from Warsaw.',
     instagram: '@arturtattoo.47',
-    image: '/artists/artur.webp',
+    image: '/artists/artur-card.webp',
     isGuest: true,
   },
   {
@@ -81,7 +82,7 @@ const artists: Artist[] = [
     style: 'Neo-Traditional / Illustrative / Ornamental',
     bio: 'Bold neo-traditional colour pieces, illustrative dotwork creatures and ornamental linework, from tarot-inspired cards to sea life.',
     instagram: '@gemini.tattoo.030',
-    image: '/artists/kim.webp',
+    image: '/artists/kim-card.webp',
     isGuest: true,
   },
   // New to the roster. Styles/bios are written from their portfolio photos;
@@ -92,7 +93,7 @@ const artists: Artist[] = [
     style: 'Ornamental / Blackwork / Traditional',
     bio: 'Ornamental linework and bold blackwork, from full-back mandala pieces to graphic hand designs and traditional flash.',
     instagram: '@elefanteconmolotov',
-    image: '/artists/barbara.webp',
+    image: '/artists/barbara-card.webp',
   },
   {
     id: 28,
@@ -100,7 +101,7 @@ const artists: Artist[] = [
     style: 'Fineline / Botanical / Abstract',
     bio: 'Fine-line florals with soft shading, mixed with abstract and surreal designs and embroidery-inspired ornamental pieces.',
     instagram: '@silxxskin',
-    image: '/artists/daryna.webp',
+    image: '/artists/daryna-card.webp',
   },
   {
     id: 29,
@@ -108,7 +109,7 @@ const artists: Artist[] = [
     style: 'Fineline / Micro Realism / Botanical',
     bio: 'Fine-line botanicals and micro-realistic pet portraits and animals, with delicate detail at small and medium scale.',
     instagram: '@dudaramoos',
-    image: '/artists/duda.webp',
+    image: '/artists/duda-card.webp',
   },
   {
     id: 30,
@@ -116,7 +117,7 @@ const artists: Artist[] = [
     style: 'Neo-Tribal / Abstract / Brushstroke',
     bio: 'Free-flowing neo-tribal and brushstroke-style shapes drawn to follow the curves of the body.',
     instagram: '@notasong.ink',
-    image: '/artists/james.webp',
+    image: '/artists/james-card.webp',
   },
   {
     id: 31,
@@ -124,7 +125,7 @@ const artists: Artist[] = [
     style: 'Fineline / Botanical / Illustrative',
     bio: 'Fine-line botanicals, insects and nature motifs with soft stipple shading.',
     instagram: '@nk.ninatattoo',
-    image: '/artists/nina.webp',
+    image: '/artists/nina-card.webp',
   },
 ];
 
@@ -138,6 +139,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
   const gridRef = useRef(null);
   
   // Parallax effect for background
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -149,8 +151,6 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
     offset: ["start end", "end start"]
   });
   
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
   
   // Grid parallax transforms
@@ -159,23 +159,10 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
 
   return (
     <section ref={sectionRef} id="artists" className="relative overflow-hidden bg-[#151515]">
-      {/* Background Image with Parallax */}
-      <div className="absolute inset-0 z-0">
-        <motion.div 
-          className="w-full h-full"
-          style={{ y: backgroundY }}
-        >
-          <motion.img
-            src="/our-space/tattoo-floor-tall.webp"
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="w-full h-full object-cover"
-            style={{ scale }}
-          />
-          <div className="absolute inset-0 bg-[#151515]/70 z-10" />
-        </motion.div>
-      </div>
+      {/* (A full-section parallax photo used to sit here. The title block and
+          the grid both paint their own opaque backgrounds, so it was never
+          visible — but on phones it was an ~11,000px-tall layer moved and
+          scaled on every scroll frame. Removed.) */}
 
       {/* Content Container */}
       <div className="relative z-20">
@@ -191,7 +178,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
         >
           <motion.div 
             className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-            style={{ y: contentY }}
+            style={lite ? undefined : { y: contentY }}
           >
             {/* Title */}
             <motion.div
@@ -236,7 +223,7 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
         {/* Artists Grid Section */}
         <div ref={gridRef} className="relative bg-[#151515] sm:py-20 lg:py-28 pt-[0px] pr-[0px] pb-[20px] pl-[0px] overflow-hidden p-[0px]">
           <motion.div 
-            style={{ y: gridY, opacity: gridOpacity }}
+            style={lite ? undefined : { y: gridY, opacity: gridOpacity }}
             className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]"
           >
             {/* All artists in one grid. Order follows the `artists` array —
@@ -282,7 +269,9 @@ function ArtistCard({
           {artist.image ? (
             <img
               src={artist.image}
-              alt={artist.name}
+              alt={`${artist.name} – tattoo artist at 99 Roots Studio`}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 md:group-hover:scale-110"
             />
           ) : (

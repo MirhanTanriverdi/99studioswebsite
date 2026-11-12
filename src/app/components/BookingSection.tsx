@@ -1,3 +1,4 @@
+import { useLiteMotion } from './useLiteMotion';
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -9,6 +10,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
   const sectionRef = useRef(null);
   
   // Parallax effect
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -27,7 +29,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center"
-          style={{ y, scale, opacity }}
+          style={lite ? undefined : { y, scale, opacity }}
         >
           {/* Heading */}
           <h2 className="font-helvetica text-gold mb-6 sm:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4 font-[Bebas_Neue]">

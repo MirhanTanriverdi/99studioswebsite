@@ -1,3 +1,4 @@
+import { useLiteMotion } from './useLiteMotion';
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -9,6 +10,7 @@ export function Shop({ onShopClick }: ShopProps) {
   const sectionRef = useRef(null);
   
   // Parallax effect for background image
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -27,13 +29,13 @@ export function Shop({ onShopClick }: ShopProps) {
       {/* Background Image with Parallax */}
       <motion.div 
         className="absolute inset-0 z-0"
-        style={{ y: backgroundY }}
+        style={lite ? undefined : { y: backgroundY }}
       >
         <motion.img
           src="https://images.unsplash.com/photo-1758788390320-16e1f280cf49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxza2luY2FyZSUyMGNyZWFtJTIwamFyJTIwZGFya3xlbnwxfHx8fDE3NjUxOTUyODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
           alt="99 Roots tattoo care cream"
           className="w-full h-full object-cover"
-          style={{ scale }}
+          style={lite ? undefined : { scale }}
         />
         <div className="absolute inset-0 bg-[#151515]/70 z-10" />
       </motion.div>
@@ -41,7 +43,7 @@ export function Shop({ onShopClick }: ShopProps) {
       {/* Content - Centered with Parallax */}
       <motion.div 
         className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-        style={{ y: yContent }}
+        style={lite ? undefined : { y: yContent }}
       >
         <div className="space-y-6 sm:space-y-8 backdrop-blur-sm bg-[#151515]/50 px-4 py-2">
           {/* Small Minimal Luxury Logo */}

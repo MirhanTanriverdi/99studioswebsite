@@ -1,3 +1,4 @@
+import { useLiteMotion } from './useLiteMotion';
 import { motion, useScroll, useTransform } from "motion/react";
 import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
@@ -14,6 +15,7 @@ export function Hero({ onAppointmentClick }: HeroProps) {
   const sectionRef = useRef(null);
   
   // Parallax effect for background image
+  const lite = useLiteMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"]
@@ -39,11 +41,11 @@ export function Hero({ onAppointmentClick }: HeroProps) {
       {/* Background Image with Parallax */}
       <motion.div 
         className="absolute inset-0 z-0"
-        style={{ y: backgroundY }}
+        style={lite ? undefined : { y: backgroundY }}
       >
         <motion.div
           className="w-full h-full"
-          style={{ scale }}
+          style={lite ? undefined : { scale }}
           role="img"
           aria-label="99 Roots Studio tattoo stations in Berlin Prenzlauer Berg"
         >
@@ -91,7 +93,7 @@ export function Hero({ onAppointmentClick }: HeroProps) {
       {/* Content */}
       <motion.div 
         className="relative z-20 text-center px-4 sm:px-6 lg:px-8 w-full pointer-events-none"
-        style={{ opacity }}
+        style={lite ? undefined : { opacity }}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}

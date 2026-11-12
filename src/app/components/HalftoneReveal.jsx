@@ -230,6 +230,7 @@ const HalftoneReveal = ({
   const rendererRef = useRef(null);
   const uniformsRef = useRef(null);
   const rafRef = useRef(null);
+  const kickRef = useRef(null);
   const followRef = useRef(follow);
   const mouseRef = useRef({ x: 0.5, y: 0.5, sx: 0.5, sy: 0.5, active: 0, target: 0 });
 
@@ -246,10 +247,17 @@ const HalftoneReveal = ({
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Phones: cap the backing store at 1.5x. The shader runs once per device
+    // pixel, so 2x vs 1.5x is ~1.8x the GPU work for no visible difference
+    // under a halftone/duotone effect. A full-screen triangle needs no MSAA.
+    const coarse =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(pointer: coarse)').matches;
     const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2),
       alpha: false,
-      antialias: true
+      antialias: false
     });
     rendererRef.current = renderer;
     const gl = renderer.gl;
@@ -290,40 +298,21 @@ const HalftoneReveal = ({
     const program = new Program(gl, { vertex, fragment, uniforms });
     const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
 
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = src;
-    img.onload = () => {
-      texture.image = img;
-      uniforms.uImageSize.value = [img.naturalWidth, img.naturalHeight];
-    };
-
-    const resize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
-      renderer.setSize(w, h);
-      uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height];
-    };
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
-
-    const onMove = e => {
-      const rect = container.getBoundingClientRect();
-      mouseRef.current.x = (e.clientX - rect.left) / rect.width;
-      mouseRef.current.y = 1 - (e.clientY - rect.top) / rect.height;
-      mouseRef.current.target = reduced ? 0 : 1;
-    };
-    const onLeave = () => {
-      mouseRef.current.target = 0;
-    };
-    container.addEventListener('pointermove', onMove, { passive: true });
-    container.addEventListener('pointerenter', onMove, { passive: true });
-    container.addEventListener('pointerleave', onLeave, { passive: true });
-
+    // Render on demand: the image is static, so frames are only needed while
+    // the pointer reveal is easing, after a resize, or when the texture lands.
+    // The loop stops itself once everything has settled, and never runs while
+    // the canvas is off-screen or the tab is hidden.
+    let visible = true;
     let prev = performance.now();
+    const settled = () => {
+      const m = mouseRef.current;
+      return (
+        Math.abs(m.target - m.active) < 0.001 &&
+        (m.active < 0.001 || (Math.abs(m.x - m.sx) < 0.0005 && Math.abs(m.y - m.sy) < 0.0005))
+      );
+    };
     const loop = now => {
-      rafRef.current = requestAnimationFrame(loop);
+      rafRef.current = null;
       const dt = Math.min(0.05, Math.max(0.001, (now - prev) / 1000));
       prev = now;
 
@@ -339,12 +328,71 @@ const HalftoneReveal = ({
       uniforms.uActivity.value = m.active;
 
       renderer.render({ scene: mesh });
+
+      if (visible && !document.hidden && !settled()) {
+        rafRef.current = requestAnimationFrame(loop);
+      }
     };
-    rafRef.current = requestAnimationFrame(loop);
+    const kick = () => {
+      if (rafRef.current || !visible || document.hidden) return;
+      prev = performance.now();
+      rafRef.current = requestAnimationFrame(loop);
+    };
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = src;
+    img.onload = () => {
+      texture.image = img;
+      uniforms.uImageSize.value = [img.naturalWidth, img.naturalHeight];
+      kick();
+    };
+
+    const resize = () => {
+      const w = container.clientWidth || 1;
+      const h = container.clientHeight || 1;
+      renderer.setSize(w, h);
+      uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height];
+      kick();
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(container);
+
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) kick();
+    });
+    io.observe(container);
+    const onVisibility = () => {
+      if (!document.hidden) kick();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    const onMove = e => {
+      const rect = container.getBoundingClientRect();
+      mouseRef.current.x = (e.clientX - rect.left) / rect.width;
+      mouseRef.current.y = 1 - (e.clientY - rect.top) / rect.height;
+      mouseRef.current.target = reduced ? 0 : 1;
+      kick();
+    };
+    const onLeave = () => {
+      mouseRef.current.target = 0;
+      kick();
+    };
+    container.addEventListener('pointermove', onMove, { passive: true });
+    container.addEventListener('pointerenter', onMove, { passive: true });
+    container.addEventListener('pointerleave', onLeave, { passive: true });
+
+    kickRef.current = kick;
+    kick();
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
       ro.disconnect();
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
       container.removeEventListener('pointermove', onMove);
       container.removeEventListener('pointerenter', onMove);
       container.removeEventListener('pointerleave', onLeave);
@@ -353,6 +401,7 @@ const HalftoneReveal = ({
       if (gl.canvas.parentNode) gl.canvas.parentNode.removeChild(gl.canvas);
       rendererRef.current = null;
       uniformsRef.current = null;
+      kickRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
@@ -377,6 +426,7 @@ const HalftoneReveal = ({
     u.uEdge.value = edge;
     u.uIdleReveal.value = idleReveal;
     u.uTrigger.value = TRIGGERS[trigger] ?? 1;
+    kickRef.current?.();
   }, [
     dotSize,
     dotDensity,
