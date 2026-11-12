@@ -1,5 +1,5 @@
 import { Instagram, Facebook, Mail } from 'lucide-react';
-import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
+import logo from '../../assets/logo.webp';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
@@ -7,9 +7,10 @@ interface FooterProps {
   onPrivacyClick?: () => void;
   onTermsClick?: () => void;
   onBookingPolicyClick?: () => void;
+  onImpressumClick?: () => void;
 }
 
-export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: FooterProps) {
+export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onImpressumClick }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef(null);
   
@@ -43,7 +44,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: F
           {/* Social Media Icons */}
           <div className="flex justify-center space-x-4 sm:space-x-6">
             <a
-              href="https://instagram.com/99rootsstudio"
+              href="https://www.instagram.com/99.roots/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
@@ -52,7 +53,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: F
               <Instagram className="text-gold group-hover:text-black" size={18} />
             </a>
             <a
-              href="https://facebook.com/99rootsstudio"
+              href="https://www.facebook.com/profile.php?id=61565613471293"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
@@ -61,7 +62,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: F
               <Facebook className="text-gold group-hover:text-black" size={18} />
             </a>
             <a
-              href="mailto:info@99rootsstudio.com"
+              href="mailto:info99roots@gmail.com"
               className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gold transition-all duration-300 group touch-manipulation"
               aria-label="Email"
             >
@@ -102,6 +103,13 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick }: F
             onClick={onBookingPolicyClick}
           >
             Booking Policy
+          </a>
+          <a
+            href="#"
+            className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
+            onClick={onImpressumClick}
+          >
+            Impressum
           </a>
         </div>
       </motion.div>

@@ -749,4 +749,4 @@ Sunday - Monday: Closed
 
 **Built with ❤️ for 99 Roots Studio**
 
-*Rooted in Art. Inked in Precision.*
+*Your body, our canvas.*

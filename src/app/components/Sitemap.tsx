@@ -3,37 +3,37 @@
 
 export const sitemapUrls = [
   {
-    loc: 'https://99rootsstudio.com/',
+    loc: 'https://99roots-studio.com/',
     priority: 1.0,
     changefreq: 'weekly',
     lastmod: new Date().toISOString().split('T')[0]
   },
   {
-    loc: 'https://99rootsstudio.com/appointment',
+    loc: 'https://99roots-studio.com/appointment',
     priority: 0.9,
     changefreq: 'monthly',
     lastmod: new Date().toISOString().split('T')[0]
   },
   {
-    loc: 'https://99rootsstudio.com/shop',
+    loc: 'https://99roots-studio.com/shop',
     priority: 0.7,
     changefreq: 'weekly',
     lastmod: new Date().toISOString().split('T')[0]
   },
   {
-    loc: 'https://99rootsstudio.com/artists',
+    loc: 'https://99roots-studio.com/artists',
     priority: 0.8,
     changefreq: 'monthly',
     lastmod: new Date().toISOString().split('T')[0]
   },
   {
-    loc: 'https://99rootsstudio.com/gallery',
+    loc: 'https://99roots-studio.com/gallery',
     priority: 0.7,
     changefreq: 'weekly',
     lastmod: new Date().toISOString().split('T')[0]
   },
   {
-    loc: 'https://99rootsstudio.com/aftercare',
+    loc: 'https://99roots-studio.com/aftercare',
     priority: 0.6,
     changefreq: 'monthly',
     lastmod: new Date().toISOString().split('T')[0]
@@ -59,7 +59,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://99rootsstudio.com/sitemap.xml
+Sitemap: https://99roots-studio.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

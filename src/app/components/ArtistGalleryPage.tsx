@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowLeft, Instagram, ChevronDown, X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
+import { ArtistPortraitPlaceholder } from './ArtistPortraitPlaceholder';
+import { artistWork } from '../data/artistWork';
+import logo from '../../assets/logo.webp';
 import { useState, useEffect, useRef } from 'react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 import ComingSoon from '../imports/ComingSoon-208-55';
@@ -16,6 +18,8 @@ interface ArtistGalleryPageProps {
 interface GalleryImage {
   id: number;
   url: string;
+  /** Square-cropped version for the grid; falls back to url when absent. */
+  thumb?: string;
   title: string;
 }
 
@@ -30,155 +34,187 @@ const artistGalleries: Record<number, {
 }> = {
   1: {
     name: 'MIKE',
-    style: 'Fineline / Geometric / Ornamental / Black & Grey / Abstract',
-    bio: 'Specializing in delicate fine-line work and minimalist designs with over 10 years of experience.',
-    instagram: '@elena.ink',
+    style: 'Fineline / Ornamental / Black & Grey',
+    bio: 'Flowing fine-line and ornamental pieces that follow the body, from delicate hip and spine work to detailed black & grey symbolism.',
+    instagram: '@mikeluxentattoo',
     photo: 'https://i.imgur.com/HPYSKTm.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Fine Line Floral' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Minimalist Design' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Line Work' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Fine Line Portrait' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Minimal' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Fine Line' },
+      { id: 1, url: '', title: 'Fine Line Floral' },
+      { id: 2, url: '', title: 'Minimalist Design' },
+      { id: 3, url: '', title: 'Delicate Line Work' },
+      { id: 4, url: '', title: 'Fine Line Portrait' },
+      { id: 5, url: '', title: 'Abstract Minimal' },
+      { id: 6, url: '', title: 'Botanical Fine Line' },
     ]
   },
   7: {
     name: 'JELENA',
-    style: 'Fineline / Black & Grey / Surrealism',
-    bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
-    instagram: '@sofia.geometric',
+    style: 'Black & Grey Realism / Fineline / Lettering',
+    bio: 'Soft black & grey realism with fine-line detail, from portraits and religious imagery to classic motifs paired with clean lettering.',
+    instagram: '@vais____ink',
     photo: 'https://i.imgur.com/65vqbxU.jpeg',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Mandala' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Sacred Geometry' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dotwork Pattern' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Symmetrical Design' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Dotwork' },
-      { id: 6, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Precision Geometry' },
+      { id: 1, url: '', title: 'Geometric Mandala' },
+      { id: 2, url: '', title: 'Sacred Geometry' },
+      { id: 3, url: '', title: 'Dotwork Pattern' },
+      { id: 4, url: '', title: 'Symmetrical Design' },
+      { id: 5, url: '', title: 'Ornamental Dotwork' },
+      { id: 6, url: '', title: 'Precision Geometry' },
     ]
   },
   8: {
     name: 'OSVI',
-    style: 'Blackwork / Illustrative / Abstract',
-    bio: 'Bringing bold blackwork and illustrative storytelling to every piece. A core voice at 99 Roots.',
-    instagram: '@osvi.tattoo',
-    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
+    style: 'Fineline / Botanical / Illustrative',
+    bio: 'Airy botanical pieces with soft shading that flow along the back and arms, alongside illustrative work with a graphic edge.',
+    instagram: '@osvi.ink',
+    photo: '/artists/osvi.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Composition' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Sleeve' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Form' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Back Piece' },
+      { id: 1, url: '', title: 'Blackwork Composition' },
+      { id: 2, url: '', title: 'Illustrative Sleeve' },
+      { id: 3, url: '', title: 'Abstract Form' },
+      { id: 4, url: '', title: 'Bold Back Piece' },
     ]
   },
   9: {
     name: 'JAVIERA',
-    style: 'Fineline / Botanical / Ornamental',
-    bio: 'Delicate botanical compositions and ornamental linework crafted with a distinctly feminine touch.',
-    instagram: '@javiera.tattoo',
-    photo: 'https://i.imgur.com/9VidIS1.jpeg',
+    style: 'Fineline / Micro Realism / Minimalist',
+    bio: 'Small, delicate tattoos, from soft micro-realistic animals to minimalist flowers and playful single-line motifs.',
+    instagram: '@nomeolvides.ttt',
+    photo: '/artists/javiera.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Botanical Fineline' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Ornamental Wrist' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Floral Composition' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Delicate Linework' },
+      { id: 1, url: '', title: 'Botanical Fineline' },
+      { id: 2, url: '', title: 'Ornamental Wrist' },
+      { id: 3, url: '', title: 'Floral Composition' },
+      { id: 4, url: '', title: 'Delicate Linework' },
     ]
   },
   20: {
     name: 'ARTURO',
-    style: 'Realism / Black & Grey / Portrait',
-    bio: 'Master of hyper-realistic portraits and cinematic black & grey compositions.',
-    instagram: '@arturo.tattoo',
-    photo: 'https://i.imgur.com/iRXiTpZ.jpeg',
+    style: 'Blackwork / Ornamental / Neo-Tribal',
+    bio: 'Bold blackwork and ornamental patterns made for large areas, from mandala sleeves to sweeping neo-tribal body pieces.',
+    instagram: '@arturoalbuerne.ttt',
+    photo: '/artists/arturo.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Hyper Realistic Portrait' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Black & Grey Study' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Cinematic Piece' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Portrait Sleeve' },
-    ]
-  },
-  21: {
-    name: 'STEVEN',
-    style: 'Neo-Traditional / Color / Bold',
-    bio: 'Bold neo-traditional designs with vibrant color palettes. Guest from Amsterdam.',
-    instagram: '@steven.tattoo',
-    photo: 'https://i.imgur.com/Xp1GwCW.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Neo-Trad Color' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Floral' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Traditional Rose' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Color Sleeve' },
+      { id: 1, url: '', title: 'Hyper Realistic Portrait' },
+      { id: 2, url: '', title: 'Black & Grey Study' },
+      { id: 3, url: '', title: 'Cinematic Piece' },
+      { id: 4, url: '', title: 'Portrait Sleeve' },
     ]
   },
   22: {
     name: 'RICARDO',
-    style: 'Japanese / Old School / Sleeve',
-    bio: 'Traditional Japanese tattooing rooted in irezumi with a contemporary European edge.',
-    instagram: '@ricardo.tattoo',
-    photo: 'https://i.imgur.com/tk2dwYn.jpeg',
+    style: 'Blackwork / Dark Illustrative / Etching',
+    bio: 'Heavy blackwork and dark illustrative pieces built on creatures, skulls and sci-fi horror, with etching-style shading.',
+    instagram: '@rick.dark.ink',
+    photo: '/artists/ricardo.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Japanese Sleeve' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Irezumi Dragon' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Old School Eagle' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Koi Back Piece' },
-    ]
-  },
-  23: {
-    name: 'NICK',
-    style: 'Abstract / Blackwork / Geometric',
-    bio: 'Experimental blackwork and abstract geometric forms. Residency guest from Copenhagen.',
-    instagram: '@nick.tattoo',
-    photo: 'https://i.imgur.com/BJAoQXB.jpeg',
-    images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Abstract Fill' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Geometric Sleeve' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Shoulder' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Experimental Form' },
+      { id: 1, url: '', title: 'Japanese Sleeve' },
+      { id: 2, url: '', title: 'Irezumi Dragon' },
+      { id: 3, url: '', title: 'Old School Eagle' },
+      { id: 4, url: '', title: 'Koi Back Piece' },
     ]
   },
   24: {
     name: 'ARTUR',
-    style: 'Old School / Blackwork / Illustrative',
-    bio: 'Old school boldness fused with blackwork precision. Guest from Warsaw.',
-    instagram: '@artur.tattoo',
-    photo: 'https://i.imgur.com/HPYSKTm.jpeg',
+    style: 'Traditional / Blackwork / Minimalist',
+    bio: 'Black traditional flash with bold lines, alongside clean minimalist linework. Guest from Warsaw.',
+    instagram: '@arturtattoo.47',
+    photo: '/artists/artur.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Old School Dagger' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Blackwork Chest' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Arm' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Bold Blackwork' },
+      { id: 1, url: '', title: 'Old School Dagger' },
+      { id: 2, url: '', title: 'Blackwork Chest' },
+      { id: 3, url: '', title: 'Illustrative Arm' },
+      { id: 4, url: '', title: 'Bold Blackwork' },
     ]
   },
   25: {
     name: 'KIM',
-    style: 'Fineline / Minimalist / Micro',
-    bio: 'Ultra-fine micro tattoos and minimalist compositions with an architectural sensibility.',
-    instagram: '@kim.tattoo',
-    photo: 'https://i.imgur.com/65vqbxU.jpeg',
+    style: 'Neo-Traditional / Illustrative / Ornamental',
+    bio: 'Bold neo-traditional colour pieces, illustrative dotwork creatures and ornamental linework, from tarot-inspired cards to sea life.',
+    instagram: '@gemini.tattoo.030',
+    photo: '/artists/kim.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Micro Fineline' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Minimalist Study' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Architectural Line' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Micro Detail' },
+      { id: 1, url: '', title: 'Micro Fineline' },
+      { id: 2, url: '', title: 'Minimalist Study' },
+      { id: 3, url: '', title: 'Architectural Line' },
+      { id: 4, url: '', title: 'Micro Detail' },
     ]
   },
-  26: {
-    name: 'MARIA',
-    style: 'Surrealism / Illustrative / Black & Grey',
-    bio: 'Dreamlike surrealist imagery and illustrative black & grey work. Guest from Madrid.',
-    instagram: '@maria.tattoo',
-    photo: 'https://i.imgur.com/9VidIS1.jpeg',
+  27: {
+    name: 'BARBARA',
+    style: 'Ornamental / Blackwork / Traditional',
+    bio: 'Ornamental linework and bold blackwork, from full-back mandala pieces to graphic hand designs and traditional flash.',
+    instagram: '@elefanteconmolotov',
+    photo: '/artists/barbara.webp',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Surreal Dream' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Illustrative Black' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Dream Portrait' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1722596592171-48dee0cdbcae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21pbmclMjBzb29uJTIwc2lnbiUyMGRhcmt8ZW58MXx8fHwxNzY1MTk1NTU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', title: 'Grey Wash Scene' },
+      { id: 1, url: '', title: '' },
+      { id: 2, url: '', title: '' },
+      { id: 3, url: '', title: '' },
+      { id: 4, url: '', title: '' },
     ]
-  }
+  },
+  28: {
+    name: 'DARYNA',
+    style: 'Fineline / Botanical / Abstract',
+    bio: 'Fine-line florals with soft shading, mixed with abstract and surreal designs and embroidery-inspired ornamental pieces.',
+    instagram: '@silxxskin',
+    photo: '/artists/daryna.webp',
+    images: [
+      { id: 1, url: '', title: '' },
+      { id: 2, url: '', title: '' },
+      { id: 3, url: '', title: '' },
+      { id: 4, url: '', title: '' },
+    ]
+  },
+  29: {
+    name: 'DUDA',
+    style: 'Fineline / Micro Realism / Botanical',
+    bio: 'Fine-line botanicals and micro-realistic pet portraits and animals, with delicate detail at small and medium scale.',
+    instagram: '@dudaramoos',
+    photo: '/artists/duda.webp',
+    images: [
+      { id: 1, url: '', title: '' },
+      { id: 2, url: '', title: '' },
+      { id: 3, url: '', title: '' },
+      { id: 4, url: '', title: '' },
+    ]
+  },
+  30: {
+    name: 'JAMES',
+    style: 'Neo-Tribal / Abstract / Brushstroke',
+    bio: 'Free-flowing neo-tribal and brushstroke-style shapes drawn to follow the curves of the body.',
+    instagram: '@notasong.ink',
+    photo: '/artists/james.webp',
+    images: [
+      { id: 1, url: '', title: '' },
+      { id: 2, url: '', title: '' },
+      { id: 3, url: '', title: '' },
+      { id: 4, url: '', title: '' },
+    ]
+  },
+  31: {
+    name: 'NINA',
+    style: 'Fineline / Botanical / Illustrative',
+    bio: 'Fine-line botanicals, insects and nature motifs with soft stipple shading.',
+    instagram: '@nk.ninatattoo',
+    photo: '/artists/nina.webp',
+    images: [
+      { id: 1, url: '', title: '' },
+      { id: 2, url: '', title: '' },
+      { id: 3, url: '', title: '' },
+      { id: 4, url: '', title: '' },
+    ]
+  },
 };
 
 export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingClick }: ArtistGalleryPageProps) {
-  const artist = artistGalleries[artistId];
+  const base = artistGalleries[artistId];
+  // Real work imported from the studio's Drive wins over the placeholder
+  // entries baked into artistGalleries above.
+  const imported = base ? artistWork[base.name.toLowerCase()] : undefined;
+  const artist = base && imported?.length
+    ? { ...base, images: imported.map((w, i) => ({ id: i + 1, url: w.url, thumb: w.thumb, title: '' })) }
+    : base;
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -271,7 +307,10 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImageIndex, artist]);
 
-  const selectedImage = selectedImageIndex !== null && artist ? artist.images[selectedImageIndex] : null;
+  // Guard on url: placeholder entries have none, and the lightbox must never
+  // open on one (it would render a broken <img> over the whole screen).
+  const candidate = selectedImageIndex !== null && artist ? artist.images[selectedImageIndex] : null;
+  const selectedImage = candidate?.url ? candidate : null;
 
   if (!artist) {
     return (
@@ -371,11 +410,17 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
             >
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56">
                 <div className="absolute inset-0 border-2 border-gold/40 rounded-full"></div>
-                <img
-                  src={artist.photo}
-                  alt={artist.name}
-                  className="w-full h-full object-cover object-center rounded-full border-4 border-black shadow-2xl"
-                />
+                {artist.photo ? (
+                  <img
+                    src={artist.photo}
+                    alt={artist.name}
+                    className="w-full h-full object-cover object-center rounded-full border-4 border-black shadow-2xl"
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-full border-4 border-black shadow-2xl overflow-hidden">
+                    <ArtistPortraitPlaceholder name={artist.name} variant="circle" />
+                  </div>
+                )}
 
               </div>
             </motion.div>
@@ -392,7 +437,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
             
             {/* Instagram Link */}
             <a
-              href={`https://instagram.com/${artist.instagram}`}
+              href={`https://www.instagram.com/${artist.instagram.replace(/^@/, '')}/`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-gold hover:text-gold/80 transition-colors"
@@ -425,18 +470,27 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="group relative aspect-square overflow-hidden bg-[#151515] border border-gold/20 flex items-center justify-center"
-                onClick={() => setSelectedImageIndex(index)}
+                className={`group relative aspect-square overflow-hidden bg-[#151515] border border-gold/20 flex items-center justify-center ${
+                  image.url ? 'cursor-zoom-in' : ''
+                }`}
+                onClick={image.url ? () => setSelectedImageIndex(index) : undefined}
               >
-                <img
-                  src="https://i.imgur.com/fAS07Xw.jpeg"
-                  alt="Coming Soon"
-                  className="w-full h-full object-cover"
-                />
-                {/* Zoom Icon Overlay */}
-                <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                  <ZoomIn className="text-gold opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" size={32} />
-                </div>
+                {image.url ? (
+                  <>
+                    <img
+                      src={image.thumb || image.url}
+                      alt={image.title || `${artist.name} tattoo work`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Zoom Icon Overlay */}
+                    <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                      <ZoomIn className="text-gold opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" size={32} />
+                    </div>
+                  </>
+                ) : (
+                  <ArtistPortraitPlaceholder name={artist.name} variant="tile" label="Coming Soon" />
+                )}
               </motion.div>
             ))}
           </div>
@@ -476,7 +530,10 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
             Full size view of {selectedImage?.title || 'tattoo artwork'}
           </DialogDescription>
           {selectedImage && (
-            <div className="relative">
+            /* w/h-full on mobile: the dialog is full-screen there, and without
+               it this wrapper collapses to the image height and the photo sits
+               pinned to the top. */
+            <div className="relative w-full h-full sm:w-auto sm:h-auto flex items-center justify-center">
               {/* Close Button */}
               <button
                 onClick={() => setSelectedImageIndex(null)}
@@ -497,19 +554,21 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
                 aria-label="Next image"
               />
 
-              {/* Full Size Image */}
-              <div className="relative w-screen h-screen sm:max-h-[90vh] sm:max-w-[90vw] sm:w-auto sm:h-auto flex items-center justify-center">
+              {/* Full Size Image. The image sizes itself and the dialog wraps
+                  it — w-full/h-full here would stretch it against an auto-sized
+                  parent and overflow the frame. */}
+              <div className="relative w-full h-full sm:w-auto sm:h-auto flex items-center justify-center">
                 <img
-                  src="https://i.imgur.com/fAS07Xw.jpeg"
-                  alt="Coming Soon"
-                  className="w-full h-full object-contain"
+                  src={selectedImage.url}
+                  alt={selectedImage.title || `${artist.name} tattoo work`}
+                  className="block w-auto h-auto max-w-[100vw] max-h-[100vh] sm:max-w-[88vw] sm:max-h-[86vh] object-contain"
                 />
               </div>
 
               {/* Image Title & Counter */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 sm:p-6 text-center">
                 <p className="font-inter text-gold text-sm sm:text-lg md:text-xl mb-1 sm:mb-2">
-                  {selectedImage.title}
+                  {selectedImage.title || `${artist.name} — tattoo work`}
                 </p>
                 <p className="font-inter text-white/60 text-xs sm:text-sm">
                   {(selectedImageIndex ?? 0) + 1} / {artist.images.length}

@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Instagram, Image } from 'lucide-react';
 import { Button } from './ui/button';
+import { ArtistPortraitPlaceholder } from './ArtistPortraitPlaceholder';
 import { useRef } from 'react';
 
 interface Artist {
@@ -9,6 +10,7 @@ interface Artist {
   style: string;
   bio: string;
   instagram: string;
+  /** Empty string = no portrait shot yet; the card falls back to a placeholder. */
   image: string;
   isGuest?: boolean;
 }
@@ -17,102 +19,115 @@ const artists: Artist[] = [
   {
     id: 1,
     name: 'MIKE',
-    style: 'Fineline / Geometric / Ornamental / Black & Grey / Abstract',
-    bio: 'Specializing in delicate fine-line work and minimalist designs with over 10 years of experience.',
-    instagram: '@mike.tattoo',
+    style: 'Fineline / Ornamental / Black & Grey',
+    bio: 'Flowing fine-line and ornamental pieces that follow the body, from delicate hip and spine work to detailed black & grey symbolism.',
+    instagram: '@mikeluxentattoo',
     image: 'https://i.imgur.com/HPYSKTm.jpeg',
   },
   {
     id: 7,
     name: 'JELENA',
-    style: 'Fineline / Black & Grey / Surrealism',
-    bio: 'Creating intricate geometric patterns and mandala designs with precision and symmetry.',
-    instagram: '@jelena.tattoo',
+    style: 'Black & Grey Realism / Fineline / Lettering',
+    bio: 'Soft black & grey realism with fine-line detail, from portraits and religious imagery to classic motifs paired with clean lettering.',
+    instagram: '@vais____ink',
     image: 'https://i.imgur.com/65vqbxU.jpeg',
   },
   {
     id: 8,
     name: 'OSVI',
-    style: 'Blackwork / Illustrative / Abstract',
-    bio: 'Bringing bold blackwork and illustrative storytelling to every piece. A core voice at 99 Roots.',
-    instagram: '@osvi.tattoo',
-    image: 'https://i.imgur.com/BJAoQXB.jpeg',
+    style: 'Fineline / Botanical / Illustrative',
+    bio: 'Airy botanical pieces with soft shading that flow along the back and arms, alongside illustrative work with a graphic edge.',
+    instagram: '@osvi.ink',
+    image: '/artists/osvi.webp',
+  },
+  {
+    id: 20,
+    name: 'ARTURO',
+    style: 'Blackwork / Ornamental / Neo-Tribal',
+    bio: 'Bold blackwork and ornamental patterns made for large areas, from mandala sleeves to sweeping neo-tribal body pieces.',
+    instagram: '@arturoalbuerne.ttt',
+    image: '/artists/arturo.webp',
+    isGuest: true,
   },
   {
     id: 9,
     name: 'JAVIERA',
-    style: 'Fineline / Botanical / Ornamental',
-    bio: 'Delicate botanical compositions and ornamental linework crafted with a distinctly feminine touch.',
-    instagram: '@javiera.tattoo',
-    image: 'https://i.imgur.com/9VidIS1.jpeg',
-  },
-];
-
-const guestArtists: Artist[] = [
-  {
-    id: 20,
-    name: 'ARTURO',
-    style: 'Realism / Black & Grey / Portrait',
-    bio: 'Master of hyper-realistic portraits and cinematic black & grey compositions.',
-    instagram: '@arturo.tattoo',
-    image: 'https://i.imgur.com/iRXiTpZ.jpeg',
-    isGuest: true,
-  },
-  {
-    id: 21,
-    name: 'STEVEN',
-    style: 'Neo-Traditional / Color / Bold',
-    bio: 'Bold neo-traditional designs with vibrant color palettes. Guest from Amsterdam.',
-    instagram: '@steven.tattoo',
-    image: 'https://i.imgur.com/Xp1GwCW.jpeg',
-    isGuest: true,
+    style: 'Fineline / Micro Realism / Minimalist',
+    bio: 'Small, delicate tattoos, from soft micro-realistic animals to minimalist flowers and playful single-line motifs.',
+    instagram: '@nomeolvides.ttt',
+    image: '/artists/javiera.webp',
   },
   {
     id: 22,
     name: 'RICARDO',
-    style: 'Japanese / Old School / Sleeve',
-    bio: 'Traditional Japanese tattooing rooted in irezumi with a contemporary European edge.',
-    instagram: '@ricardo.tattoo',
-    image: 'https://i.imgur.com/tk2dwYn.jpeg',
-    isGuest: true,
-  },
-  {
-    id: 23,
-    name: 'NICK',
-    style: 'Abstract / Blackwork / Geometric',
-    bio: 'Experimental blackwork and abstract geometric forms. Residency guest from Copenhagen.',
-    instagram: '@nick.tattoo',
-    image: 'https://i.imgur.com/BJAoQXB.jpeg',
+    style: 'Blackwork / Dark Illustrative / Etching',
+    bio: 'Heavy blackwork and dark illustrative pieces built on creatures, skulls and sci-fi horror, with etching-style shading.',
+    instagram: '@rick.dark.ink',
+    image: '/artists/ricardo.webp',
     isGuest: true,
   },
   {
     id: 24,
     name: 'ARTUR',
-    style: 'Old School / Blackwork / Illustrative',
-    bio: 'Old school boldness fused with blackwork precision. Guest from Warsaw.',
-    instagram: '@artur.tattoo',
-    image: 'https://i.imgur.com/HPYSKTm.jpeg',
+    style: 'Traditional / Blackwork / Minimalist',
+    bio: 'Black traditional flash with bold lines, alongside clean minimalist linework. Guest from Warsaw.',
+    instagram: '@arturtattoo.47',
+    image: '/artists/artur.webp',
     isGuest: true,
   },
   {
     id: 25,
     name: 'KIM',
-    style: 'Fineline / Minimalist / Micro',
-    bio: 'Ultra-fine micro tattoos and minimalist compositions with an architectural sensibility.',
-    instagram: '@kim.tattoo',
-    image: 'https://i.imgur.com/65vqbxU.jpeg',
+    style: 'Neo-Traditional / Illustrative / Ornamental',
+    bio: 'Bold neo-traditional colour pieces, illustrative dotwork creatures and ornamental linework, from tarot-inspired cards to sea life.',
+    instagram: '@gemini.tattoo.030',
+    image: '/artists/kim.webp',
     isGuest: true,
+  },
+  // New to the roster. Styles/bios are written from their portfolio photos;
+  // Instagram handles are the artists' real accounts.
+  {
+    id: 27,
+    name: 'BARBARA',
+    style: 'Ornamental / Blackwork / Traditional',
+    bio: 'Ornamental linework and bold blackwork, from full-back mandala pieces to graphic hand designs and traditional flash.',
+    instagram: '@elefanteconmolotov',
+    image: '/artists/barbara.webp',
   },
   {
-    id: 26,
-    name: 'MARIA',
-    style: 'Surrealism / Illustrative / Black & Grey',
-    bio: 'Dreamlike surrealist imagery and illustrative black & grey work. Guest from Madrid.',
-    instagram: '@maria.tattoo',
-    image: 'https://i.imgur.com/9VidIS1.jpeg',
-    isGuest: true,
+    id: 28,
+    name: 'DARYNA',
+    style: 'Fineline / Botanical / Abstract',
+    bio: 'Fine-line florals with soft shading, mixed with abstract and surreal designs and embroidery-inspired ornamental pieces.',
+    instagram: '@silxxskin',
+    image: '/artists/daryna.webp',
+  },
+  {
+    id: 29,
+    name: 'DUDA',
+    style: 'Fineline / Micro Realism / Botanical',
+    bio: 'Fine-line botanicals and micro-realistic pet portraits and animals, with delicate detail at small and medium scale.',
+    instagram: '@dudaramoos',
+    image: '/artists/duda.webp',
+  },
+  {
+    id: 30,
+    name: 'JAMES',
+    style: 'Neo-Tribal / Abstract / Brushstroke',
+    bio: 'Free-flowing neo-tribal and brushstroke-style shapes drawn to follow the curves of the body.',
+    instagram: '@notasong.ink',
+    image: '/artists/james.webp',
+  },
+  {
+    id: 31,
+    name: 'NINA',
+    style: 'Fineline / Botanical / Illustrative',
+    bio: 'Fine-line botanicals, insects and nature motifs with soft stipple shading.',
+    instagram: '@nk.ninatattoo',
+    image: '/artists/nina.webp',
   },
 ];
+
 
 interface ArtistsProps {
   onArtistGalleryClick?: (artistId: number) => void;
@@ -151,8 +166,10 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
           style={{ y: backgroundY }}
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1753259789341-808371092e19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBhcnRpc3QlMjBzdHVkaW98ZW58MXx8fHwxNzY0NzU5MjUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Tattoo studio background"
+            src="/our-space/tattoo-floor-tall.webp"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
             className="w-full h-full object-cover"
             style={{ scale }}
           />
@@ -162,8 +179,16 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
 
       {/* Content Container */}
       <div className="relative z-20">
-        {/* Title Section */}
-        <div className="relative h-[50vh] md:h-[60vh] flex items-center justify-center px-4 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'linear-gradient(rgba(21, 21, 21, 0.4), rgba(21, 21, 21, 0.4)), url(https://images.unsplash.com/photo-1616879564267-a336232e3a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBtYWNoaW5lJTIwZGFya3xlbnwxfHx8fDE3NjQ3Njc0MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)' }}>
+        {/* Title Section — studio floor, darkened hard. The source has blown
+            highlights (lamps, white walls) and the heading is gold, so a light
+            wash drops it below AA. */}
+        <div
+          className="relative h-[50vh] md:h-[60vh] flex items-center justify-center px-4 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(21, 21, 21, 0.72), rgba(21, 21, 21, 0.72)), url(/our-space/tattoo-floor-stations.webp)',
+          }}
+        >
           <motion.div 
             className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
             style={{ y: contentY }}
@@ -214,7 +239,8 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
             style={{ y: gridY, opacity: gridOpacity }}
             className="container mx-auto px-4 py-8 sm:px-8 sm:py-16 lg:px-[87px] lg:py-[100px]"
           >
-            {/* Resident Artists */}
+            {/* All artists in one grid. Order follows the `artists` array —
+                move someone up that list to move them up the page. */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 sm:px-8 md:px-12 lg:px-[110px] p-[0px]">
               {artists.map((artist, index) => (
                 <ArtistCard
@@ -224,47 +250,6 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
                   onGalleryClick={onArtistGalleryClick}
                 />
               ))}
-            </div>
-
-            {/* Guest Artists Sub-section */}
-            <div className="sm:px-8 md:px-12 lg:px-[110px] mt-16 sm:mt-20 lg:mt-24">
-              {/* Sub-header */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="mb-10 sm:mb-14"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="h-px flex-1 bg-gold/20" />
-                  <div className="w-1.5 h-1.5 rotate-45 bg-gold/50" />
-                  <div className="h-px flex-1 bg-gold/20" />
-                </div>
-                <h3 className="font-[Bebas_Neue] text-white/90 text-3xl sm:text-4xl md:text-5xl tracking-widest text-center">
-                  Guest Artists
-                </h3>
-                <p className="text-center text-white/40 text-xs sm:text-sm tracking-widest uppercase font-[Space_Mono] mt-2">
-                  Rotating residencies — follow us for announcements
-                </p>
-                <div className="flex items-center gap-4 mt-3">
-                  <div className="h-px flex-1 bg-gold/20" />
-                  <div className="w-1.5 h-1.5 rotate-45 bg-gold/50" />
-                  <div className="h-px flex-1 bg-gold/20" />
-                </div>
-              </motion.div>
-
-              {/* Guest Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                {guestArtists.map((artist, index) => (
-                  <ArtistCard
-                    key={artist.id}
-                    artist={artist}
-                    index={index}
-                    onGalleryClick={onArtistGalleryClick}
-                  />
-                ))}
-              </div>
             </div>
           </motion.div>
         </div>
@@ -294,15 +279,14 @@ function ArtistCard({
       <div className="relative overflow-hidden border border-[#151515] bg-[#151515] transition-all duration-300">
         {/* Artist Image */}
         <div className="aspect-[3/4] overflow-hidden relative">
-          <img
-            src={artist.image}
-            alt={artist.name}
-            className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 md:group-hover:scale-110"
-          />
-          {artist.isGuest && (
-            <div className="absolute top-3 left-3 px-3 py-1 border border-gold/70 text-gold font-[Bebas_Neue] text-[13px] tracking-widest uppercase bg-[#151515]/80 backdrop-blur-sm">
-              Guest Artist
-            </div>
+          {artist.image ? (
+            <img
+              src={artist.image}
+              alt={artist.name}
+              className="w-full h-full object-cover object-[center_10%] transition-transform duration-700 md:group-hover:scale-110"
+            />
+          ) : (
+            <ArtistPortraitPlaceholder name={artist.name} />
           )}
         </div>
 
@@ -318,15 +302,33 @@ function ArtistCard({
           >
             View Gallery
           </Button>
-          <p className="text-gold text-sm sm:text-base mb-2 font-[Bebas_Neue] text-[20px]">
-            {artist.style}
-          </p>
-          <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
-            {artist.bio}
-          </p>
-          <p className="font-inter text-[#FF9D56] text-xs sm:text-sm font-[Bebas_Neue]">
-            {artist.instagram}
-          </p>
+          {/* Hidden when empty — a new artist with no copy yet should show a
+              clean card, not blank rows. flex-grow moves to the spacer so the
+              cards in a row still line up. */}
+          {artist.style && (
+            <p className="text-gold text-sm sm:text-base mb-2 font-[Bebas_Neue] text-[20px]">
+              {artist.style}
+            </p>
+          )}
+          {artist.bio ? (
+            <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
+              {artist.bio}
+            </p>
+          ) : (
+            <div className="flex-grow" />
+          )}
+          {artist.instagram && (
+            <p className="font-inter text-[#FF9D56] text-xs sm:text-sm font-[Bebas_Neue]">
+              <a
+                href={`https://www.instagram.com/${artist.instagram.replace(/^@/, '')}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold transition-colors"
+              >
+                {artist.instagram}
+              </a>
+            </p>
+          )}
         </div>
       </div>
     </motion.div>

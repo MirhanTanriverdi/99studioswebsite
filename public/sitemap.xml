@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The site is a single-page app: every view lives at "/" today.
+     Add a <url> here for each new page once pages get their own URLs. -->
+<urlset xmlns="http://www.w3.org/2000/sitemaps/0.9">
+  <url>
+    <loc>https://99roots-studio.com/</loc>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+</urlset>

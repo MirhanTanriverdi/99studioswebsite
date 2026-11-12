@@ -17,8 +17,10 @@ import { Toaster } from './components/ui/sonner';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { BookingPolicy } from './components/BookingPolicy';
+import { OurSpacePage } from './components/OurSpacePage';
+import { Impressum } from './components/Impressum';
 
-type PageType = 'home' | 'appointment' | 'shop' | 'artist-gallery' | 'coming-soon' | 'privacy-policy' | 'terms-of-service' | 'booking-policy';
+type PageType = 'home' | 'appointment' | 'shop' | 'artist-gallery' | 'coming-soon' | 'privacy-policy' | 'terms-of-service' | 'booking-policy' | 'our-space' | 'impressum';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -65,6 +67,34 @@ export default function App() {
     setCurrentPage('booking-policy');
     window.scrollTo(0, 0);
   };
+
+  const navigateToOurSpace = () => {
+    setCurrentPage('our-space');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToImpressum = () => {
+    setCurrentPage('impressum');
+    window.scrollTo(0, 0);
+  };
+
+  if (currentPage === 'impressum') {
+    return (
+      <>
+        <Impressum onBack={navigateToHome} />
+        <Toaster />
+      </>
+    );
+  }
+
+  if (currentPage === 'our-space') {
+    return (
+      <>
+        <OurSpacePage onBack={navigateToHome} onBookingClick={navigateToAppointment} />
+        <Toaster />
+      </>
+    );
+  }
 
   if (currentPage === 'appointment') {
     return (
@@ -142,7 +172,7 @@ export default function App() {
         <BookingSection onBookingClick={navigateToAppointment} />
         <Artists onArtistGalleryClick={navigateToArtistGallery} />
         <Shop onShopClick={navigateToComingSoon} />
-        <Gallery />
+        <Gallery onViewAllSpace={navigateToOurSpace} />
         <Location />
         <TattooCare />
       </main>
@@ -150,6 +180,7 @@ export default function App() {
         onPrivacyClick={navigateToPrivacyPolicy}
         onTermsClick={navigateToTermsOfService}
         onBookingPolicyClick={navigateToBookingPolicy}
+        onImpressumClick={navigateToImpressum}
       />
       <CookieConsent />
       <Toaster />

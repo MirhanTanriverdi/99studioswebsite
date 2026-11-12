@@ -5,7 +5,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { ArrowLeft, ArrowRight, Instagram, Mail, MessageCircle, FileText, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Instagram, MessageCircle, FileText, Check } from 'lucide-react';
 import { toast } from 'sonner@2.0.3';
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 
@@ -549,35 +549,9 @@ export function AppointmentPage({ onBack }: AppointmentPageProps) {
                   </div>
                 </motion.button>
 
-                {/* Email */}
-                <motion.a
-                  href="mailto:info@99rootsstudio.com"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="group relative overflow-hidden border-2 border-[#151515] p-10 md:hover:border-gold bg-gradient-to-br from-[#1a1a1a] to-[#151515] md:hover:from-gold/10 md:hover:to-gold/5 shadow-lg md:hover:shadow-gold/20 md:hover:shadow-2xl cursor-pointer"
-                >
-                  <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-gold/20 md:group-hover:border-gold/40 transition-colors duration-300"></div>
-                  <div className="flex flex-col items-center text-center space-y-5 relative z-10">
-                    <motion.div className="relative" whileHover={{ rotate: 6 }} transition={{ duration: 0.3 }}>
-                      <div className="absolute inset-0 bg-gold/20 blur-xl md:group-hover:bg-gold/30 transition-all duration-300"></div>
-                      <Mail className="w-16 h-16 text-gold relative" />
-                    </motion.div>
-                    <h3 className="font-[Bebas_Neue] text-2xl text-white md:group-hover:text-gold transition-colors duration-300">{t.emailCardTitle}</h3>
-                    <p className="font-inter text-white/70 text-sm leading-relaxed">{t.emailCardDesc}</p>
-                    <div className="pt-2 flex items-center gap-2 text-gold/60 md:group-hover:text-gold text-xs uppercase tracking-wider">
-                      <span className="text-[#FF9D56]">{t.emailCardCta}</span>
-                      <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
-                    </div>
-                  </div>
-                </motion.a>
-
                 {/* WhatsApp */}
                 <motion.a
-                  href="https://wa.me/491234567890"
+                  href="https://wa.me/4915560859953"
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}

@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import videoPoster from 'figma:asset/e8cf849b09894e66bafb0d6913381c96d0c13047.png';
 
 interface GalleryItem {
   id: number;
@@ -9,52 +8,28 @@ interface GalleryItem {
   type: string;
 }
 
+// One piece per resident/guest artist, taken from their portfolio in /public/work.
 const galleryItems: GalleryItem[] = [
-  {
-    id: 1,
-    image: 'https://i.imgur.com/BocAObI.jpeg',
-    artist: 'Elena Martinez',
-    type: 'Fine Line',
-  },
-  {
-    id: 2,
-    image: 'https://i.imgur.com/aFrHC6C.jpeg',
-    artist: 'Marcus Weber',
-    type: 'Realism',
-  },
-  {
-    id: 3,
-    image: 'https://i.imgur.com/twwWnq9.jpeg',
-    artist: 'Yuki Tanaka',
-    type: 'Traditional',
-  },
-  {
-    id: 4,
-    image: 'https://i.imgur.com/UHOKXHs.jpeg',
-    artist: 'Sofia Andersson',
-    type: 'Geometric',
-  },
-  {
-    id: 5,
-    image: 'https://i.imgur.com/oicdqkr.jpeg',
-    artist: 'Marcus Weber',
-    type: 'Portrait',
-  },
-  {
-    id: 6,
-    image: 'https://i.imgur.com/dfKcibG.jpeg',
-    artist: 'Elena Martinez',
-    type: 'Minimalist',
-  },
-  {
-    id: 7,
-    image: 'https://i.imgur.com/bcGRB0N.jpeg',
-    artist: 'Yuki Tanaka',
-    type: 'Japanese',
-  },
+  { id: 1, image: '/work/mike/02.webp', artist: 'Mike', type: 'Fineline' },
+  { id: 2, image: '/work/jelena/05.webp', artist: 'Jelena', type: 'Black & Grey Realism' },
+  { id: 3, image: '/work/arturo/05.webp', artist: 'Arturo', type: 'Ornamental' },
+  { id: 4, image: '/work/osvi/02.webp', artist: 'Osvi', type: 'Botanical' },
+  { id: 5, image: '/work/ricardo/03.webp', artist: 'Ricardo', type: 'Dark Illustrative' },
+  { id: 6, image: '/work/kim/04.webp', artist: 'Kim', type: 'Neo-Traditional' },
+  { id: 7, image: '/work/duda/05.webp', artist: 'Duda', type: 'Micro Realism' },
+  { id: 8, image: '/work/barbara/01.webp', artist: 'Barbara', type: 'Ornamental' },
+  { id: 9, image: '/work/james/01.webp', artist: 'James', type: 'Neo-Tribal' },
+  { id: 10, image: '/work/javiera/02.webp', artist: 'Javiera', type: 'Micro Realism' },
+  { id: 11, image: '/work/artur/02.webp', artist: 'Artur', type: 'Traditional' },
+  { id: 12, image: '/work/daryna/06.webp', artist: 'Daryna', type: 'Abstract' },
+  { id: 13, image: '/work/nina/02.webp', artist: 'Nina', type: 'Fineline' },
 ];
 
-export function Gallery() {
+interface GalleryProps {
+  onViewAllSpace?: () => void;
+}
+
+export function Gallery({ onViewAllSpace }: GalleryProps = {}) {
   const sectionRef = useRef(null);
   
   // Parallax effect for background
@@ -105,12 +80,13 @@ export function Gallery() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="col-span-2 md:col-span-2 overflow-hidden border border-gold/20 group"
+                className="col-span-2 md:col-span-2 self-start overflow-hidden border border-gold/20 group"
               >
                 <div className="aspect-[4/3] md:aspect-[16/9] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
-                    alt="99 Roots Studio space"
+                    src="/our-space/tattoo-floor-wide-grid.webp"
+                    alt="The main tattoo floor at 99 Roots Studio, stations lined up under hexagon lighting"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -126,8 +102,9 @@ export function Gallery() {
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
-                    alt="Studio detail"
+                    src="/our-space/lounge-neon-sign-grid.webp"
+                    alt="The 99 Roots neon sign above the lounge sofa"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -143,8 +120,9 @@ export function Gallery() {
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1567721913486-6585f069b3ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
-                    alt="Studio atmosphere"
+                    src="/our-space/lounge-seating-grid.webp"
+                    alt="Lounge seating with bouclé armchairs and patterned artwork"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -160,8 +138,9 @@ export function Gallery() {
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1562259952-6dba12c2a15a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
-                    alt="Tattoo equipment"
+                    src="/our-space/tattoo-floor-tall-grid.webp"
+                    alt="The tattoo floor looking toward the hexagon light array"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -177,8 +156,9 @@ export function Gallery() {
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1621784564114-6eea05b89863?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600"
-                    alt="Studio workspace"
+                    src="/our-space/lounge-corridor-grid.webp"
+                    alt="The lounge looking down toward the neon sign"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -194,45 +174,11 @@ export function Gallery() {
               >
                 <div className="aspect-[4/3] sm:aspect-[16/7] md:aspect-[21/9] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1616879564267-a336232e3a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400"
-                    alt="99 Roots Studio full view"
+                    src="/our-space/tattoo-floor-stations-grid.webp"
+                    alt="Tattoo stations with adjustable beds, mirrors, lamps and equipment carts"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                </div>
-              </motion.div>
-
-              {/* Video Section — full width */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="col-span-2 md:col-span-3 border border-gold/20 overflow-hidden"
-              >
-                <div className="relative aspect-[16/9] bg-black group">
-                  {/* Replace src with your video URL */}
-                  <video
-                    className="w-full h-full object-cover"
-                    controls
-                    playsInline
-                    poster="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400"
-                  >
-                    {/* <source src="YOUR_VIDEO_URL.mp4" type="video/mp4" /> */}
-                  </video>
-                  {/* Play overlay — shown when no src is set */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#151515]/60 pointer-events-none">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-gold flex items-center justify-center mb-3">
-                      <svg className="w-6 h-6 text-gold ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <p className="font-[Bebas_Neue] text-gold tracking-widest text-sm sm:text-base uppercase">
-                      Behind the Ink
-                    </p>
-                    <p className="font-inter text-white/40 text-xs tracking-widest uppercase mt-1">
-                      Studio sessions &amp; process videos
-                    </p>
-                  </div>
                 </div>
               </motion.div>
 
@@ -247,6 +193,23 @@ export function Gallery() {
             >
               Experience the creative atmosphere and premium environment where art comes to life
             </motion.p>
+
+            {onViewAllSpace && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.45 }}
+                className="flex justify-center mt-8 sm:mt-10"
+              >
+                <button
+                  onClick={onViewAllSpace}
+                  className="font-[Bebas_Neue] text-[20px] sm:text-[22px] tracking-wider text-gold border border-gold/40 hover:border-gold hover:bg-gold/10 transition-all duration-300 px-8 py-3 min-h-[48px] touch-manipulation"
+                >
+                  See the whole studio
+                </button>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

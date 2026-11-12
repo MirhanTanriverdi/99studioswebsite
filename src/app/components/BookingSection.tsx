@@ -36,8 +36,8 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
 
           {/* Description */}
           <p className="font-inter text-white/80 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4 text-center">
-            Ready to bring your vision to life? Our artists specialize in custom designs, fine-line work, and realism. 
-            Schedule a consultation to discuss your next tattoo.
+            Come with an idea. Leave with a plan.
+            Consultations are free, and our artists cover every style.
           </p>
 
           {/* CTA Button */}
@@ -121,11 +121,11 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               </div>
               <h3 className="font-[Bebas_Neue] text-gold text-lg sm:text-xl mb-3">Contact Us</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
-                <a href="mailto:info@99rootsstudio.com" className="hover:text-gold transition-colors">
-                  info@99rootsstudio.com
+                <a href="mailto:info99roots@gmail.com" className="hover:text-gold transition-colors">
+                  info99roots@gmail.com
                 </a><br />
-                <a href="tel:+493012345678" className="hover:text-gold transition-colors">
-                  +49 30 1234 5678
+                <a href="tel:+4915560859953" className="hover:text-gold transition-colors">
+                  +49 15560 859953
                 </a>
               </p>
             </motion.div>

@@ -1,4 +1,4 @@
-import img99Logo1 from "figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png";
+import img99Logo1 from "../../assets/logo.webp";
 
 function InstagramPost() {
   return (

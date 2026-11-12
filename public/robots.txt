@@ -1,0 +1,7 @@
+# All search engines and AI search crawlers (Googlebot, Bingbot,
+# OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot, ...)
+# may crawl the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://99roots-studio.com/sitemap.xml

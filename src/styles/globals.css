@@ -258,12 +258,14 @@ body {
   src: url('/fonts/bebas-neue-regular.woff2') format('woff2');
 }
 
+/* Bebas Neue ships only a 400 weight upstream. Mapping 700 to the same file
+   keeps bold text in real Bebas instead of a synthetic faux-bold. */
 @font-face {
   font-family: 'Bebas Neue';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/bebas-neue-bold.woff2') format('woff2');
+  src: url('/fonts/bebas-neue-regular.woff2') format('woff2');
 }
 
 :root {

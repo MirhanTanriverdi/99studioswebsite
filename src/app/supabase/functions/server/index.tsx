@@ -5,6 +5,79 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import * as kv from "./kv_store.tsx";
 const app = new Hono();
 
+// ── Booking notification email (sent through Resend: https://resend.com) ──
+// Secrets to set in Supabase → Edge Functions → Secrets:
+//   RESEND_API_KEY  (required — without it no email is sent, the lead is still saved)
+//   NOTIFY_EMAIL    (optional, defaults to the studio inbox below)
+//   RESEND_FROM     (optional; the default sender works without verifying a
+//                    domain, but only delivers to the Resend account's own email)
+const DEFAULT_NOTIFY_EMAIL = "info99roots@gmail.com";
+const DEFAULT_FROM = "99 Roots Booking <onboarding@resend.dev>";
+
+const escapeHtml = (value: unknown) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+async function sendBookingEmail(lead: Record<string, unknown>) {
+  const apiKey = Deno.env.get("RESEND_API_KEY");
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY is not set; skipping booking notification email");
+    return;
+  }
+
+  const fields: Array<[string, unknown]> = [
+    ["Name", `${lead.first_name ?? ""} ${lead.last_name ?? ""}`.trim()],
+    ["Email", lead.email],
+    ["Phone", lead.phone],
+    ["City", lead.city],
+    ["District", lead.district],
+    ["Placement", lead.placement],
+    ["Size", lead.size],
+    ["Timeframe", lead.timeframe],
+    ["Language", lead.language],
+    ["Description", lead.description],
+  ];
+  const rows = fields
+    .filter(([, v]) => v !== null && v !== undefined && String(v).trim() !== "")
+    .map(
+      ([label, v]) =>
+        `<tr><td style="padding:6px 12px 6px 0;color:#888;vertical-align:top">${label}</td>` +
+        `<td style="padding:6px 0;white-space:pre-wrap">${escapeHtml(v)}</td></tr>`,
+    )
+    .join("");
+  const text = fields
+    .filter(([, v]) => v !== null && v !== undefined && String(v).trim() !== "")
+    .map(([label, v]) => `${label}: ${v}`)
+    .join("\n");
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: Deno.env.get("RESEND_FROM") || DEFAULT_FROM,
+      to: [Deno.env.get("NOTIFY_EMAIL") || DEFAULT_NOTIFY_EMAIL],
+      // Hitting "Reply" in the inbox answers the customer directly.
+      reply_to: String(lead.email ?? "") || undefined,
+      subject: `New booking request: ${lead.first_name ?? ""} ${lead.last_name ?? ""} (${lead.placement ?? "tattoo"})`.trim(),
+      html:
+        `<h2 style="font-family:sans-serif">New booking request – 99 Roots Studio</h2>` +
+        `<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">${rows}</table>`,
+      text: `New booking request – 99 Roots Studio\n\n${text}`,
+    }),
+  });
+
+  if (!res.ok) {
+    console.error("Resend error:", res.status, await res.text());
+  }
+}
+
 // Enable logger
 app.use('*', logger(console.log));
 
@@ -88,7 +161,21 @@ app.post("/make-server-3a4192f3/appointments", async (c) => {
     }
 
     console.log('Appointment saved successfully:', data);
-    return c.json({ 
+
+    // The lead is already saved, so an email failure must not fail the request.
+    try {
+      await sendBookingEmail({
+        first_name, last_name, phone, email, city,
+        district: body.district || null,
+        placement, size, timeframe,
+        language: language || 'en',
+        description: description || null,
+      });
+    } catch (mailError) {
+      console.error('Booking notification email failed:', mailError);
+    }
+
+    return c.json({
       success: true, 
       message: 'Appointment request submitted successfully',
       data 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import logo from 'figma:asset/8d811ca05c847b26d58e972726d1fedb6e42a47d.png';
+import logo from '../../assets/logo.webp';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -91,7 +91,7 @@ export function Navigation() {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px] text-[20px]"
+                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px] text-[20px] [text-shadow:0_1px_3px_rgba(0,0,0,0.85)]"
                 >
                   {item.label}
                 </button>
@@ -225,7 +225,7 @@ export function Navigation() {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px]"
+                  className="font-inter text-white hover:text-gold transition-colors duration-300 font-[Bebas_Neue] text-[24px] [text-shadow:0_1px_3px_rgba(0,0,0,0.85)]"
                 >
                   {item.label}
                 </button>

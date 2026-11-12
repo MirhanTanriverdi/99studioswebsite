@@ -143,10 +143,11 @@ export function PrivacyPolicy({ onBack }: PrivacyPolicyProps) {
               </p>
               <div className="mt-4 p-6 bg-[#151515] border border-gold/20 rounded-lg">
                 <p className="text-white"><strong>99 Roots Studio</strong></p>
+                <p className="text-white/80">Data controller: Mike Luxen</p>
                 <p className="text-white/80">Prenzlauer Allee 216</p>
                 <p className="text-white/80">10405 Berlin, Germany</p>
-                <p className="text-white/80 mt-2">Email: privacy@99rootsstudio.com</p>
-                <p className="text-white/80">Phone: +49 (0) 30 1234 5678</p>
+                <p className="text-white/80 mt-2">Email: info99roots@gmail.com</p>
+                <p className="text-white/80">Phone: +49 15560 859953</p>
               </div>
             </section>
           </div>

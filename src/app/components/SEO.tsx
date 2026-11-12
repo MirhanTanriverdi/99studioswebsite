@@ -16,7 +16,7 @@ export function SEO({
   keywords = 'tattoo studio Berlin, custom tattoos, fine line tattoos, realism tattoos, Berlin tattoo artists, premium tattoo studio, 99 Roots Studio, tattoo Berlin, professional tattoo artist, custom tattoo designs, tattoo parlor Berlin, best tattoo studio Berlin',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1590246814883-57c511ad64ad?auto=format&fit=crop&w=1200&h=630&q=80',
-  canonicalUrl = 'https://99rootsstudio.com',
+  canonicalUrl = 'https://99roots-studio.com',
   structuredData
 }: SEOProps) {
   useEffect(() => {
@@ -108,14 +108,14 @@ export function SEO({
 export const businessStructuredData = {
   "@context": "https://schema.org",
   "@type": "TattooParlor",
-  "@id": "https://99rootsstudio.com/#organization",
+  "@id": "https://99roots-studio.com/#organization",
   "name": "99 Roots Studio",
   "alternateName": "99 Roots Tattoo Studio Berlin",
   "description": "Premium tattoo studio in Berlin specializing in fine-line, realism, and custom tattoo art. Professional artists creating unique, personalized designs in a sterile, premium environment.",
-  "url": "https://99rootsstudio.com",
+  "url": "https://99roots-studio.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://99rootsstudio.com/logo.png",
+    "url": "https://99roots-studio.com/logo.png",
     "width": "600",
     "height": "60"
   },
@@ -137,7 +137,7 @@ export const businessStructuredData = {
     "longitude": "13.404954"
   },
   "telephone": "+49-30-XXXXXXXX",
-  "email": "info@99rootsstudio.com",
+  "email": "info99roots@gmail.com",
   "priceRange": "€€€",
   "openingHoursSpecification": [
     {
@@ -184,12 +184,12 @@ export const businessStructuredData = {
 export const getAppointmentStructuredData = () => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://99rootsstudio.com/appointment#webpage",
-  "url": "https://99rootsstudio.com/appointment",
+  "@id": "https://99roots-studio.com/appointment#webpage",
+  "url": "https://99roots-studio.com/appointment",
   "name": "Book Appointment - 99 Roots Studio",
   "description": "Schedule your tattoo consultation at 99 Roots Studio. Our professional artists are ready to bring your vision to life.",
   "isPartOf": {
-    "@id": "https://99rootsstudio.com/#organization"
+    "@id": "https://99roots-studio.com/#organization"
   },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -200,13 +200,13 @@ export const getAppointmentStructuredData = () => ({
 export const getArtistStructuredData = (artistName: string, artistBio: string, artistImage: string) => ({
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": `https://99rootsstudio.com/artist/${artistName.toLowerCase().replace(/\s/g, '-')}#person`,
+  "@id": `https://99roots-studio.com/artist/${artistName.toLowerCase().replace(/\s/g, '-')}#person`,
   "name": artistName,
   "description": artistBio,
   "image": artistImage,
   "jobTitle": "Tattoo Artist",
   "worksFor": {
-    "@id": "https://99rootsstudio.com/#organization"
+    "@id": "https://99roots-studio.com/#organization"
   },
   "knowsAbout": ["Tattoo Art", "Fine Line Tattoos", "Custom Design"]
 });
