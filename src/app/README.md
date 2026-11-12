@@ -1,3 +1,5 @@
+> **Note:** this is the original Figma Make write-up and may be out of date. See the root `README.md` for current setup, deployment and contact details.
+
 # 99 Roots Studio - Premium Tattoo & Art Studio Website
 
 A modern, minimalistic, and premium website for **99 Roots Studio**, a high-end tattoo and art studio based in Berlin. The website showcases custom, fine-line, and realism tattoos with an artistic, confident, and elegant design.
@@ -673,11 +675,10 @@ This project is proprietary and confidential for **99 Roots Studio**.
 ## 📞 Support & Contact
 
 For questions or support, please contact:
-- **Email:** info@99rootsstudio.com
-- **Booking:** booking@99rootsstudio.com
-- **Privacy:** privacy@99rootsstudio.com
-- **Instagram:** @99rootsstudio
-- **Facebook:** @99rootsstudio
+- **Email:** info99roots@gmail.com
+- **Phone / WhatsApp:** +49 15560 859953
+- **Instagram:** [@99.roots](https://www.instagram.com/99.roots/)
+- **Facebook:** [99 Roots Studio](https://www.facebook.com/profile.php?id=61565613471293)
 
 **Studio Address:**
 99 Roots Studio
