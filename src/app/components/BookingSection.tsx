@@ -1,4 +1,5 @@
 import { useLiteMotion } from './useLiteMotion';
+import { HOURS } from '../data/hours';
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -100,9 +101,9 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               </div>
               <h3 className="font-[Bebas_Neue] text-gold text-lg sm:text-xl mb-3">Open Hours</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
-                Mon - Fri: 11:00 - 20:00<br />
-                Saturday: 12:00 - 18:00<br />
-                Sunday: By appointment only
+                {HOURS.map((h) => (
+                  <span key={h.en} className="block">{h.en}: {h.time.en}</span>
+                ))}
               </p>
             </motion.div>
 

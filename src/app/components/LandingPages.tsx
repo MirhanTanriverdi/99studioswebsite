@@ -7,6 +7,7 @@ import logo from '../../assets/logo.webp';
 import { ARTISTS, instagramUrl, type ArtistData } from '../data/artists';
 import { artistWork } from '../data/artistWork';
 import { STYLES, styleBySlug, type StyleSlug } from '../data/styles';
+import { HOURS } from '../data/hours';
 import { alternateRoute, linkHandler, pathFor, type Lang, type Route } from '../router';
 import { artistsForStyle } from '../seo';
 
@@ -310,6 +311,14 @@ export function WalkInPage({ lang }: { lang: Lang }) {
           <p className="inline-flex items-center gap-2 text-white/60 text-sm">
             <MapPin size={16} className="text-gold" /> {ADDRESS}
           </p>
+          <dl className="grid grid-cols-[auto_auto] gap-x-6 gap-y-1 text-sm text-white/70">
+            {HOURS.map((h) => (
+              <div key={h.en} className="contents">
+                <dt className="text-left text-white/50">{h[lang]}</dt>
+                <dd className="text-left">{h.time[lang]}</dd>
+              </div>
+            ))}
+          </dl>
           <p className="text-white/50 text-sm">{t.piercing}</p>
         </div>
       </Hero>

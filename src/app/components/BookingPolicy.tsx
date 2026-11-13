@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
+import { HOURS } from '../data/hours';
 
 interface BookingPolicyProps {
   onBack: () => void;
@@ -231,8 +232,9 @@ export function BookingPolicy({ onBack }: BookingPolicyProps) {
                 <p className="text-white/80">Phone: +49 15560 859953</p>
                 <p className="text-white/80 mt-4 text-sm">
                   <strong>Studio Hours:</strong><br />
-                  Tuesday - Saturday: 12:00 - 20:00<br />
-                  Sunday - Monday: Closed
+                  {HOURS.map((h) => (
+                    <span key={h.en} className="block">{h.en}: {h.time.en}</span>
+                  ))}
                 </p>
               </div>
             </section>
