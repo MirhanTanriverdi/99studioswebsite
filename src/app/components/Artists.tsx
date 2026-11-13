@@ -4,137 +4,13 @@ import { Button } from './ui/button';
 import { ArtistPortraitPlaceholder } from './ArtistPortraitPlaceholder';
 import { useRef } from 'react';
 import { useLiteMotion } from './useLiteMotion';
+import { ARTISTS, instagramUrl, type ArtistData } from '../data/artists';
+import { linkHandler, pathFor } from '../router';
 
-interface Artist {
-  id: number;
-  name: string;
-  style: string;
-  bio: string;
-  instagram: string;
-  /** Empty string = no portrait shot yet; the card falls back to a placeholder. */
-  image: string;
-  isGuest?: boolean;
-}
+// Roster lives in data/artists.ts (shared with the artist and style pages).
+const artists = ARTISTS;
 
-const artists: Artist[] = [
-  {
-    id: 1,
-    name: 'MIKE',
-    style: 'Fineline / Ornamental / Black & Grey',
-    bio: 'Flowing fine-line and ornamental pieces that follow the body, from delicate hip and spine work to detailed black & grey symbolism.',
-    instagram: '@mikeluxentattoo',
-    image: 'https://i.imgur.com/HPYSKTm.jpeg',
-  },
-  {
-    id: 7,
-    name: 'JELENA',
-    style: 'Black & Grey Realism / Fineline / Lettering',
-    bio: 'Soft black & grey realism with fine-line detail, from portraits and religious imagery to classic motifs paired with clean lettering.',
-    instagram: '@vais____ink',
-    image: 'https://i.imgur.com/65vqbxU.jpeg',
-  },
-  {
-    id: 8,
-    name: 'OSVI',
-    style: 'Fineline / Botanical / Illustrative',
-    bio: 'Airy botanical pieces with soft shading that flow along the back and arms, alongside illustrative work with a graphic edge.',
-    instagram: '@osvi.ink',
-    image: '/artists/osvi-card.webp',
-  },
-  {
-    id: 20,
-    name: 'ARTURO',
-    style: 'Blackwork / Ornamental / Neo-Tribal',
-    bio: 'Bold blackwork and ornamental patterns made for large areas, from mandala sleeves to sweeping neo-tribal body pieces.',
-    instagram: '@arturoalbuerne.ttt',
-    image: '/artists/arturo-card.webp',
-    isGuest: true,
-  },
-  {
-    id: 9,
-    name: 'JAVIERA',
-    style: 'Fineline / Micro Realism / Minimalist',
-    bio: 'Small, delicate tattoos, from soft micro-realistic animals to minimalist flowers and playful single-line motifs.',
-    instagram: '@nomeolvides.ttt',
-    image: '/artists/javiera-card.webp',
-  },
-  {
-    id: 22,
-    name: 'RICARDO',
-    style: 'Blackwork / Dark Illustrative / Etching',
-    bio: 'Heavy blackwork and dark illustrative pieces built on creatures, skulls and sci-fi horror, with etching-style shading.',
-    instagram: '@rick.dark.ink',
-    image: '/artists/ricardo-card.webp',
-    isGuest: true,
-  },
-  {
-    id: 24,
-    name: 'ARTUR',
-    style: 'Traditional / Blackwork / Minimalist',
-    bio: 'Black traditional flash with bold lines, alongside clean minimalist linework. Guest from Warsaw.',
-    instagram: '@arturtattoo.47',
-    image: '/artists/artur-card.webp',
-    isGuest: true,
-  },
-  {
-    id: 25,
-    name: 'KIM',
-    style: 'Neo-Traditional / Illustrative / Ornamental',
-    bio: 'Bold neo-traditional colour pieces, illustrative dotwork creatures and ornamental linework, from tarot-inspired cards to sea life.',
-    instagram: '@gemini.tattoo.030',
-    image: '/artists/kim-card.webp',
-    isGuest: true,
-  },
-  // New to the roster. Styles/bios are written from their portfolio photos;
-  // Instagram handles are the artists' real accounts.
-  {
-    id: 27,
-    name: 'BARBARA',
-    style: 'Ornamental / Blackwork / Traditional',
-    bio: 'Ornamental linework and bold blackwork, from full-back mandala pieces to graphic hand designs and traditional flash.',
-    instagram: '@elefanteconmolotov',
-    image: '/artists/barbara-card.webp',
-  },
-  {
-    id: 28,
-    name: 'DARYNA',
-    style: 'Fineline / Botanical / Abstract',
-    bio: 'Fine-line florals with soft shading, mixed with abstract and surreal designs and embroidery-inspired ornamental pieces.',
-    instagram: '@silxxskin',
-    image: '/artists/daryna-card.webp',
-  },
-  {
-    id: 29,
-    name: 'DUDA',
-    style: 'Fineline / Micro Realism / Botanical',
-    bio: 'Fine-line botanicals and micro-realistic pet portraits and animals, with delicate detail at small and medium scale.',
-    instagram: '@dudaramoos',
-    image: '/artists/duda-card.webp',
-  },
-  {
-    id: 30,
-    name: 'JAMES',
-    style: 'Neo-Tribal / Abstract / Brushstroke',
-    bio: 'Free-flowing neo-tribal and brushstroke-style shapes drawn to follow the curves of the body.',
-    instagram: '@notasong.ink',
-    image: '/artists/james-card.webp',
-  },
-  {
-    id: 31,
-    name: 'NINA',
-    style: 'Fineline / Botanical / Illustrative',
-    bio: 'Fine-line botanicals, insects and nature motifs with soft stipple shading.',
-    instagram: '@nk.ninatattoo',
-    image: '/artists/nina-card.webp',
-  },
-];
-
-
-interface ArtistsProps {
-  onArtistGalleryClick?: (artistId: number) => void;
-}
-
-export function Artists({ onArtistGalleryClick }: ArtistsProps) {
+export function Artists() {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   
@@ -234,7 +110,6 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
                   key={artist.id}
                   artist={artist}
                   index={index}
-                  onGalleryClick={onArtistGalleryClick}
                 />
               ))}
             </div>
@@ -245,15 +120,14 @@ export function Artists({ onArtistGalleryClick }: ArtistsProps) {
   );
 }
 
-function ArtistCard({ 
-  artist, 
+function ArtistCard({
+  artist,
   index,
-  onGalleryClick 
-}: { 
-  artist: Artist; 
+}: {
+  artist: ArtistData;
   index: number;
-  onGalleryClick?: (artistId: number) => void;
 }) {
+  const galleryPath = pathFor({ name: 'artist', slug: artist.slug, lang: 'en' });
   return (
     <motion.div
       key={artist.id}
@@ -284,24 +158,31 @@ function ArtistCard({
           <h3 className="font-playfair text-lg sm:text-xl text-white text-[30px] mb-2 min-h-[3rem] flex items-center font-[Bebas_Neue]">
             {artist.name}
           </h3>
+          {/* A real link (not a button) so crawlers can follow it to the artist page. */}
           <Button
-            onClick={() => onGalleryClick?.(artist.id)}
+            asChild
             variant="outline"
             className="w-full mb-2 transition-all duration-300 justify-center px-4 py-2 bg-white/10 border-gold/30 text-gold active:bg-white/20 md:hover:bg-gold md:hover:text-black md:hover:border-gold rounded-none font-[Bebas_Neue] text-[16px]"
           >
-            View Gallery
+            <a href={galleryPath} onClick={linkHandler(galleryPath)}>View Gallery</a>
           </Button>
-          {/* Hidden when empty — a new artist with no copy yet should show a
-              clean card, not blank rows. flex-grow moves to the spacer so the
-              cards in a row still line up. */}
-          {artist.style && (
+          {/* Each style links to its landing page (e.g. /fineline-tattoo-berlin). */}
+          {artist.styles.length > 0 && (
             <p className="text-gold text-sm sm:text-base mb-2 font-[Bebas_Neue] text-[20px]">
-              {artist.style}
+              {artist.styles.map((s, i) => {
+                const to = pathFor({ name: 'style', slug: s.slug, lang: 'en' });
+                return (
+                  <span key={s.slug + i}>
+                    {i > 0 && ' / '}
+                    <a href={to} onClick={linkHandler(to)} className="hover:underline underline-offset-4">{s.label}</a>
+                  </span>
+                );
+              })}
             </p>
           )}
-          {artist.bio ? (
+          {artist.bio.en ? (
             <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed text-justify mb-2 flex-grow">
-              {artist.bio}
+              {artist.bio.en}
             </p>
           ) : (
             <div className="flex-grow" />
@@ -309,7 +190,7 @@ function ArtistCard({
           {artist.instagram && (
             <p className="font-inter text-[#FF9D56] text-xs sm:text-sm font-[Bebas_Neue]">
               <a
-                href={`https://www.instagram.com/${artist.instagram.replace(/^@/, '')}/`}
+                href={instagramUrl(artist.instagram)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold transition-colors"

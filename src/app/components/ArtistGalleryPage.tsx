@@ -6,6 +6,8 @@ import { artistWork } from '../data/artistWork';
 import logo from '../../assets/logo.webp';
 import { useState, useEffect, useRef } from 'react';
 import { useLiteMotion } from './useLiteMotion';
+import { ARTISTS, type ArtistData } from '../data/artists';
+import { linkHandler, pathFor, type Lang } from '../router';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
 import ComingSoon from '../imports/ComingSoon-208-55';
 
@@ -14,6 +16,7 @@ interface ArtistGalleryPageProps {
   onBack: () => void;
   onArtistChange: (artistId: number) => void;
   onBookingClick?: () => void;
+  lang?: Lang;
 }
 
 interface GalleryImage {
@@ -24,191 +27,27 @@ interface GalleryImage {
   title: string;
 }
 
-// Artist gallery data
+// Gallery data comes from the shared roster (data/artists.ts); the photos
+// themselves come from data/artistWork.ts below.
 const artistGalleries: Record<number, {
   name: string;
-  style: string;
-  bio: string;
+  slug: string;
+  styles: ArtistData['styles'];
+  bio: ArtistData['bio'];
   instagram: string;
   photo: string;
   images: GalleryImage[];
-}> = {
-  1: {
-    name: 'MIKE',
-    style: 'Fineline / Ornamental / Black & Grey',
-    bio: 'Flowing fine-line and ornamental pieces that follow the body, from delicate hip and spine work to detailed black & grey symbolism.',
-    instagram: '@mikeluxentattoo',
-    photo: 'https://i.imgur.com/HPYSKTm.jpeg',
-    images: [
-      { id: 1, url: '', title: 'Fine Line Floral' },
-      { id: 2, url: '', title: 'Minimalist Design' },
-      { id: 3, url: '', title: 'Delicate Line Work' },
-      { id: 4, url: '', title: 'Fine Line Portrait' },
-      { id: 5, url: '', title: 'Abstract Minimal' },
-      { id: 6, url: '', title: 'Botanical Fine Line' },
-    ]
-  },
-  7: {
-    name: 'JELENA',
-    style: 'Black & Grey Realism / Fineline / Lettering',
-    bio: 'Soft black & grey realism with fine-line detail, from portraits and religious imagery to classic motifs paired with clean lettering.',
-    instagram: '@vais____ink',
-    photo: 'https://i.imgur.com/65vqbxU.jpeg',
-    images: [
-      { id: 1, url: '', title: 'Geometric Mandala' },
-      { id: 2, url: '', title: 'Sacred Geometry' },
-      { id: 3, url: '', title: 'Dotwork Pattern' },
-      { id: 4, url: '', title: 'Symmetrical Design' },
-      { id: 5, url: '', title: 'Ornamental Dotwork' },
-      { id: 6, url: '', title: 'Precision Geometry' },
-    ]
-  },
-  8: {
-    name: 'OSVI',
-    style: 'Fineline / Botanical / Illustrative',
-    bio: 'Airy botanical pieces with soft shading that flow along the back and arms, alongside illustrative work with a graphic edge.',
-    instagram: '@osvi.ink',
-    photo: '/artists/osvi.webp',
-    images: [
-      { id: 1, url: '', title: 'Blackwork Composition' },
-      { id: 2, url: '', title: 'Illustrative Sleeve' },
-      { id: 3, url: '', title: 'Abstract Form' },
-      { id: 4, url: '', title: 'Bold Back Piece' },
-    ]
-  },
-  9: {
-    name: 'JAVIERA',
-    style: 'Fineline / Micro Realism / Minimalist',
-    bio: 'Small, delicate tattoos, from soft micro-realistic animals to minimalist flowers and playful single-line motifs.',
-    instagram: '@nomeolvides.ttt',
-    photo: '/artists/javiera.webp',
-    images: [
-      { id: 1, url: '', title: 'Botanical Fineline' },
-      { id: 2, url: '', title: 'Ornamental Wrist' },
-      { id: 3, url: '', title: 'Floral Composition' },
-      { id: 4, url: '', title: 'Delicate Linework' },
-    ]
-  },
-  20: {
-    name: 'ARTURO',
-    style: 'Blackwork / Ornamental / Neo-Tribal',
-    bio: 'Bold blackwork and ornamental patterns made for large areas, from mandala sleeves to sweeping neo-tribal body pieces.',
-    instagram: '@arturoalbuerne.ttt',
-    photo: '/artists/arturo.webp',
-    images: [
-      { id: 1, url: '', title: 'Hyper Realistic Portrait' },
-      { id: 2, url: '', title: 'Black & Grey Study' },
-      { id: 3, url: '', title: 'Cinematic Piece' },
-      { id: 4, url: '', title: 'Portrait Sleeve' },
-    ]
-  },
-  22: {
-    name: 'RICARDO',
-    style: 'Blackwork / Dark Illustrative / Etching',
-    bio: 'Heavy blackwork and dark illustrative pieces built on creatures, skulls and sci-fi horror, with etching-style shading.',
-    instagram: '@rick.dark.ink',
-    photo: '/artists/ricardo.webp',
-    images: [
-      { id: 1, url: '', title: 'Japanese Sleeve' },
-      { id: 2, url: '', title: 'Irezumi Dragon' },
-      { id: 3, url: '', title: 'Old School Eagle' },
-      { id: 4, url: '', title: 'Koi Back Piece' },
-    ]
-  },
-  24: {
-    name: 'ARTUR',
-    style: 'Traditional / Blackwork / Minimalist',
-    bio: 'Black traditional flash with bold lines, alongside clean minimalist linework. Guest from Warsaw.',
-    instagram: '@arturtattoo.47',
-    photo: '/artists/artur.webp',
-    images: [
-      { id: 1, url: '', title: 'Old School Dagger' },
-      { id: 2, url: '', title: 'Blackwork Chest' },
-      { id: 3, url: '', title: 'Illustrative Arm' },
-      { id: 4, url: '', title: 'Bold Blackwork' },
-    ]
-  },
-  25: {
-    name: 'KIM',
-    style: 'Neo-Traditional / Illustrative / Ornamental',
-    bio: 'Bold neo-traditional colour pieces, illustrative dotwork creatures and ornamental linework, from tarot-inspired cards to sea life.',
-    instagram: '@gemini.tattoo.030',
-    photo: '/artists/kim.webp',
-    images: [
-      { id: 1, url: '', title: 'Micro Fineline' },
-      { id: 2, url: '', title: 'Minimalist Study' },
-      { id: 3, url: '', title: 'Architectural Line' },
-      { id: 4, url: '', title: 'Micro Detail' },
-    ]
-  },
-  27: {
-    name: 'BARBARA',
-    style: 'Ornamental / Blackwork / Traditional',
-    bio: 'Ornamental linework and bold blackwork, from full-back mandala pieces to graphic hand designs and traditional flash.',
-    instagram: '@elefanteconmolotov',
-    photo: '/artists/barbara.webp',
-    images: [
-      { id: 1, url: '', title: '' },
-      { id: 2, url: '', title: '' },
-      { id: 3, url: '', title: '' },
-      { id: 4, url: '', title: '' },
-    ]
-  },
-  28: {
-    name: 'DARYNA',
-    style: 'Fineline / Botanical / Abstract',
-    bio: 'Fine-line florals with soft shading, mixed with abstract and surreal designs and embroidery-inspired ornamental pieces.',
-    instagram: '@silxxskin',
-    photo: '/artists/daryna.webp',
-    images: [
-      { id: 1, url: '', title: '' },
-      { id: 2, url: '', title: '' },
-      { id: 3, url: '', title: '' },
-      { id: 4, url: '', title: '' },
-    ]
-  },
-  29: {
-    name: 'DUDA',
-    style: 'Fineline / Micro Realism / Botanical',
-    bio: 'Fine-line botanicals and micro-realistic pet portraits and animals, with delicate detail at small and medium scale.',
-    instagram: '@dudaramoos',
-    photo: '/artists/duda.webp',
-    images: [
-      { id: 1, url: '', title: '' },
-      { id: 2, url: '', title: '' },
-      { id: 3, url: '', title: '' },
-      { id: 4, url: '', title: '' },
-    ]
-  },
-  30: {
-    name: 'JAMES',
-    style: 'Neo-Tribal / Abstract / Brushstroke',
-    bio: 'Free-flowing neo-tribal and brushstroke-style shapes drawn to follow the curves of the body.',
-    instagram: '@notasong.ink',
-    photo: '/artists/james.webp',
-    images: [
-      { id: 1, url: '', title: '' },
-      { id: 2, url: '', title: '' },
-      { id: 3, url: '', title: '' },
-      { id: 4, url: '', title: '' },
-    ]
-  },
-  31: {
-    name: 'NINA',
-    style: 'Fineline / Botanical / Illustrative',
-    bio: 'Fine-line botanicals, insects and nature motifs with soft stipple shading.',
-    instagram: '@nk.ninatattoo',
-    photo: '/artists/nina.webp',
-    images: [
-      { id: 1, url: '', title: '' },
-      { id: 2, url: '', title: '' },
-      { id: 3, url: '', title: '' },
-      { id: 4, url: '', title: '' },
-    ]
-  },
-};
+}> = Object.fromEntries(
+  ARTISTS.map((a) => [a.id, { name: a.name, slug: a.slug, styles: a.styles, bio: a.bio, instagram: a.instagram, photo: a.photo, images: [] }]),
+);
 
-export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingClick }: ArtistGalleryPageProps) {
+const G = {
+  en: { back: 'Back to Artists', artists: 'Artists', notFound: 'Artist Not Found', bookWith: (n: string) => `Book with ${n}`, ready: 'Ready to get your own custom piece? Schedule a consultation to discuss your vision.', consult: 'Book Consultation', work: (n: string) => `${n} – tattoo work` },
+  de: { back: 'Zurück zu den Artists', artists: 'Artists', notFound: 'Artist nicht gefunden', bookWith: (n: string) => `Termin bei ${n}`, ready: 'Bereit für dein eigenes Tattoo? Vereinbare ein Beratungsgespräch und erzähl uns von deiner Idee.', consult: 'Beratung anfragen', work: (n: string) => `${n} – Tattoo-Arbeit` },
+} as const;
+
+export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingClick, lang = 'en' }: ArtistGalleryPageProps) {
+  const g = G[lang];
   const base = artistGalleries[artistId];
   // Real work imported from the studio's Drive wins over the placeholder
   // entries baked into artistGalleries above.
@@ -333,10 +172,10 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
     return (
       <div className="min-h-screen bg-[#151515] flex items-center justify-center">
         <div className="text-center">
-          <h2 className="font-playfair text-gold text-4xl mb-4">Artist Not Found</h2>
+          <h2 className="font-playfair text-gold text-4xl mb-4">{g.notFound}</h2>
           <Button onClick={onBack} variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black">
             <ArrowLeft className="mr-2" size={18} />
-            Back to Artists
+            {g.back}
           </Button>
         </div>
       </div>
@@ -365,7 +204,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
               className="text-gold hover:text-gold/80 hover:bg-gold/10"
             >
               <ArrowLeft className="mr-2" size={18} />
-              <span className="hidden sm:inline">Back to Artists</span>
+              <span className="hidden sm:inline">{g.back}</span>
             </Button>
 
             {/* Center: Logo */}
@@ -384,7 +223,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
                 className="flex items-center gap-2 px-3 sm:px-4 py-2 border border-gold/40 text-gold hover:bg-gold/10 transition-all duration-300 text-sm sm:text-base"
               >
                 <span className="hidden sm:inline">{artist.name}</span>
-                <span className="sm:hidden">Artists</span>
+                <span className="sm:hidden">{g.artists}</span>
                 <ChevronDown size={16} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -446,10 +285,18 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
               {artist.name}
             </h1>
             <p className="text-white/80 text-xl sm:text-2xl md:text-3xl mb-6">
-              {artist.style}
+              {artist.styles.map((st, i) => {
+                const to = pathFor({ name: 'style', slug: st.slug, lang });
+                return (
+                  <span key={st.slug + i}>
+                    {i > 0 && ' / '}
+                    <a href={to} onClick={linkHandler(to)} className="hover:text-gold underline-offset-4 hover:underline">{st.label}</a>
+                  </span>
+                );
+              })}
             </p>
             <p className="font-inter text-white/70 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-              {artist.bio}
+              {artist.bio[lang]}
             </p>
             
             {/* Instagram Link */}
@@ -522,16 +369,16 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
             className="max-w-2xl mx-auto"
           >
             <h2 className="font-playfair text-gold text-3xl sm:text-4xl md:text-5xl mb-6">
-              Book with {artist.name}
+              {g.bookWith(artist.name)}
             </h2>
             <p className="font-inter text-white/70 text-base sm:text-lg mb-8">
-              Ready to get your own custom piece? Schedule a consultation to discuss your vision.
+              {g.ready}
             </p>
             <button
               onClick={onBookingClick}
               className="inline-block px-8 sm:px-12 py-3 sm:py-4 border-2 border-gold text-gold font-inter uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-gold hover:text-black touch-manipulation cursor-pointer"
             >
-              Book Consultation
+              {g.consult}
             </button>
           </motion.div>
         </div>
@@ -591,7 +438,7 @@ export function ArtistGalleryPage({ artistId, onBack, onArtistChange, onBookingC
               {/* Image Title & Counter */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 sm:p-6 text-center">
                 <p className="font-inter text-gold text-sm sm:text-lg md:text-xl mb-1 sm:mb-2">
-                  {selectedImage.title || `${artist.name} — tattoo work`}
+                  {selectedImage.title || g.work(artist.name)}
                 </p>
                 <p className="font-inter text-white/60 text-xs sm:text-sm">
                   {(selectedImageIndex ?? 0) + 1} / {artist.images.length}

@@ -3,15 +3,19 @@ import logo from '../../assets/logo.webp';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { useLiteMotion } from './useLiteMotion';
+import { linkHandler, pathFor } from '../router';
 
-interface FooterProps {
-  onPrivacyClick?: () => void;
-  onTermsClick?: () => void;
-  onBookingPolicyClick?: () => void;
-  onImpressumClick?: () => void;
-}
+const FOOTER_LINKS: Array<[string, string]> = [
+  ['Tattoo Styles', pathFor({ name: 'styles', lang: 'en' })],
+  ['Walk-in', pathFor({ name: 'walk-in', lang: 'en' })],
+  ['Tattoo-Stile (DE)', pathFor({ name: 'styles', lang: 'de' })],
+  ['Privacy Policy', pathFor({ name: 'privacy' })],
+  ['Terms of Service', pathFor({ name: 'terms' })],
+  ['Booking Policy', pathFor({ name: 'booking-policy' })],
+  ['Impressum', pathFor({ name: 'impressum' })],
+];
 
-export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onImpressumClick }: FooterProps) {
+export function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef(null);
   
@@ -39,7 +43,7 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onI
               className="h-24 w-24 sm:h-30 sm:w-30 mx-auto md:mx-0 mb-2"
             />
             <p className="font-inter text-white/60 text-xs sm:text-sm">
-              Berlin's Premier Tattoo Studio
+              Tattoo & Piercing Studio · Berlin Prenzlauer Berg
             </p>
           </div>
 
@@ -83,37 +87,19 @@ export function Footer({ onPrivacyClick, onTermsClick, onBookingPolicyClick, onI
           </div>
         </div>
 
-        {/* Additional Links */}
-        <div className="sm:mt-8 pt-6 sm:pt-8 border-t border-gold/20 flex flex-wrap justify-center gap-4 sm:gap-6 m-[0px] p-[0px]">
-          <a
-            href="#"
-            className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
-            onClick={onPrivacyClick}
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="#"
-            className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
-            onClick={onTermsClick}
-          >
-            Terms of Service
-          </a>
-          <a
-            href="#"
-            className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
-            onClick={onBookingPolicyClick}
-          >
-            Booking Policy
-          </a>
-          <a
-            href="#"
-            className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
-            onClick={onImpressumClick}
-          >
-            Impressum
-          </a>
-        </div>
+        {/* Additional Links — real URLs so crawlers can follow them. */}
+        <nav aria-label="Footer" className="sm:mt-8 pt-6 sm:pt-8 border-t border-gold/20 flex flex-wrap justify-center gap-4 sm:gap-6 m-[0px] p-[0px]">
+          {FOOTER_LINKS.map(([label, to]) => (
+            <a
+              key={to}
+              href={to}
+              onClick={linkHandler(to)}
+              className="font-inter text-white/50 hover:text-gold transition-colors text-xs sm:text-sm"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
       </motion.div>
     </footer>
   );

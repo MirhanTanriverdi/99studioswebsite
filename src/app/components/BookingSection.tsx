@@ -102,7 +102,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               <p className="font-inter text-white/70 text-xs sm:text-sm leading-relaxed">
                 Mon - Fri: 11:00 - 20:00<br />
                 Saturday: 12:00 - 18:00<br />
-                Sunday: Closed
+                Sunday: By appointment only
               </p>
             </motion.div>
 
